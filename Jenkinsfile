@@ -7,13 +7,8 @@ pipeline {
     }
 
     stages {
-		stage('Pull Latest Changes') {
-			steps {
-				git 'https://github.com/DocumentationTool/Frontend'
-            }
-        }
 
-        stage('Install Dependencies') {
+    stage('Install Dependencies') {
 			steps {
 				script {
 					sh 'curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -'
