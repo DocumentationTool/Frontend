@@ -1,0 +1,14 @@
+<md-editor name="Content"
+           [upload]="doUpload"
+           [(ngModel)]="resourceService.fileContent"
+           [height]="'637px'"
+           [mode]="this.navigationService.mode()"
+           [preRender]="preRenderFunc"
+           [postRender]="postRenderFunc"
+           (onEditorLoaded)="onEditorLoaded($event)"
+           (onPreviewDomChanged)="onPreviewDomChanged($event)"
+>
+<!--  <div custom-btns>-->
+<!--  </div>-->
+</md-editor>
+

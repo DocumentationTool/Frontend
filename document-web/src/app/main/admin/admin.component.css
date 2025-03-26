@@ -1,0 +1,223 @@
+.container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.permission-container{
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+li span {
+  margin-right: 15px;
+}
+
+.repo:hover {
+  cursor: pointer;
+  opacity: 50%;
+}
+
+.button-group {
+  display: flex;
+  gap: 5px;
+}
+
+.delete {
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.delete:hover {
+  background-color: #ff6961;
+  color: white;
+}
+
+.add, .edit {
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.add:hover, .edit:hover {
+  background-color: var(--greenColor);
+  color: white;
+}
+
+.groups {
+  text-align: left;
+
+}
+
+.repo-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.repo-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: var(--greenColor);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.repo-btn:hover {
+  opacity: 80%
+}
+
+.repo-btn:focus {
+  outline: none;
+}
+
+/*------------------------Repo Dropdown-----------------*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: var(--greenColor);
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  margin-right: 5px;
+}
+
+.dropbtn:hover {
+  opacity: 80%;
+}
+
+.dropdown-content {
+  display: block;
+  position: absolute;
+  background-color: var(--backgroundColor);
+  width: 150px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.dropdown-content button {
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+
+/*--------------------management navigation--------------*/
+
+.nav-button {
+  background-color: var(--greenColor);
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+  opacity: 50%;
+}
+
+.nav-button:disabled {
+  opacity: 100%
+}
+
+.ri-loop-right-line {
+  cursor: pointer;
+}
+
+.list-header {
+  font-weight: bold;
+  text-align: left;
+  border-bottom: 2px solid #ccc;
+  padding: 10px;
+  display: flex;
+  gap: 15px;
+}
+
+.list-header span {
+  flex: 1; /* Gleiche Breite für alle Spalten */
+  text-align: left;
+}
+
+/* Listeneinträge für die Daten */
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+li span {
+  margin-right: 15px;
+}
+
+/* Flexbox für Buttons innerhalb des Listeneintrags */
+.button-group {
+  display: flex;
+  gap: 5px;
+}
+
+
+/*--------------------dropdown----------------------*/
+#repo-select, #permission-select, #user-select {
+  width: 200px;
+  height: 43px;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  background-color: var(--greenColor);
+  color: white;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s;
+  margin-right: 4px;
+}
+
+#permission-select:disabled{
+  opacity: 50%;
+}
+
+#repo-select:hover, #permission-select:hover, #user-select{
+  opacity: 80%;
+}
+
+#repo-select option, #permission-select option, #user-select option {
+  background: white;
+  color: black;
+  padding: 10px;
+}
+
+#repo-select option:disabled, #permission-select option:disabled, #user-select option:disabled {
+  color: gray;
+  font-style: italic;
+}

@@ -1,0 +1,4 @@
+<div
+  *ngIf="this.resourceService.selectedFile()">
+  <markdown [data]="resourceService.fileContent()"></markdown>
+</div>

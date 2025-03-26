@@ -1,0 +1,168 @@
+.left-sidebar {
+  position: fixed;
+  left: 0;
+  width: 200px;
+  max-width: 200px;
+  height: 100vh;
+  max-height: 100vh; /* Begrenzung auf die Bildschirmhöhe */
+  background-color: var(--backgroundColor);
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+/*Resourcen*/
+ul {
+  list-style-type: none;
+  padding-left: 5px;
+  overflow-y: auto;
+  overflow-x: auto;
+  text-decoration: none;
+  color: var(--greenColor);
+  cursor: pointer;
+}
+
+ul ul {
+  margin-left: 5px;
+  border-left: 2px solid var(--secondaryTextColor);
+  padding-left: 5px;
+  color: var(--greenColor);
+}
+
+ul ul.ng-star-inserted{
+  margin-left: 0px;
+}
+
+ul ul:hover {
+  cursor: pointer;
+}
+
+li {
+  position: relative;
+  margin: 2px 0px;
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: 10pt;
+}
+
+li.ng-star-inserted{
+  margin-left: 10px;
+}
+
+
+/*Selected File*/
+li.active {
+  font-weight: bold;
+  color: #fff;
+  background-color: var(--greenColor);
+  border-radius: 4px;
+  text-decoration: none;
+  margin-right: 3px;
+  padding: 3px 5px;
+}
+
+/*Repos*/
+a {
+  text-decoration: none;
+  color: var(--greenColor);
+  font-weight: bold;
+  font-size: 12pt;
+  cursor: pointer;
+}
+
+/*----------------------------------Resource Editing Design------------------------------------*/
+button.menu-button.ng-star-inserted {
+  font-size: inherit;
+  text-decoration: none;
+  color: var(--greenColor);
+  cursor: pointer;
+  background: none;
+  border: none;
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+}
+
+li:hover .menu-button {
+  visibility: visible;  /* Sichtbar machen */
+}
+
+li.active .menu-button {
+  color: var(--backgroundColor);
+}
+
+.popup-menu {
+  position: fixed;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 5px;
+  z-index: 10;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14), 0 0 2px rgba(0, 0, 0, 0.12);
+  color: var(--backgroundColor);
+  font-weight: normal;
+}
+
+.popup-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--backgroundColor);
+  text-decoration: none;
+}
+
+.popup-menu ul li {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.popup-menu ul li:hover {
+  background: #f0f0f0;
+}
+
+
+.menu-button {
+  width: 5px;
+  padding-right: 10px;
+  text-decoration: none;
+  font-size: 16pt;
+  color: var(--greenColor);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.nav-admin {
+  color: var(--textColor);
+  font-size: 16pt;
+  position: fixed;
+  bottom: 15px;
+  left: 100px;
+  text-decoration: none;
+}
+
+.upload {
+  font-size: 30px;
+  position: fixed;
+  bottom: 10px;
+  color: var(--textColor);
+}
+
+.upload:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+
+.createNewFile{
+  font-size: 40px;
+  position: fixed;
+  bottom: 5px;
+  left: 50px;
+  color: var(--textColor);
+}
+
+.createNewFile:hover{
+  cursor: pointer;
+  opacity: 80%;
+}
+

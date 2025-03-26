@@ -1,0 +1,98 @@
+lacy load -> in router
+
+API Response Models!
+
+Admin Bereich gestalten
+
+PopUp Permission Path vorschläge
+
+sidebar dynamisch (globale variable für widht und diese beim ziehen verändern?)
+
+bei suchleiste weiter Informationen bei ergenis -> pfad, datei
+suchergebnisse mit tab und pfeiltasten
+tooltip bei prefix
+https://stackoverflow.com/questions/2952196/ant-path-style-patterns
+
+nicht immer gesamten FileTreeladen sondern nur repo wo file hinzugefügt?
+
+Files verschieben -> user anlegen
+
+MatToolTip
+
+neues file gleich auswählen nach upload - async
+
+Logo
+Tags
+Tree
+
+file sperre beim verlassen von editor wieder aufheben (nicht beim speichern sondern nur bei verlassen von editor + HTML pfad eingabe, seite schließen)
+file edit wird bei ng destroy entfernt und bei, file wechsel -> probleme bei Fenster schließen/navigieren mit html zurücktasten
+-----------------------------------------------------------------
+install:
+@angular/cdk/drag-drop
+
+NPM:
+npm install ngx-markdown marked@^15.0.0 --save
+
+npm i remixicon
+
+npm i ngx-markdown-editor --save
+npm i ace-builds bootstrap font-awesome --save
+Wichtig: angular json und index.html einträge
+Options Einbauen Bsp.: [options]="{resizable: true}"
+
+npm install ngx-toastr
+npm install turndown
+
+-----------------------Projekmanagement--------------------------
+
+Warum unser TOol?! wieso warum abgrenzung
+Git im hintergrund
+
+
+Performance testes? im PSP -> beim Pflichtenheft erweiterung ?
+
+Netzplan -> nur "Kritischer Pfad" !
+
+SWOT Analyse
+
+Definition of done ?
+
+Zusammengehörende Tabellen im Projekthandbuch zusammenführen
+
+AWL mindestens:
+1. Kostenplan
+2. Zeiterfassung 1 Woche wirklich mitschreiben || in der schule und private
+
+Woche 6
+Montag:     07:55 - 09:35 Baumstruktur Design
+            13:10 - 14:00 Move File und Edit Tags
+            10:45 - 11:30 Baumstruktur Design - pop up ausrichtung
+
+Dienstag:   12:20 - 15:50 Tags verwaltung
+            18:00 - 18:20 Tags verwatlung
+
+Mittwoch:   08:45 - 09:35 Tags Fertigstellen
+            09:50 - 12:20 Admin Bereich
+
+Donnerstag: 10:40 - 11:30 Admin Bereich pupUps
+            14:20 - 15:00 Gruppen regeln
+
+Freitag:    07:40 - 09:10 User Information, Rest umstrukturiert
+            10:40 - 11:30 Admin Bereich umbauen, Gruppen verwaltung
+            12:20 - 15:50 Word Converter, Admin Bereich Gruppen verwaltung
+
+-----------------------Tests--------------------------
+Testfälle -> 5
+  wichtigsten Componenten Testen
+  Integration teset - schnittstelle
+  Akzeptanz tests!
+
+-----------------------Technische Doku--------------------------
+Graphisch
+
+
+
+----------------------Source Code Doku--------------------------
+Compo Doc
+npx compodoc -p tsconfig.doc.json
