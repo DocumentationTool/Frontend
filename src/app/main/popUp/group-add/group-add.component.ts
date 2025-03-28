@@ -2,6 +2,7 @@ import {Component, HostListener, Inject, OnInit} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {GroupService} from '../../service/groupService';
+import {ApiUser} from '../../../api/apiUser';
 
 @Component({
   selector: 'app-group-add',
@@ -14,46 +15,47 @@ import {GroupService} from '../../service/groupService';
 export class GroupAddComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<GroupAddComponent>,
-              public groupService: GroupService){
+              protected groupService: GroupService,
+              private apiUser: ApiUser) {
   }
 
   groupIdToAdd: string = "";
   groupNameToAdd: string = "";
-  groupIdToRemove: string = "";
-  repoIdsToRemoveWindow = false;
+  userToAdd: string = "";
+
+  allUsers: string[] = [];
 
   ngOnInit() {
-    this.groupService.getGroup(null);
+    this.apiUser.getUser(null).subscribe(
+      data => {
+        if (data && data.content) {
+          this.allUsers = data.content.map(user => user.userId)
+        }
+      }
+    )
   }
 
   onEditGroup() {
     if (this.groupIdToAdd) {
       this.groupService.addGroup(this.groupIdToAdd, this.groupNameToAdd);
+      if (this.userToAdd) {
+
+        setTimeout(() => {
+          this.groupService.addUserToGroup(this.userToAdd, this.groupIdToAdd);
+
+        }, 2000)
+      }
     }
-    if (this.groupIdToRemove) {
-      this.groupService.removeGroup(this.groupIdToRemove)
-    }
+
     this.closeDialog();
   }
 
-  selectGroup(GroupId: string) {
-    this.groupIdToRemove += (this.groupIdToRemove ? ';' : '') + GroupId;
-    this.repoIdsToRemoveWindow = false;
-  }
-
-  openDropdown() {
-    this.repoIdsToRemoveWindow = true;
+  onSelectUser(user: string) {
+    this.userToAdd = user;
   }
 
   closeDialog() {
     this.dialogRef.close();
   }
 
-  @HostListener('document:click', ['$event'])
-  clickOutside(event: Event) {
-    const target = event.target as HTMLElement;
-    if (!target.closest('dropdown') && !target.closest('input.remove')) {
-      this.repoIdsToRemoveWindow = false;
-    }
-  }
 }

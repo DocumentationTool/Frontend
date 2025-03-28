@@ -16,25 +16,22 @@ import {UserService} from '../../service/userService';
   templateUrl: './user-permission-add.component.html',
   styleUrl: './user-permission-add.component.css'
 })
-export class UserPermissionAddComponent implements OnInit{
+export class UserPermissionAddComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<UserPermissionAddComponent>,
               private apiUser: ApiUser,
               private userService: UserService,
               private apiResource: ApiResource,
-              @Inject(MAT_DIALOG_DATA) public dialogData: { repo: string}) {
+              @Inject(MAT_DIALOG_DATA) public dialogData: { repo: string }) {
   }
 
   addUserPermissionForm!: FormGroup;
 
-  isUsersToAddActive: boolean = false;
-  isPermissionToAddActive: boolean = false;
-  isPathActive: boolean = false;
+  customPath: string = "";
 
   allUsersToAdd: string[] = []
   allPermissions: Permission[] = [Permission.EDIT, Permission.DENY, Permission.ADMIN, Permission.VIEW];
   allPaths: string[] = []
-
 
 
   ngOnInit() {
@@ -56,7 +53,7 @@ export class UserPermissionAddComponent implements OnInit{
       }
     )
 
-    this.apiResource.getResource(null, null, null, null, [], [], false, 10000).subscribe(
+    this.apiResource.getResource(null, null, this.dialogData.repo, null, [], [], false, 10000).subscribe(
       data => {
         if (data && data.content) {
           this.allPaths = Object.values(data.content).flat()
@@ -69,42 +66,25 @@ export class UserPermissionAddComponent implements OnInit{
 
   addUserPermission() {
     const formValue = this.addUserPermissionForm.value;
-    this.userService.addPermissionToUser(this.dialogData.repo,formValue.userToAdd, formValue.permissionToAdd,formValue.pathToAdd)
+    this.userService.addPermissionToUser(this.dialogData.repo, formValue.userToAdd, formValue.permissionToAdd, formValue.pathToAdd)
     this.closeDialog();
+    setTimeout(() => {
+      this.userService.loadPermission(this.dialogData.repo, formValue.userToAdd)
+    },1500)
   }
 
   onSelectUsersToAdd(userId: string) {
     this.addUserPermissionForm.controls['userToAdd'].setValue(userId);
-    this.isUsersToAddActive = false;
   }
 
   onSelectPermissionToAdd(permission: string) {
     this.addUserPermissionForm.controls['permissionToAdd'].setValue(permission);
-    this.isPermissionToAddActive = false;
   }
 
   onSelectPath(path: string) {
     this.addUserPermissionForm.controls['pathToAdd'].setValue(path);
-    this.isPathActive = false;
   }
 
-  openUserToAddDropdown() {
-    this.isPermissionToAddActive= false;
-    this.isPathActive = false;
-    this.isUsersToAddActive = true;
-  }
-
-  openPermissionToAddDropdown()  {
-    this.isPathActive = false;
-    this.isUsersToAddActive = false;
-    this.isPermissionToAddActive= true;
-  }
-
-  openPathDropdown() {
-    this.isPermissionToAddActive= false;
-    this.isUsersToAddActive = false;
-    this.isPathActive = true;
-  }
 
   getPermissionName(permission: Permission): string {
     return Permission[permission];
@@ -112,23 +92,9 @@ export class UserPermissionAddComponent implements OnInit{
 
   isFormEmpty(): boolean {
     const formValue = this.addUserPermissionForm.value;
-    return !formValue.userToAdd &&
-      !formValue.permissionToAdd &&
+    return !formValue.userToAdd ||
+      !formValue.permissionToAdd ||
       !formValue.pathToAdd
-  }
-
-  @HostListener('document:click', ['$event'])
-  onClickOutside(event: Event) {
-    const target = event.target as HTMLElement;
-    if (!target.closest('input.usersToAdd')) {
-      this.isUsersToAddActive = false;
-    }
-    if (!target.closest('input.addPermission')) {
-      this.isPermissionToAddActive = false;
-    }
-    if (!target.closest('input.pathToAdd')) {
-      this.isPathActive = false;
-    }
   }
 
   closeDialog() {

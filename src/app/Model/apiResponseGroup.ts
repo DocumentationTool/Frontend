@@ -1,8 +1,10 @@
+import {Permission, User} from './apiResponseUser';
+
 export interface Group {
   groupId: string;
   name: string;
-  permissions: any[];
-  users: any[];
+  permissions: Permission[];
+  users: User[];
 }
 
 export interface ApiResponseGroup {

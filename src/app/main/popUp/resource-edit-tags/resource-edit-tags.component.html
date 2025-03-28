@@ -2,30 +2,36 @@
   <h2>Edit Tags {{this.dialogData.path}}</h2>
   <form (submit)="onEditTags()">
 
-    <label>Tags to add:<span> exapmle: Tag1;Tag2</span></label>
-      <input class="add" name="addTagId" type="text" [(ngModel)]="tagsToAdd" (focus)="openAddDropdown()" autocomplete="off"/>
+    <label>Tags to add:</label>
+    <select class="select" #tagSelect (change)="selectAddTag(tagSelect.value)">
+      <option value="" disabled selected></option>
+      @for (tag of resourceService.allRepoTagIds(); track tag) {
+        <option>
+          {{ tag }}
+        </option>
+      }
+      <option value="custom">More...</option>
+    </select>
 
-    @if (tagIdsToAddWindow) {
-      <div class="dropdown">
-        <ul>
-          @for (id of resourceService.allRepoTagIds(); track id) {
-            <li (click)="selectAddTag(id)">{{ id }}</li>
-          }
-        </ul>
-      </div>
+    @if (tagSelect.value === 'custom') {
+      <input class="input-pupUp" type="text" (input)="selectAddTag(customTags)" placeholder="Enter more tags" [(ngModel)]="customTags"
+             [ngModelOptions]="{standalone: true}"/>
     }
 
     <label>Tags to remove:</label>
-    <input name="removeTagId" type="text" [(ngModel)]="tagIdsToRemove" (focus)="openRemoveDropdown()" autocomplete="off"/>
+    <select class="select" #tagRemoveSelect (change)="selectRemoveTag(tagRemoveSelect.value)">
+      <option value="" disabled selected></option>
+      @for (tag of resourceService.allResourceTagIds(); track tag) {
+        <option>
+          {{ tag }}
+        </option>
+      }
+      <option value="custom">More...</option>
+    </select>
 
-    @if (tagIdsToRemoveWindow) {
-      <div class="dropdown">
-        <ul>
-          @for (id of resourceService.allResourceTagIds(); track id) {
-            <li (click)="selectRemoveTag(id)">{{ id }}</li>
-          }
-        </ul>
-      </div>
+    @if (tagRemoveSelect.value === 'custom') {
+      <input class="input-pupUp" type="text" (input)="selectRemoveTag(customTagsToRemove)" placeholder="Enter more tags" [(ngModel)]="customTagsToRemove"
+             [ngModelOptions]="{standalone: true}"/>
     }
 
     <button type="submit" class="upload-btn">Update</button>

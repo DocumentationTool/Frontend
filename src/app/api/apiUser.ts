@@ -59,7 +59,7 @@ export class ApiUser {
     const params = new HttpParams()
       .set('repoId', repoId)
       .set('userId', userId)
-      .set('permissionType', permissionType)
+      .set('type', permissionType)
       .set('path', path)
     return this.http.post(this.baseUrl + "/permission/update", params)
   }

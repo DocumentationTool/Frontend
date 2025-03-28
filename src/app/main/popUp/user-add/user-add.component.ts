@@ -1,11 +1,8 @@
 import {Component, HostListener, Inject, OnInit} from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {ApiRepo} from '../../../api/apiRepo';
+import {MatDialogRef} from '@angular/material/dialog';
 import {UserService} from '../../service/userService';
-import {GroupService} from '../../service/groupService';
 import {ApiGroup} from '../../../api/apiGroup';
-import {group} from '@angular/animations';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
@@ -19,7 +16,6 @@ import {ToastrService} from 'ngx-toastr';
 export class UserAddComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<UserAddComponent>,
               private userService: UserService,
-              private apiRepo: ApiRepo,
               private apiGroup: ApiGroup,
               private toastr: ToastrService) {
   }

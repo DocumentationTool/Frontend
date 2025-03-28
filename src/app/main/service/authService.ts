@@ -24,7 +24,6 @@ export class AuthService {
         let username = this.decodeToke(localStorage.getItem("authToken"))
         if (typeof username === "string") {
           this.username.set(username);
-          console.log(this.username())
         }
         this.toastr.success("login successful")
       },

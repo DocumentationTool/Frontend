@@ -2,24 +2,26 @@
   <h2>Edit Tags {{ this.dialogData.repoId }}</h2>
   <form (submit)="onEditTags()">
 
-    <label>TagIds to add:<span> exapmle: Tag1;Tag2</span></label>
-    <input name="addTagIds" type="text" [(ngModel)]="tagIdsToAdd" autocomplete="off"/>
+    <label>TagId to add:</label>
+    <input class="input-pupUp" name="addTagIds" type="text" [(ngModel)]="tagIdsToAdd" autocomplete="off"/>
 
-    <label>TagNames to add:<span> exapmle: Tag1;Tag2</span></label>
-    <input name="addTagNames" type="text" [(ngModel)]="tagNamesToAdd" autocomplete="off"/>
+    <label>TagName to add:</label>
+    <input class="input-pupUp" name="addTagNames" type="text" [(ngModel)]="tagNamesToAdd" autocomplete="off"/>
 
     <label>TagIds to remove:</label>
-    <input class="remove" name="removeTagIds" type="text" [(ngModel)]="tagIdsToRemove" (focus)="openDropdown()"
-           autocomplete="off"/>
+    <select class="select" #tagSelect (change)="selectTag(tagSelect.value)">
+      <option value="" disabled selected></option>
+      @for (tag of resourceService.allRepoTagIds(); track tag) {
+        <option>
+          {{ tag }}
+        </option>
+      }
+      <option value="custom">More...</option>
+    </select>
 
-    @if (tagIdsToRemoveWindow) {
-      <div class="dropdown">
-        <ul>
-          @for (id of resourceService.allRepoTagIds(); track id) {
-            <li (click)="selectTag(id)">{{ id }}</li>
-          }
-        </ul>
-      </div>
+    @if (tagSelect.value === 'custom') {
+      <input class="input-pupUp" type="text" (input)="selectTag(customTags)" placeholder="Enter custom pattern" [(ngModel)]="customTags"
+             [ngModelOptions]="{standalone: true}"/>
     }
 
     <button type="submit" class="upload-btn">Update</button>

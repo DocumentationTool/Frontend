@@ -1,4 +1,4 @@
-export interface DocumentContentResponseModel {
+export interface ApiResponseModelDocumentContent {
   path: string;
   repoId: string;
   createdBy: string;

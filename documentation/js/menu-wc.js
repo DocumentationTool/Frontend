@@ -63,16 +63,25 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/EditorComponent.html" data-type="entity-link" >EditorComponent</a>
                             </li>
                             <li class="link">
-                                <a href="components/EmptyPageComponent.html" data-type="entity-link" >EmptyPageComponent</a>
+                                <a href="components/GroupAddComponent.html" data-type="entity-link" >GroupAddComponent</a>
                             </li>
                             <li class="link">
-                                <a href="components/LoginComponent.html" data-type="entity-link" >LoginComponent</a>
+                                <a href="components/GroupEditComponent.html" data-type="entity-link" >GroupEditComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/GroupPermissionAddComponent.html" data-type="entity-link" >GroupPermissionAddComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/GroupPermissionUpdateComponent.html" data-type="entity-link" >GroupPermissionUpdateComponent</a>
                             </li>
                             <li class="link">
                                 <a href="components/MainComponent.html" data-type="entity-link" >MainComponent</a>
                             </li>
                             <li class="link">
                                 <a href="components/NavbarComponent.html" data-type="entity-link" >NavbarComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/NotFoundComponent.html" data-type="entity-link" >NotFoundComponent</a>
                             </li>
                             <li class="link">
                                 <a href="components/RepoEditTagsComponent.html" data-type="entity-link" >RepoEditTagsComponent</a>
@@ -96,10 +105,35 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/TreeChildComponent.html" data-type="entity-link" >TreeChildComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/UserAddComponent.html" data-type="entity-link" >UserAddComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/UserEditComponent.html" data-type="entity-link" >UserEditComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/UserPermissionAddComponent.html" data-type="entity-link" >UserPermissionAddComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/UserPermissionUpdateComponent.html" data-type="entity-link" >UserPermissionUpdateComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/ViewComponent.html" data-type="entity-link" >ViewComponent</a>
                             </li>
                         </ul>
                     </li>
+                        <li class="chapter">
+                            <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#directives-links"' :
+                                'data-bs-target="#xs-directives-links"' }>
+                                <span class="icon ion-md-code-working"></span>
+                                <span>Directives</span>
+                                <span class="icon ion-ios-arrow-down"></span>
+                            </div>
+                            <ul class="links collapse " ${ isNormalMode ? 'id="directives-links"' : 'id="xs-directives-links"' }>
+                                <li class="link">
+                                    <a href="directives/ResizableDirective.html" data-type="entity-link" >ResizableDirective</a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="chapter">
                             <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#injectables-links"' :
                                 'data-bs-target="#xs-injectables-links"' }>
@@ -112,7 +146,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/ApiAuth.html" data-type="entity-link" >ApiAuth</a>
                                 </li>
                                 <li class="link">
-                                    <a href="injectables/ApiPermission.html" data-type="entity-link" >ApiPermission</a>
+                                    <a href="injectables/ApiGroup.html" data-type="entity-link" >ApiGroup</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/ApiRepo.html" data-type="entity-link" >ApiRepo</a>
@@ -124,13 +158,38 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/ApiUser.html" data-type="entity-link" >ApiUser</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/AuthService.html" data-type="entity-link" >AuthService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/GroupService.html" data-type="entity-link" >GroupService</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/NavigationService.html" data-type="entity-link" >NavigationService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/ResizeService.html" data-type="entity-link" >ResizeService</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/ResourceService.html" data-type="entity-link" >ResourceService</a>
                                 </li>
+                                <li class="link">
+                                    <a href="injectables/UserService.html" data-type="entity-link" >UserService</a>
+                                </li>
                             </ul>
                         </li>
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#guards-links"' :
+                            'data-bs-target="#xs-guards-links"' }>
+                            <span class="icon ion-ios-lock"></span>
+                            <span>Guards</span>
+                            <span class="icon ion-ios-arrow-down"></span>
+                        </div>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="guards-links"' : 'id="xs-guards-links"' }>
+                            <li class="link">
+                                <a href="guards/AuthGuard.html" data-type="entity-link" >AuthGuard</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="chapter">
                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#interfaces-links"' :
                             'data-bs-target="#xs-interfaces-links"' }>
@@ -143,7 +202,19 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/ApiResponseFileTree.html" data-type="entity-link" >ApiResponseFileTree</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/ApiResponseGetPermission.html" data-type="entity-link" >ApiResponseGetPermission</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/ApiResponseGroup.html" data-type="entity-link" >ApiResponseGroup</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/ApiResponseLogin.html" data-type="entity-link" >ApiResponseLogin</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/ApiResponseModel.html" data-type="entity-link" >ApiResponseModel</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/ApiResponseModelDocumentContent.html" data-type="entity-link" >ApiResponseModelDocumentContent</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/ApiResponseModelRepos.html" data-type="entity-link" >ApiResponseModelRepos</a>
@@ -158,10 +229,16 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/ApiResponseTags.html" data-type="entity-link" >ApiResponseTags</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/ApiResponseUser.html" data-type="entity-link" >ApiResponseUser</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/ContentGroup.html" data-type="entity-link" >ContentGroup</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/DocumentContentResponseModel.html" data-type="entity-link" >DocumentContentResponseModel</a>
+                                <a href="interfaces/Group.html" data-type="entity-link" >Group</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Permission.html" data-type="entity-link" >Permission</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/Repos.html" data-type="entity-link" >Repos</a>
@@ -170,10 +247,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/Resources.html" data-type="entity-link" >Resources</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/Tag.html" data-type="entity-link" >Tag</a>
+                                <a href="interfaces/Role.html" data-type="entity-link" >Role</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/TestLoginResponseModel.html" data-type="entity-link" >TestLoginResponseModel</a>
+                                <a href="interfaces/User.html" data-type="entity-link" >User</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/UserPermission.html" data-type="entity-link" >UserPermission</a>
                             </li>
                         </ul>
                     </li>
@@ -185,6 +265,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
+                            <li class="link">
+                                <a href="miscellaneous/enumerations.html" data-type="entity-link">Enums</a>
+                            </li>
                             <li class="link">
                                 <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>
                             </li>

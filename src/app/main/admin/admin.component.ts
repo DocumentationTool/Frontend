@@ -8,8 +8,8 @@ import {ApiRepo} from '../../api/apiRepo';
 import {Repos} from '../../Model/apiResponseModelRepos';
 import {NgForOf, NgIf} from '@angular/common';
 import {ApiUser} from '../../api/apiUser';
-import {Permission} from '../../Model/permission';
-import {UserPermission} from '../../Model/apiResponseGetPermission';
+import {ApiGroup} from '../../api/apiGroup';
+
 
 @Component({
   selector: 'app-admin',
@@ -26,6 +26,7 @@ export class AdminComponent implements OnInit {
               protected userService: UserService,
               private apiRepo: ApiRepo,
               private apiUser: ApiUser,
+              private apiGroup: ApiGroup,
               protected groupService: GroupService) {
   }
 
@@ -34,11 +35,12 @@ export class AdminComponent implements OnInit {
   editPermissionActive: boolean = false;
   permissionOption: string = "";
   allRepos: Repos[] = [];
-  allUserPermissions: UserPermission[] = [];
   allGroupPermissions: string[] = [];
   allUsers: string[] = [];
+  allGroups: string[] = [];
   selectedRepo: string = "";
   selectedUser: string = "";
+  selectedGroup: string = "";
 
 
   ngOnInit() {
@@ -53,6 +55,7 @@ export class AdminComponent implements OnInit {
         }
       }
     )
+
     this.apiUser.getUser(null).subscribe(
       data => {
         if (data && data.content) {
@@ -60,19 +63,31 @@ export class AdminComponent implements OnInit {
         }
       }
     )
+
+    this.apiGroup.getGroup(null).subscribe(
+      data => {
+        if (data && data.content) {
+          this.allGroups = data.content.map(group => group.groupId)
+        }
+      }
+    )
   }
 
   toggleManagement(edit: string) {
+
     if (edit == 'user') {
       this.editGroupActive = false;
       this.editPermissionActive = false;
       this.editUserActive = true;
+      this.permissionOption = "";
+      this.editPermissionActive = false;
       return
     }
     if (edit == 'group') {
       this.editUserActive = false;
       this.editPermissionActive = false;
       this.editGroupActive = true;
+      this.permissionOption = "";
       return;
     }
   }
@@ -109,40 +124,49 @@ export class AdminComponent implements OnInit {
 
   onRepo(repo: string) {
     this.selectedRepo = repo
-    if (this.selectedUser){
-      this.loadPermission(repo, this.selectedUser);
+    if (this.selectedUser) {
+      this.userService.loadPermission(repo, this.selectedUser);
     }
   }
 
-  onUser(user: string){
+  onUser(user: string) {
     this.selectedUser = user
-    if (this.selectedRepo){
-      this.loadPermission(this.selectedRepo, user)
+    if (this.selectedRepo) {
+      this.userService.loadPermission(this.selectedRepo, user)
     }
   }
 
-  loadPermission(repo: string, user: string) {
-    this.apiUser.getUserPermission(repo,user).subscribe(
-      data => {
-        this.allUserPermissions = data.content;
-      }
-    )
+  onGroup(group: string) {
+    this.selectedGroup = group
+    if (this.selectedRepo) {
+      this.groupService.loadPermission(this.selectedRepo, group)
+    }
   }
 
-  editUserPermission(repoId: string | undefined, permission: string) {
-
+  editUserPermission(repoId: string, path: string, type: string) {
+    this.navigationService.updateUserPermission(repoId, this.selectedUser, path, type)
   }
 
-  removeUserPermission(repoId: string | undefined, permission: string) {
-
+  removeUserPermission(repoId: string, userId: string, path: string) {
+    if (window.confirm("Delete user permission?")) {
+      this.userService.removePermissionFromUser(repoId, userId, path);
+      setTimeout(() => {
+        this.userService.loadPermission(repoId, userId)
+      }, 1500)
+    }
   }
 
-  editGroupPermission(repoId: string | undefined, permission: string) {
-
+  editGroupPermission(repoId: string, path: string, type: string) {
+    this.navigationService.updateGroupPermission(repoId, this.selectedGroup, path,type)
   }
 
-  removeGroupPermission(repoId: string | undefined, permission: string) {
-
+  removeGroupPermission(repoId: string, group: string, path: string) {
+    if (window.confirm("Delete user permission?")) {
+      this.userService.removePermissionFromUser(repoId, group, path);
+      setTimeout(() => {
+        this.groupService.loadPermission(repoId, group)
+      }, 1500)
+    }
   }
 
 }

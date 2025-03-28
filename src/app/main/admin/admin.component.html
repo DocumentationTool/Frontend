@@ -3,7 +3,7 @@
   <button class="nav-button" (click)="toggleManagement('group')" [disabled]="editGroupActive">Group management</button>
   <!--    Dropdown-->
   <select #permissionSelect *ngIf="allRepos.length > 0" id="permission-select"
-          (click)="onPermissionOption(permissionSelect.value)">
+          (change)="onPermissionOption(permissionSelect.value)">
     <option value="" disabled selected>Permission management</option>
     <option value="user">
       User permissions
@@ -65,7 +65,7 @@
 }
 
 <!-------------------------------------Permission-------------------------------->
-@if (editPermissionActive) {
+@if (editPermissionActive && permissionOption) {
 
   <div class="permission-container">
     <h2>Permission management {{ permissionOption }}</h2>
@@ -77,34 +77,46 @@
       </option>
     </select>
 
-    <select #userSelect *ngIf="allRepos.length > 0" id="user-select" (change)="onUser(userSelect.value)">
-      <option value="" disabled selected>Select a user</option>
-      <option *ngFor="let user of allUsers" [value]="user">
-        {{ user }}
-      </option>
-    </select>
+    @if (permissionOption == "user"){
+      <select #userSelect *ngIf="allRepos.length > 0" id="user-select" (change)="onUser(userSelect.value)">
+        <option value="" disabled selected>Select a user</option>
+        <option *ngFor="let user of allUsers" [value]="user">
+          {{ user }}
+        </option>
+      </select>
+    } @else {
+        <select #groupSelect *ngIf="allRepos.length > 0" id="group-select" (change)="onGroup(groupSelect.value)">
+          <option value="" disabled selected>Select a group</option>
+          <option *ngFor="let group of allGroups" [value]="group">
+            {{ group }}
+          </option>
+        </select>
+    }
+
+
 
     <br>
     <hr>
     @if (permissionOption == "user" && selectedRepo && selectedUser) {
       <ul>
-<!--        Überschrift User | Pfad | Rolle-->
+        <!--        Überschrift User | Pfad | Rolle-->
         <li class="list-header">
           <span>User</span>
           <span>Path</span>
-          <span>Role</span>
-          <span>Actions</span>
+          <span style="margin-left: 20px">Role</span>
+          <span style="align-content: end">Actions</span>
         </li>
-        @for (permission of allUserPermissions; track permission) {
-          <li>
+        @for (permission of userService.allUserPermissions(); track permission) {
+          <li class="list-items">
             <span>{{ this.selectedUser }}</span>
             <span>{{ permission.path }}</span>
             <span>{{ permission.type }}</span>
             <div class="button-group">
-              <button class="edit" (click)="editUserPermission(this.selectedRepo,permission.path)"><i
+              <button class="edit" (click)="editUserPermission(this.selectedRepo,permission.path, permission.type)"><i
                 class="ri-edit-box-line"></i>
               </button>
-              <button class="delete" (click)="removeUserPermission(this.selectedRepo,permission.path)"><i
+              <button class="delete"
+                      (click)="removeUserPermission(this.selectedRepo,this.selectedUser,permission.path)"><i
                 class="ri-delete-bin-line"></i></button>
             </div>
           </li>
@@ -113,32 +125,43 @@
       <br>
       @if (selectedRepo) {
         <button class="add" (click)="navigationService.createNewUserPermission(this.selectedRepo)"><i
-          class="ri-group-line"></i> Add User Permission
+          class="ri-group-line"></i> Add user permission
         </button>
       }
     }
 
-    @if (permissionOption == "group" && selectedRepo) {
+    @if (permissionOption == "group" && selectedRepo && selectedGroup) {
       <ul>
-        @for (permission of allGroupPermissions; track permission) {
-          <li>
-            {{ permission }}
+        <!--        Überschrift group | Pfad | Rolle-->
+        <li class="list-header">
+          <span>group</span>
+          <span>Path</span>
+          <span style="margin-left: 20px">Role</span>
+          <span style="align-content: end">Actions</span>
+        </li>
+        @for (permission of groupService.allGroupPermissions(); track permission) {
+          <li class="list-items">
+            <span>{{ this.selectedGroup }}</span>
+            <span>{{ permission.path }}</span>
+            <span>{{ permission.type }}</span>
             <div class="button-group">
-              <button class="edit" (click)="editGroupPermission(this.selectedRepo,permission)"><i
+              <button class="edit" (click)="editGroupPermission(this.selectedRepo,permission.path, permission.type)"><i
                 class="ri-edit-box-line"></i>
               </button>
-              <button class="delete" (click)="removeGroupPermission(this.selectedRepo,permission)"><i
+              <button class="delete"
+                      (click)="removeGroupPermission(this.selectedRepo,this.selectedGroup,permission.path)"><i
                 class="ri-delete-bin-line"></i></button>
             </div>
           </li>
         }
       </ul>
       <br>
-      <button class="add" (click)="navigationService.createNewGroupPermission()"><i
-        class="ri-group-line"></i> Add Group Permission
-      </button>
+      @if (selectedRepo) {
+        <button class="add" (click)="navigationService.createNewGroupPermission(this.selectedRepo)"><i
+          class="ri-group-line"></i> Add group permission
+        </button>
+      }
     }
   </div>
 }
-
 

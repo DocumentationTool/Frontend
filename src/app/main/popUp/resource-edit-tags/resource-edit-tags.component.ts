@@ -15,7 +15,7 @@ import {Resources} from '../../../Model/apiResponseFileTree';
   templateUrl: './resource-edit-tags.component.html',
   styleUrl: './resource-edit-tags.component.css'
 })
-export class ResourceEditTagsComponent implements OnInit{
+export class ResourceEditTagsComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<ResourceEditTagsComponent>,
               public resourceService: ResourceService,
               @Inject(MAT_DIALOG_DATA) public dialogData: { repoId: string, path: string }) {
@@ -23,12 +23,12 @@ export class ResourceEditTagsComponent implements OnInit{
 
   tagsToAdd: string = "";
   tagIdsToRemove: string = "";
-  tagIdsToRemoveWindow = false;
-  tagIdsToAddWindow = false;
+  customTags = ""
+  customTagsToRemove = ""
 
   ngOnInit() {
     this.resourceService.getTag(this.dialogData.repoId);
-    this.resourceService.getResourceTags(null,this.dialogData.path, this.dialogData.repoId,null,[],[])
+    this.resourceService.getResourceTags(null, this.dialogData.path, this.dialogData.repoId, null, [], [])
   }
 
   onEditTags() {
@@ -37,35 +37,20 @@ export class ResourceEditTagsComponent implements OnInit{
   }
 
   selectAddTag(tagId: string) {
-    this.tagsToAdd += (this.tagsToAdd ? ';' : '') + tagId;
-    this.tagIdsToAddWindow = false;
+    this.tagsToAdd = tagId;
   }
 
   selectRemoveTag(tagId: string) {
-    this.tagIdsToRemove += (this.tagIdsToRemove ? ';' : '') + tagId;
-    this.tagIdsToRemoveWindow = false
-  }
-
-  openAddDropdown() {
-    this.tagIdsToRemoveWindow = false;
-    this.tagIdsToAddWindow = true;
-  }
-
-  openRemoveDropdown(){
-    this.tagIdsToAddWindow = false;
-    this.tagIdsToRemoveWindow = true
+    this.tagIdsToRemove = tagId;
   }
 
   splitTags(tags: string) {
-    return tags.split(";").map(tag => tag.trim()).filter(tag => tag.length > 0);
-  }
-
-  @HostListener('document:click', ['$event'])
-  clickOutside(event: Event) {
-    const target = event.target as HTMLElement;
-    if (!target.closest('dropdown') && !target.closest('input.add')) {
-      this.tagIdsToAddWindow = false;
+    if (tags.includes(";")) {
+      return tags.split(";").map(tag => tag.trim()).filter(tag => tag.length > 0);
     }
+    if (tags)
+      return [tags];
+    return []
   }
 
   closeDialog() {

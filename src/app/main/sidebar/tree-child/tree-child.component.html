@@ -6,29 +6,8 @@
       @if (parentRepoId != null){
         <a (click)="toggleChildren(child.key); $event.preventDefault()">
           {{ child.key }}
-          @if (hoveredRepo == child.key) {
-            <button class="menu-button"
-                    (click)="openRepoMenu($event, child.key)">
-              &#x22EE;
-            </button>
-          }
         </a>
       }
-
-      <!-- Menü für Unter-Paths -->
-      @if (selectedPath === child.key && parentRepoId) {
-        <div
-          class="popup-menu"
-          [style.top.px]="menuPosition.y"
-          [style.left.px]="menuPosition.x">
-          <ul>
-            <li (click)="navigationService.editUnterRepoTags(parentRepoId, buildFullPath(child.key))">
-              Edit tags
-            </li>
-          </ul>
-        </div>
-      }
-
 
       <!-- Ressourcen anzeigen -->
       @if (isOpen[child.key]) {

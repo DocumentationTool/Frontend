@@ -20,6 +20,9 @@ import {GroupEditComponent} from '../popUp/group-edit/group-edit.component';
 import {ToastrService} from 'ngx-toastr';
 import {AuthService} from './authService';
 import {UserPermissionAddComponent} from '../popUp/user-permission-add/user-permission-add.component';
+import {UserPermissionUpdateComponent} from '../popUp/user-permission-update/user-permission-update.component';
+import {GroupPermissionAddComponent} from '../popUp/group-permission-add/group-permission-add.component';
+import {GroupPermissionUpdateComponent} from '../popUp/group-permission-update/group-permission-update.component';
 
 @Injectable({
   providedIn: 'root'
@@ -105,8 +108,26 @@ export class NavigationService {
     )
   }
 
-  createNewGroupPermission() {
+  updateUserPermission(repoId: string, user: string, path: string, type: string) {
+    this.dialog.open(UserPermissionUpdateComponent,
+      {
+        data: {repoId, user, path, type}
+      })
+  }
 
+  createNewGroupPermission(repo: string) {
+    this.dialog.open(GroupPermissionAddComponent,
+      {
+        data: {repo}
+      }
+    )
+  }
+
+  updateGroupPermission(repoId: string, group: string, path: string, type: string) {
+    this.dialog.open(GroupPermissionUpdateComponent,
+      {
+        data: {repoId, group, path, type}
+      })
   }
 
   editGroup(groupId: string) {
@@ -131,7 +152,7 @@ export class NavigationService {
       });
   }
 
-  editResourceTags(repoId: string, path: string) {
+  editResourceTags(repoId: string | undefined, path: string | undefined) {
     this.dialog.open(ResourceEditTagsComponent,
       {
         data: {repoId, path}

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {ApiResponseGroup} from '../Model/apiResponseGroup';
 import {Permission} from '../Model/permission';
+import {ApiResponseGetPermission} from '../Model/apiResponseGetPermission';
 
 @Injectable({
   providedIn: 'root'
@@ -76,6 +77,13 @@ export class ApiGroup{
     if (permission) params = params.set('permission', permission);
     if (path) params = params.set('path', path);
     return this.http.post(this.baseUrl + "/permission/update", params);
+  }
+
+  getGroupPermission(repoId: string, groupId: string) {
+    const params = new HttpParams()
+      .set('repoId', repoId)
+      .set('groupId', groupId)
+    return this.http.get<ApiResponseGetPermission>(this.baseUrl + "/permission/get", {params})
   }
 
 

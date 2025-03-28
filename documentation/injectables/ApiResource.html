@@ -490,8 +490,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="139"
-                                    class="link-to-prism">src/app/api/apiResource.ts:139</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="137"
+                                    class="link-to-prism">src/app/api/apiResource.ts:137</a></div>
                         </td>
                     </tr>
 
@@ -562,15 +562,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getResource(searchTerm: string | null, path: string | null, repoId: string | null, userId: string | null, whiteListTags: string[], blacklistListTags: string[], withData: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, returnLimit: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+<code>getResource(searchTerm: string | null, path: string | null, repoId: string | null, userId: string | null, whitelistTags: string[], blacklistTags: string[], withData: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, returnLimit: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="102"
-                                    class="link-to-prism">src/app/api/apiResource.ts:102</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="100"
+                                    class="link-to-prism">src/app/api/apiResource.ts:100</a></div>
                         </td>
                     </tr>
 
@@ -639,7 +639,7 @@
 
                                         </tr>
                                         <tr>
-                                                <td>whiteListTags</td>
+                                                <td>whitelistTags</td>
                                             <td>
                                                         <code>string[]</code>
                                             </td>
@@ -651,7 +651,7 @@
 
                                         </tr>
                                         <tr>
-                                                <td>blacklistListTags</td>
+                                                <td>blacklistTags</td>
                                             <td>
                                                         <code>string[]</code>
                                             </td>
@@ -720,8 +720,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="76"
-                                    class="link-to-prism">src/app/api/apiResource.ts:76</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="77"
+                                    class="link-to-prism">src/app/api/apiResource.ts:77</a></div>
                         </td>
                     </tr>
 
@@ -787,8 +787,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="117"
-                                    class="link-to-prism">src/app/api/apiResource.ts:117</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="115"
+                                    class="link-to-prism">src/app/api/apiResource.ts:115</a></div>
                         </td>
                     </tr>
 
@@ -938,8 +938,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="91"
-                                    class="link-to-prism">src/app/api/apiResource.ts:91</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="90"
+                                    class="link-to-prism">src/app/api/apiResource.ts:90</a></div>
                         </td>
                     </tr>
 
@@ -1053,8 +1053,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="84"
-                                    class="link-to-prism">src/app/api/apiResource.ts:84</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/app/api/apiResource.ts:83</a></div>
                         </td>
                     </tr>
 
@@ -1132,8 +1132,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="132"
-                                    class="link-to-prism">src/app/api/apiResource.ts:132</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="130"
+                                    class="link-to-prism">src/app/api/apiResource.ts:130</a></div>
                         </td>
                     </tr>
 
@@ -1211,8 +1211,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="69"
-                                    class="link-to-prism">src/app/api/apiResource.ts:69</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/api/apiResource.ts:70</a></div>
                         </td>
                     </tr>
 
@@ -1633,6 +1633,7 @@ export class ApiResource {
         params &#x3D; params.append(&#x27;tagIds&#x27;, tag); // Fügt jedes Tag als separaten Parameter hinzu
       });
     }
+    if (!data) data &#x3D; &quot;New resource!&quot;
     return this.http.post(this.baseUrl + &quot;/add&quot;, data, {params});
   }
 
@@ -1646,9 +1647,7 @@ export class ApiResource {
   getTag(repoId: string | null) {
     let params &#x3D; new HttpParams()
     if (repoId) params &#x3D; params.set(&#x27;repoId&#x27;, repoId);
-    if (repoId)console.log(&quot;REPO&quot;, repoId);
     return this.http.post&lt;ApiResponseTags&gt;(this.baseUrl + &quot;/tag/get&quot;, params)
-
   }
 
   removeResource(repo: string, path: string) {
@@ -1666,18 +1665,17 @@ export class ApiResource {
     if (repoTo) params &#x3D; params.set(&#x27;repoTo&#x27;, repoTo);
     if (pathTo) params &#x3D; params.set(&#x27;pathTo&#x27;, pathTo);
     return this.http.post(this.baseUrl + &quot;/move&quot;, params)
-
   }
 
   getResource(searchTerm: string | null, path: string | null, repoId: string | null, userId: string | null,
-              whiteListTags: string[], blacklistListTags: string[], withData: boolean, returnLimit: number) {
+              whitelistTags: string[], blacklistTags: string[], withData: boolean, returnLimit: number) {
     const payload &#x3D; {
       &quot;searchTerm&quot;: searchTerm,
       &quot;path&quot;: path,
       &quot;repoId&quot;: repoId,
       &quot;userId&quot;: userId,
-      &quot;whiteListTags&quot;: whiteListTags,
-      &quot;blacklistListTags&quot;: blacklistListTags,
+      &quot;whitelistTags&quot;: whitelistTags,
+      &quot;blacklistTags&quot;: blacklistTags,
       &quot;withData&quot;: withData,
       &quot;returnLimit&quot;: returnLimit
     }
@@ -1703,7 +1701,7 @@ export class ApiResource {
     let params &#x3D; new HttpParams()
     if (repoId) params &#x3D; params.set(&#x27;repoId&#x27;, repoId);
     if (path) params &#x3D; params.set(&#x27;path&#x27;, path);
-    return this.http.post(this.baseUrl + &quot;/editing/remove&quot;, {params})
+    return this.http.post(this.baseUrl + &quot;/editing/remove&quot;, params)
   }
 
   checksResourceBeingEdited(repoId: string | undefined, path: string | undefined) {

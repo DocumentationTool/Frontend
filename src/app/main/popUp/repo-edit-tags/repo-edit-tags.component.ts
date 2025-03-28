@@ -24,6 +24,7 @@ export class RepoEditTagsComponent implements OnInit {
   tagNamesToAdd: string = "";
   tagIdsToRemove: string = "";
   tagIdsToRemoveWindow = false;
+  customTags: string = ""
 
   ngOnInit() {
     this.resourceService.getTag(this.dialogData.repoId);

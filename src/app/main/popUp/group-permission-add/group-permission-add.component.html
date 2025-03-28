@@ -1,0 +1,44 @@
+<div class="upload-dialog">
+  <h2>Add group Permission</h2>
+  <form [formGroup]="addGroupPermissionForm" (submit)="addGroupPermission()">
+
+    <label>Add group to Permission:</label>
+    <select class="select" #groupSelect (change)="onSelectGroupsToAdd(groupSelect.value)">
+      <option value="" disabled selected></option>
+      @for (group of allGroupsToAdd; track group) {
+        <option>
+          {{ group }}
+        </option>
+      }
+    </select>
+
+    <label>Add permission:</label>
+    <select class="select" #permissionSelect (change)="onSelectPermissionToAdd(permissionSelect.value)">
+      <option value="" disabled selected></option>
+      @for (permission of allPermissions; track permission) {
+        <option>
+          {{ getPermissionName(permission) }}
+        </option>
+      }
+    </select>
+
+    <label>Permission path:</label>
+    <select class="select" #pathSelect (change)="onSelectPath(pathSelect.value)">
+      <option value="" disabled selected></option>
+      @for (path of allPaths; track path) {
+        <option>
+          {{ path }}
+        </option>
+      }
+
+      <option value="custom">Other...</option>
+    </select>
+
+    @if (pathSelect.value === 'custom') {
+      <input class="input-pupUp" type="text" (input)="onSelectPath(customPath)" placeholder="Enter custom path" [(ngModel)]="customPath"
+             [ngModelOptions]="{standalone: true}"/>
+    }
+    <button type="submit" class="upload-btn" [disabled]="addGroupPermissionForm.invalid || isFormEmpty()">Update</button>
+    <button type="button" class="cancel-btn" (click)="closeDialog()">Cancel</button>
+  </form>
+</div>

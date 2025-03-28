@@ -139,6 +139,12 @@
                                 <a href="#_fileContent" >_fileContent</a>
                             </li>
                             <li>
+                                <a href="#allRepoTagIds" >allRepoTagIds</a>
+                            </li>
+                            <li>
+                                <a href="#allResourceTagIds" >allResourceTagIds</a>
+                            </li>
+                            <li>
                                 <a href="#allTags" >allTags</a>
                             </li>
                             <li>
@@ -185,6 +191,9 @@
                             </li>
                             <li>
                                 <a href="#getResource" >getResource</a>
+                            </li>
+                            <li>
+                                <a href="#getResourceTags" >getResourceTags</a>
                             </li>
                             <li>
                                 <a href="#getTag" >getTag</a>
@@ -248,12 +257,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(router: Router, apiResource: <a href="../injectables/ApiResource.html" target="_self">ApiResource</a>)</code>
+<code>constructor(router: Router, apiResource: <a href="../injectables/ApiResource.html" target="_self">ApiResource</a>, toastr: ToastrService, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/main/service/resource.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/main/service/resource.service.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -287,6 +296,30 @@
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/ApiResource.html" target="_self" >ApiResource</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>toastr</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastrService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -328,8 +361,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="94"
-                                    class="link-to-prism">src/app/main/service/resource.service.ts:94</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/app/main/service/resource.service.ts:110</a></div>
                         </td>
                     </tr>
 
@@ -455,8 +488,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="69"
-                                    class="link-to-prism">src/app/main/service/resource.service.ts:69</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/app/main/service/resource.service.ts:84</a></div>
                         </td>
                     </tr>
 
@@ -492,8 +525,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="117"
-                                    class="link-to-prism">src/app/main/service/resource.service.ts:117</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="136"
+                                    class="link-to-prism">src/app/main/service/resource.service.ts:136</a></div>
                         </td>
                     </tr>
 
@@ -595,8 +628,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="105"
-                                    class="link-to-prism">src/app/main/service/resource.service.ts:105</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="122"
+                                    class="link-to-prism">src/app/main/service/resource.service.ts:122</a></div>
                         </td>
                     </tr>
 
@@ -698,8 +731,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="156"
-                                    class="link-to-prism">src/app/main/service/resource.service.ts:156</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="178"
+                                    class="link-to-prism">src/app/main/service/resource.service.ts:178</a></div>
                         </td>
                     </tr>
 
@@ -735,8 +768,135 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="191"
-                                    class="link-to-prism">src/app/main/service/resource.service.ts:191</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="213"
+                                    class="link-to-prism">src/app/main/service/resource.service.ts:213</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>searchTerm</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>path</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>repoId</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>userId</td>
+                                            <td>
+                                                        <code>string | null</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>whiteListTags</td>
+                                            <td>
+                                                        <code>string[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>blacklistListTags</td>
+                                            <td>
+                                                        <code>string[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getResourceTags"></a>
+                    <span class="name">
+                        <span ><b>getResourceTags</b></span>
+                        <a href="#getResourceTags"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getResourceTags(searchTerm: string | null, path: string | null, repoId: string | null, userId: string | null, whiteListTags: string[], blacklistListTags: string[])</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="227"
+                                    class="link-to-prism">src/app/main/service/resource.service.ts:227</a></div>
                         </td>
                     </tr>
 
@@ -862,8 +1022,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="145"
-                                    class="link-to-prism">src/app/main/service/resource.service.ts:145</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="164"
+                                    class="link-to-prism">src/app/main/service/resource.service.ts:164</a></div>
                         </td>
                     </tr>
 
@@ -929,8 +1089,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="203"
-                                    class="link-to-prism">src/app/main/service/resource.service.ts:203</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="259"
+                                    class="link-to-prism">src/app/main/service/resource.service.ts:259</a></div>
                         </td>
                     </tr>
 
@@ -966,8 +1126,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="180"
-                                    class="link-to-prism">src/app/main/service/resource.service.ts:180</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="202"
+                                    class="link-to-prism">src/app/main/service/resource.service.ts:202</a></div>
                         </td>
                     </tr>
 
@@ -1081,8 +1241,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="26"
-                                    class="link-to-prism">src/app/main/service/resource.service.ts:26</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="33"
+                                    class="link-to-prism">src/app/main/service/resource.service.ts:33</a></div>
                         </td>
                     </tr>
 
@@ -1148,8 +1308,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="64"
-                                    class="link-to-prism">src/app/main/service/resource.service.ts:64</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/app/main/service/resource.service.ts:72</a></div>
                         </td>
                     </tr>
 
@@ -1185,8 +1345,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="168"
-                                    class="link-to-prism">src/app/main/service/resource.service.ts:168</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="190"
+                                    class="link-to-prism">src/app/main/service/resource.service.ts:190</a></div>
                         </td>
                     </tr>
 
@@ -1264,8 +1424,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="37"
-                                    class="link-to-prism">src/app/main/service/resource.service.ts:37</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/app/main/service/resource.service.ts:44</a></div>
                         </td>
                     </tr>
 
@@ -1331,8 +1491,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="220"
-                                    class="link-to-prism">src/app/main/service/resource.service.ts:220</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="275"
+                                    class="link-to-prism">src/app/main/service/resource.service.ts:275</a></div>
                         </td>
                     </tr>
 
@@ -1398,8 +1558,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="81"
-                                    class="link-to-prism">src/app/main/service/resource.service.ts:81</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="96"
+                                    class="link-to-prism">src/app/main/service/resource.service.ts:96</a></div>
                         </td>
                     </tr>
 
@@ -1440,7 +1600,57 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/main/service/resource.service.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/main/service/resource.service.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="allRepoTagIds"></a>
+                    <span class="name">
+                        <span ><b>allRepoTagIds</b></span>
+                        <a href="#allRepoTagIds"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;string[]&gt;([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/main/service/resource.service.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="allResourceTagIds"></a>
+                    <span class="name">
+                        <span ><b>allResourceTagIds</b></span>
+                        <a href="#allResourceTagIds"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;string[]&gt;([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/main/service/resource.service.ts:30</a></div>
                         </td>
                     </tr>
 
@@ -1466,7 +1676,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/main/service/resource.service.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/main/service/resource.service.ts:28</a></div>
                         </td>
                     </tr>
 
@@ -1491,7 +1701,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/main/service/resource.service.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/main/service/resource.service.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -1522,7 +1732,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/main/service/resource.service.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/main/service/resource.service.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -1547,7 +1757,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/main/service/resource.service.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/main/service/resource.service.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -1572,7 +1782,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/main/service/resource.service.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/main/service/resource.service.ts:25</a></div>
                         </td>
                     </tr>
 
@@ -1597,7 +1807,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/main/service/resource.service.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/main/service/resource.service.ts:23</a></div>
                         </td>
                     </tr>
 
@@ -1626,7 +1836,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/main/service/resource.service.ts:73</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/main/service/resource.service.ts:88</a></div>
                                 </td>
                             </tr>
 
@@ -1637,7 +1847,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/main/service/resource.service.ts:77</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/app/main/service/resource.service.ts:92</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -1695,7 +1905,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="216" class="link-to-prism">src/app/main/service/resource.service.ts:216</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="271" class="link-to-prism">src/app/main/service/resource.service.ts:271</a></div>
                                 </td>
                             </tr>
 
@@ -1711,6 +1921,9 @@ import {Router} from &#x27;@angular/router&#x27;;
 import {ApiResource} from &#x27;../../api/apiResource&#x27;;
 import {ApiResponseFileTree, Resources} from &#x27;../../Model/apiResponseFileTree&#x27;;
 import {ApiResponseResource} from &#x27;../../Model/apiResponseResource&#x27;;
+import {ToastrService} from &#x27;ngx-toastr&#x27;;
+import {AuthService} from &#x27;./authService&#x27;;
+import {executeBrowserBuilder} from &#x27;@angular-devkit/build-angular&#x27;;
 
 @Injectable({
   providedIn: &#x27;root&#x27;
@@ -1719,7 +1932,9 @@ import {ApiResponseResource} from &#x27;../../Model/apiResponseResource&#x27;;
 export class ResourceService {
   constructor(
     private router: Router,
-    private apiResource: ApiResource) {
+    private apiResource: ApiResource,
+    private toastr: ToastrService,
+    private authService: AuthService) {
   }
 
   fileTree &#x3D; signal&lt;ApiResponseFileTree | null&gt;(null); //Die Repos und Files in einer Struktur
@@ -1729,6 +1944,8 @@ export class ResourceService {
   private _fileContent &#x3D; signal&lt;string&gt;(&quot;&quot;);
   fileContentBeforeChanges &#x3D; &quot;&quot;;
   allTags: string[] | undefined;
+  allRepoTagIds &#x3D; signal&lt;string[]&gt;([]);
+  allResourceTagIds &#x3D; signal&lt;string[]&gt;([]);
 
 
   onSelectResource(file: any) {
@@ -1743,6 +1960,7 @@ export class ResourceService {
   }
 
   selectResource(file: any) { //Bei file Auswahl, den Inhalt holen
+    this.getResourceTags(null, file.path, file.repoId, this.authService.username(), [], [])
     this.apiResource.getResource(null, file.path, file.repoId, null, [], [], true, 1).subscribe(
       data &#x3D;&gt; {
         // Greife auf die Ressourcen des entsprechenden Repos zu
@@ -1757,21 +1975,28 @@ export class ResourceService {
             this.router.navigate([&#x27;/main/view&#x27;])
 
           } else {
-            console.error(&quot;Kein Resource-Eintrag gefunden für den Pfad:&quot;, file.path);
+            this.toastr.error(&quot;Resource not found&quot;)
           }
         } else {
-          console.error(&quot;Keine Ressourcen gefunden für repoId:&quot;, file.repoId);
+          this.toastr.error(&quot;Resource not found&quot;)
         }
       },
       error &#x3D;&gt; {
-        console.error(error);
+        this.toastr.error(&quot;Resource not found&quot;)
       }
     );
   }
 
   removeFileEditing() {
     console.log(&quot;remove FIle Edit: &quot;, this.editingFile()?.repoId, this.editingFile()?.path)
-    this.apiResource.removesResourceBeingEdited(this.editingFile()?.repoId, this.editingFile()?.path)
+    this.apiResource.removesResourceBeingEdited(this.editingFile()?.repoId, this.editingFile()?.path).subscribe(
+      data &#x3D;&gt; {
+        console.log(data)
+      },
+      error &#x3D;&gt; {
+        console.error(error.error)
+      }
+    )
   }
 
   checkForFileChanges() {
@@ -1787,37 +2012,41 @@ export class ResourceService {
   }
 
   updateResource() {
-    this.apiResource.updateResource(this.editingFile()?.repoId, this.editingFile()?.path, null, null, null, null, null, this.fileContent(), false).subscribe(
-      data &#x3D;&gt; {
-        console.log(data)
+    this.removeFileEditing();
+    this.apiResource.updateResource(this.editingFile()?.repoId, this.editingFile()?.path, this.authService.username(), null, null, null, null, this.fileContent(), false).subscribe(
+      _ &#x3D;&gt; {
         this.loadFileTree();
         this.fileContentBeforeChanges &#x3D; this._fileContent();
+        this.toastr.success(&#x27;Resource saved!&#x27;)
       },
       error &#x3D;&gt; {
-        console.error(error);
+        this.toastr.error(error.error.error, &quot;Save failed: &quot;)
       }
     )
   }
 
   addResource(repoId: string, path: string, createdBy: string, category: string | null, tagIds: string[] | null, data: string) {
     this.apiResource.addResource(repoId, path, createdBy, category, tagIds, data).subscribe(
-      data &#x3D;&gt; {
+      _ &#x3D;&gt; {
         this.loadFileTree();
+        this.toastr.success(&quot;Resource added&quot;)
       },
       error &#x3D;&gt; {
-        console.error(error.error.error)
+        this.toastr.error(error.error.error, &quot;Resource could not be added: &quot;)
       }
     )
   }
 
   editResourceTags(repoId: string, path: string, tagsToAdd: string[], tagsToRemove: string[]) {
-
     this.apiResource.updateResource(repoId, path, null, tagsToAdd, tagsToRemove, null, null, null, false).subscribe(
-      data &#x3D;&gt; {
+      _ &#x3D;&gt; {
         this.loadFileTree();
+        this.toastr.success(&quot;Tags updated&quot;)
+
       },
       error &#x3D;&gt; {
-        console.error(error);
+        this.toastr.error(error.error.error, &quot;Tag updated failed: &quot;)
+
       }
     )
   }
@@ -1826,11 +2055,11 @@ export class ResourceService {
     if (tagIdsToAdd &amp;&amp; tagNamesToAdd &amp;&amp; tagIdsToAdd.length &#x3D;&#x3D;&#x3D; tagNamesToAdd.length) {
       for (let i &#x3D; 0; i &lt; tagIdsToAdd.length; i++) {
         this.apiResource.addTag(repoId, tagIdsToAdd[i], tagNamesToAdd[i]).subscribe(
-          data &#x3D;&gt; {
-            console.log(data)
+          _ &#x3D;&gt; {
+            this.toastr.success(&quot;Tag added&quot;)
           },
           error &#x3D;&gt; {
-            console.error(error)
+            this.toastr.error(error.error.error, &quot;Tag add failed: &quot;)
           }
         );
       }
@@ -1839,11 +2068,11 @@ export class ResourceService {
     if (tagIdsToRemove) {
       for (let i &#x3D; 0; i &lt; tagIdsToRemove.length; i++) {
         this.apiResource.removeTag(repoId, tagIdsToRemove[i]).subscribe(
-          data &#x3D;&gt; {
-            console.log(data)
+          _ &#x3D;&gt; {
+            this.toastr.success(&quot;Tag removed&quot;)
           },
           error &#x3D;&gt; {
-            console.error(error)
+            this.toastr.error(error.error.error, &quot;Tag remove failed: &quot;)
           }
         );
       }
@@ -1853,21 +2082,24 @@ export class ResourceService {
   getTag(repoId: string) {
     this.apiResource.getTag(repoId).subscribe(
       data &#x3D;&gt; {
-        console.log(data)
+        this.allTags &#x3D; [];
+        if (data.content) {
+          this.allRepoTagIds.set(Object.entries(data.content).map(([id]) &#x3D;&gt; id));
+        }
       },
       error &#x3D;&gt; {
-        console.error(error)
+        this.toastr.error(error.error.error, &quot;Load tags failed: &quot;)
       }
-    )
+    );
   }
 
-  getAllTags(){
+  getAllTags() {
     this.apiResource.getTag(null).subscribe(
       data &#x3D;&gt; {
-        this.allTags &#x3D; data.content.map(tag &#x3D;&gt; tag.tagId.id);
+        this.allTags &#x3D; Object.entries(data.content).map(([id]) &#x3D;&gt; id);
       },
       error &#x3D;&gt; {
-        console.error(error)
+        this.toastr.error(error.error.error, &quot;Load tags failed: &quot;)
       }
     )
     return this.allTags;
@@ -1875,23 +2107,23 @@ export class ResourceService {
 
   removeResource(repoId: string, path: string) {
     this.apiResource.removeResource(repoId, path).subscribe(
-      data &#x3D;&gt; {
-        //ToDo: erfolgsnachricht
+      _ &#x3D;&gt; {
+        this.toastr.success(&quot;Resource removed!&quot;)
         this.loadFileTree();
       },
       error &#x3D;&gt; {
-        console.error(error)
+        this.toastr.error(error.error.error, &quot;Remove resource failed: &quot;)
       }
     )
   }
 
   moveResource(userId: string, repoFrom: string, pathFrom: string, repoTo: string, pathTo: string) {
     this.apiResource.moveResource(userId, repoFrom, pathFrom, repoTo, pathTo).subscribe(
-      data &#x3D;&gt; {
-
+      _ &#x3D;&gt; {
+        this.toastr.success(&quot;Resource moved: &quot;)
       },
       error &#x3D;&gt; {
-        console.error(error)
+        this.toastr.error(error.error.error, &quot;Resource move failed: &quot;)
       }
     )
   }
@@ -1903,20 +2135,53 @@ export class ResourceService {
         this.searchResults.set(data);
       },
       error &#x3D;&gt; {
-        console.error(error)
+
+        this.toastr.error(error.error.error, &quot;Search failed: &quot;)
       }
     )
   }
 
-  loadFileTree() {
-    this.apiResource.loadFileTree(null, null, null, null, [], [], false, 1073741824).subscribe(
-      data &#x3D;&gt; {
-        this.fileTree.set(data);
-        console.log(this.fileTree());
-        console.log(this.fileTree()?.content);
+  // holt alle Tags, von einer Resource
+  getResourceTags(searchTerm: string | null, path: string | null, repoId: string | null, userId: string | null,
+                  whiteListTags: string[], blacklistListTags: string[]) {
+    this.apiResource.getResource(searchTerm, path, repoId, null, [], [], false, 1).subscribe(
+      data &#x3D;&gt; { // Alle Tags einer Resource in signal speichern
+        let tagsFound &#x3D; false; // Flag, um zu prüfen, ob Tags vorhanden sind
+        Object.values(data.content).forEach((resourcesArray) &#x3D;&gt; {
+          resourcesArray.forEach((resource) &#x3D;&gt; {
+            if (resource.tags &amp;&amp; resource.tags.length &gt; 0) { // Überprüfen, ob Tags vorhanden sind
+              tagsFound &#x3D; true; // Tags gefunden
+              resource.tags.forEach((tagId) &#x3D;&gt; { // Direkt durch das tags-Array iterieren
+                this.allResourceTagIds.update((tags) &#x3D;&gt; {
+                  if (!tags.includes(tagId)) {
+                    return [...tags, tagId]; // Neues Array mit dem neuen Tag zurückgeben
+                  }
+                  return tags;
+                });
+              });
+            }
+          });
+        });
+
+        // Wenn keine Tags gefunden wurden, allResourceTagIds auf [] setzen
+        if (!tagsFound) {
+          this.allResourceTagIds.set([]);
+        }
       },
       error &#x3D;&gt; {
-        console.error(&#x27;Error loading file tree:&#x27;, error);
+        this.toastr.error(error.error.error, &quot;Load tags failed: &quot;)
+      }
+    );
+  }
+
+  loadFileTree() {
+    this.apiResource.loadFileTree(null, null, null, this.authService.username(), [], [], false, 1073741824).subscribe(
+      data &#x3D;&gt; {
+        this.fileTree.set(data);
+        this.selectedFile.set(null)
+      },
+      error &#x3D;&gt; {
+        this.toastr.error(error.error.error, &quot;Load fileTree failed: &quot;)
       }
     );
   }

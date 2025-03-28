@@ -1,4 +1,24 @@
 <div
   *ngIf="this.resourceService.selectedFile()">
+  @if (resourceService.selectedFile()?.permissionType != "VIEW") {
+    <div class="tag-container">
+      <div class="info-box">
+        <span class="label">Repo:</span> <span class="value">{{ resourceService.selectedFile()?.repoId }}</span>
+      </div>
+      <div class="info-box">
+        <span class="label">Path:</span> <span class="value">{{ resourceService.selectedFile()?.path }}</span>
+      </div>
+      <select id="tag-select">
+        <option selected disabled>Tags</option>
+        @for (tag of resourceService.allResourceTagIds(); track tag) {
+          <option disabled>{{ tag }}</option>
+        }
+      </select>
+      <i
+        (click)="navigationService.editResourceTags(resourceService.selectedFile()?.repoId,resourceService.selectedFile()?.path)"
+        class="ri-pencil-fill"></i>
+    </div>
+    <hr>
+  }
   <markdown [data]="resourceService.fileContent()"></markdown>
 </div>

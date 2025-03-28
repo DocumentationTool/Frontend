@@ -1,14 +1,14 @@
 .left-sidebar {
+  min-width: 200px;
+  max-width: 500px;
+  height: 100vh;
+  background-color: var(--backgroundColor);
   position: fixed;
   left: 0;
-  width: 200px;
-  max-width: 200px;
-  height: 100vh;
-  max-height: 100vh; /* Begrenzung auf die Bildschirmhöhe */
-  background-color: var(--backgroundColor);
+  top: 50px;
   padding: 10px;
   overflow-y: auto;
-  overflow-x: auto;
+  width: 200px;
 }
 /*Resourcen*/
 ul {

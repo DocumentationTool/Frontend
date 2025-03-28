@@ -3,24 +3,20 @@
   <form (submit)="onEditGroup()">
 
     <label>GroupId to add:</label>
-    <input name="addGroupIds" type="text" [(ngModel)]="groupIdToAdd" autocomplete="off"/>
+    <input class="input-pupUp" name="addGroupIds" type="text" [(ngModel)]="groupIdToAdd" autocomplete="off"/>
 
     <label>GroupName to add:</label>
-    <input name="addGroupNames" type="text" [(ngModel)]="groupNameToAdd" autocomplete="off"/>
+    <input class="input-pupUp" name="addGroupNames" type="text" [(ngModel)]="groupNameToAdd" autocomplete="off"/>
 
-    <label>GroupId to remove:</label>
-    <input class="remove" name="removeGroupIds" type="text" [(ngModel)]="groupIdToRemove" (focus)="openDropdown()"
-           autocomplete="off"/>
-
-    @if (repoIdsToRemoveWindow) {
-      <div class="dropdown">
-        <ul>
-          @for (id of groupService.allGroupsOnRepo(); track id) {
-            <li (click)="selectGroup(id)">{{ id }}</li>
-          }
-        </ul>
-      </div>
-    }
+    <label>User to add:</label>
+    <select class="select" #userSelect (change)="onSelectUser(userSelect.value)" [disabled]="!groupIdToAdd || !groupNameToAdd">
+      <option value="" disabled selected></option>
+      @for (user of allUsers; track user) {
+        <option>
+          {{ user }}
+        </option>
+      }
+    </select>
 
     <button type="submit" class="upload-btn">Update</button>
     <button type="button" class="cancel-btn" (click)="closeDialog()">Cancel</button>

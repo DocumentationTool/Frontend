@@ -5,6 +5,7 @@ import {ApiResponseFileTree, Resources} from '../../Model/apiResponseFileTree';
 import {ApiResponseResource} from '../../Model/apiResponseResource';
 import {ToastrService} from 'ngx-toastr';
 import {AuthService} from './authService';
+import {executeBrowserBuilder} from '@angular-devkit/build-angular';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,6 @@ export class ResourceService {
   allResourceTagIds = signal<string[]>([]);
 
 
-
   onSelectResource(file: any) {
     if (this.checkForFileChanges()) {
       if (window.confirm("Save changes?")) {
@@ -42,6 +42,7 @@ export class ResourceService {
   }
 
   selectResource(file: any) { //Bei file Auswahl, den Inhalt holen
+    this.getResourceTags(null, file.path, file.repoId, this.authService.username(), [], [])
     this.apiResource.getResource(null, file.path, file.repoId, null, [], [], true, 1).subscribe(
       data => {
         // Greife auf die Ressourcen des entsprechenden Repos zu
@@ -63,7 +64,6 @@ export class ResourceService {
         }
       },
       error => {
-        console.error(error);
         this.toastr.error("Resource not found")
       }
     );
@@ -72,7 +72,7 @@ export class ResourceService {
   removeFileEditing() {
     console.log("remove FIle Edit: ", this.editingFile()?.repoId, this.editingFile()?.path)
     this.apiResource.removesResourceBeingEdited(this.editingFile()?.repoId, this.editingFile()?.path).subscribe(
-      data =>{
+      data => {
         console.log(data)
       },
       error => {
@@ -222,10 +222,11 @@ export class ResourceService {
       }
     )
   }
+
   // holt alle Tags, von einer Resource
   getResourceTags(searchTerm: string | null, path: string | null, repoId: string | null, userId: string | null,
                   whiteListTags: string[], blacklistListTags: string[]) {
-    this.apiResource.getResource(searchTerm, path, repoId, userId, whiteListTags, blacklistListTags, false, 1073741824).subscribe(
+    this.apiResource.getResource(searchTerm, path, repoId, null, [], [], false, 1).subscribe(
       data => { // Alle Tags einer Resource in signal speichern
         let tagsFound = false; // Flag, um zu prüfen, ob Tags vorhanden sind
         Object.values(data.content).forEach((resourcesArray) => {

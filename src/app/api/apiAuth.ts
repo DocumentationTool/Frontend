@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {TestLoginResponseModel} from '../Model/TestLoginResponseModel';
 import {HttpClient} from '@angular/common/http';
 import {ApiResponseLogin} from '../Model/apiResponseLogin';
 
@@ -11,10 +10,6 @@ export class ApiAuth {
   }
 
   private baseUrl = 'http://localhost:8080/auth';
-
-  testLogin() {
-    return this.http.get<TestLoginResponseModel>(this.baseUrl + "/login");
-  }
 
   login(userId: string, password: string) {
     const params = {userId, password}

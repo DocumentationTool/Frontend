@@ -63,6 +63,7 @@ export class ApiResource {
         params = params.append('tagIds', tag); // Fügt jedes Tag als separaten Parameter hinzu
       });
     }
+    if (!data) data = "New resource!"
     return this.http.post(this.baseUrl + "/add", data, {params});
   }
 

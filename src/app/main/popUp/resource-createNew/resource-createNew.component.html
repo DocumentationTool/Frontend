@@ -2,29 +2,38 @@
   <h2>Resource Upload</h2>
   <form (submit)="uploadResource()">
     <label>Path:</label>
-    <input name="path" type="text" [(ngModel)]="path" required/>
+    <input class="input-pupUp" name="path" type="text" [(ngModel)]="path" autocomplete="off" required/>
 
     <label>RepoId:</label>
-    <div class="repo-container" (click)="$event.stopPropagation()">
-      <input name="repoId" type="text" [(ngModel)]="repoId" autocomplete="off" (focus)="onRepos()" required/>
-    </div>
+    <select class="select" #repoSelect (change)="onSelectRepo(repoSelect.value)">
+      <option value="" disabled selected></option>
+      @for (repo of allRepos; track repo) {
+        <option>
+          {{ repo }}
+        </option>
+      }
+    </select>
+
     <label>Category:</label>
-    <input name="category" type="text" [(ngModel)]="category" required/>
+    <input class="input-pupUp" name="category" type="text" [(ngModel)]="category" required/>
 
     <label>TagIds:</label>
-    <input name="tagId" type="text" [(ngModel)]="tagIds" required/>
+    <select class="select" #tagSelect (change)="onSelectTag(tagSelect.value)" [disabled]="!repoId || allTags.length < 1">
+      <option value="" disabled selected></option>
+      @for (tag of allTags; track tag) {
+        <option>
+          {{ tag }}
+        </option>
+      }
+      <option value="custom">More...</option>
+    </select>
 
+    @if (tagSelect.value === 'custom') {
+      <input class="input-pupUp" type="text" (input)="onSelectTag(customTags)" placeholder="Enter custom pattern" [(ngModel)]="customTags"
+             [ngModelOptions]="{standalone: true}"/>
+    }
     <button type="submit" class="upload-btn">Upload</button>
     <button type="button" class="cancel-btn" (click)="closeDialog()">Cancel</button>
   </form>
 </div>
 
-@if (isReposActive && allRepos.length > 0) {
-  <div class="search-results">
-    @for (repo of allRepos; track repo) {
-      <div class="search-box" (click)="onSelectRepo(repo)">
-        <span class="repo-id">{{ repo }}</span>
-      </div>
-    }
-  </div>
-}

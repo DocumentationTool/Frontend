@@ -135,9 +135,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#isAdmin" >isAdmin</a>
-                            </li>
-                            <li>
                                 <a href="#mode" >mode</a>
                             </li>
                             <li>
@@ -156,10 +153,25 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#createNewGroup" >createNewGroup</a>
+                            </li>
+                            <li>
+                                <a href="#createNewGroupPermission" >createNewGroupPermission</a>
+                            </li>
+                            <li>
                                 <a href="#createNewResource" >createNewResource</a>
                             </li>
                             <li>
+                                <a href="#createNewUser" >createNewUser</a>
+                            </li>
+                            <li>
+                                <a href="#createNewUserPermission" >createNewUserPermission</a>
+                            </li>
+                            <li>
                                 <a href="#editedResourceCheck" >editedResourceCheck</a>
+                            </li>
+                            <li>
+                                <a href="#editGroup" >editGroup</a>
                             </li>
                             <li>
                                 <a href="#editRepoTags" >editRepoTags</a>
@@ -168,16 +180,19 @@
                                 <a href="#editResourceTags" >editResourceTags</a>
                             </li>
                             <li>
-                                <a href="#getTestUser" >getTestUser</a>
+                                <a href="#editUnterRepoTags" >editUnterRepoTags</a>
+                            </li>
+                            <li>
+                                <a href="#editUser" >editUser</a>
+                            </li>
+                            <li>
+                                <a href="#isAdminActive" >isAdminActive</a>
                             </li>
                             <li>
                                 <a href="#isEditorActive" >isEditorActive</a>
                             </li>
                             <li>
-                                <a href="#logAdminIn" >logAdminIn</a>
-                            </li>
-                            <li>
-                                <a href="#logUserIn" >logUserIn</a>
+                                <a href="#isPermissionActive" >isPermissionActive</a>
                             </li>
                             <li>
                                 <a href="#moveResource" >moveResource</a>
@@ -189,7 +204,16 @@
                                 <a href="#onPreview" >onPreview</a>
                             </li>
                             <li>
+                                <a href="#selectRepo" >selectRepo</a>
+                            </li>
+                            <li>
                                 <a href="#toggleSidebar" >toggleSidebar</a>
+                            </li>
+                            <li>
+                                <a href="#updateGroupPermission" >updateGroupPermission</a>
+                            </li>
+                            <li>
+                                <a href="#updateUserPermission" >updateUserPermission</a>
                             </li>
                             <li>
                                 <a href="#uploadNewResource" >uploadNewResource</a>
@@ -212,12 +236,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(router: Router, apiAuth: <a href="../injectables/ApiAuth.html" target="_self">ApiAuth</a>, apiResource: <a href="../injectables/ApiResource.html" target="_self">ApiResource</a>, resourceService: <a href="../injectables/ResourceService.html" target="_self">ResourceService</a>, dialog: MatDialog)</code>
+<code>constructor(router: Router, apiResource: <a href="../injectables/ApiResource.html" target="_self">ApiResource</a>, resourceService: <a href="../injectables/ResourceService.html" target="_self">ResourceService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, dialog: MatDialog, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, toastr: ToastrService)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/main/service/navigation.service.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/main/service/navigation.service.ts:31</a></div>
                             </td>
                         </tr>
 
@@ -239,18 +263,6 @@
                                                   
                                                         <td>
                                                                     <code>Router</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>apiAuth</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/ApiAuth.html" target="_self" >ApiAuth</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -283,10 +295,46 @@
                                                     
                                                 </tr>
                                                 <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
                                                         <td>dialog</td>
                                                   
                                                         <td>
                                                                     <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>toastr</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastrService</code>
                                                         </td>
                                                   
                                                     <td>
@@ -312,6 +360,110 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="createNewGroup"></a>
+                    <span class="name">
+                        <span ><b>createNewGroup</b></span>
+                        <a href="#createNewGroup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createNewGroup()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="99"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:99</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createNewGroupPermission"></a>
+                    <span class="name">
+                        <span ><b>createNewGroupPermission</b></span>
+                        <a href="#createNewGroupPermission"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createNewGroupPermission(repo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="118"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:118</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>repo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="createNewResource"></a>
                     <span class="name">
                         <span ><b>createNewResource</b></span>
@@ -328,8 +480,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="94"
-                                    class="link-to-prism">src/app/main/service/navigation.service.ts:94</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="87"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:87</a></div>
                         </td>
                     </tr>
 
@@ -341,6 +493,110 @@
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createNewUser"></a>
+                    <span class="name">
+                        <span ><b>createNewUser</b></span>
+                        <a href="#createNewUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createNewUser()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="95"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:95</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createNewUserPermission"></a>
+                    <span class="name">
+                        <span ><b>createNewUserPermission</b></span>
+                        <a href="#createNewUserPermission"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createNewUserPermission(repo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="103"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:103</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>repo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -365,8 +621,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="70"
-                                    class="link-to-prism">src/app/main/service/navigation.service.ts:70</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:64</a></div>
                         </td>
                     </tr>
 
@@ -416,6 +672,73 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="editGroup"></a>
+                    <span class="name">
+                        <span ><b>editGroup</b></span>
+                        <a href="#editGroup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editGroup(groupId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="133"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:133</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>groupId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="editRepoTags"></a>
                     <span class="name">
                         <span ><b>editRepoTags</b></span>
@@ -432,8 +755,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="112"
-                                    class="link-to-prism">src/app/main/service/navigation.service.ts:112</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="162"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:162</a></div>
                         </td>
                     </tr>
 
@@ -492,15 +815,94 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>editResourceTags(repoId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>editResourceTags(repoId: string | undefined, path: string | undefined)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="105"
-                                    class="link-to-prism">src/app/main/service/navigation.service.ts:105</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="155"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:155</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>repoId</td>
+                                            <td>
+                                                        <code>string | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>path</td>
+                                            <td>
+                                                        <code>string | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editUnterRepoTags"></a>
+                    <span class="name">
+                        <span ><b>editUnterRepoTags</b></span>
+                        <a href="#editUnterRepoTags"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editUnterRepoTags(repoId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="169"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:169</a></div>
                         </td>
                     </tr>
 
@@ -562,24 +964,103 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getTestUser"></a>
+                    <a name="editUser"></a>
                     <span class="name">
-                        <span ><b>getTestUser</b></span>
-                        <a href="#getTestUser"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>editUser</b></span>
+                        <a href="#editUser"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getTestUser()</code>
+<code>editUser(repoId: string | undefined, user: <a href="../interfaces/User.html" target="_self">User</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/app/main/service/navigation.service.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="141"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:141</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>repoId</td>
+                                            <td>
+                                                        <code>string | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>user</td>
+                                            <td>
+                                                            <code><a href="../interfaces/User.html" target="_self" >User</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isAdminActive"></a>
+                    <span class="name">
+                        <span ><b>isAdminActive</b></span>
+                        <a href="#isAdminActive"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isAdminActive()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="193"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:193</a></div>
                         </td>
                     </tr>
 
@@ -588,7 +1069,7 @@
                 <td class="col-md-4">
 
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                         </div>
                 </td>
@@ -615,8 +1096,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="127"
-                                    class="link-to-prism">src/app/main/service/navigation.service.ts:127</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="184"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:184</a></div>
                         </td>
                     </tr>
 
@@ -636,24 +1117,24 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="logAdminIn"></a>
+                    <a name="isPermissionActive"></a>
                     <span class="name">
-                        <span ><b>logAdminIn</b></span>
-                        <a href="#logAdminIn"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>isPermissionActive</b></span>
+                        <a href="#isPermissionActive"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>logAdminIn()</code>
+<code>isPermissionActive()</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/app/main/service/navigation.service.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="202"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:202</a></div>
                         </td>
                     </tr>
 
@@ -662,44 +1143,7 @@
                 <td class="col-md-4">
 
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                        </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="logUserIn"></a>
-                    <span class="name">
-                        <span ><b>logUserIn</b></span>
-                        <a href="#logUserIn"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>logUserIn()</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="35"
-                                    class="link-to-prism">src/app/main/service/navigation.service.ts:35</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                         </div>
                 </td>
@@ -726,8 +1170,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="119"
-                                    class="link-to-prism">src/app/main/service/navigation.service.ts:119</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="176"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:176</a></div>
                         </td>
                     </tr>
 
@@ -805,8 +1249,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">src/app/main/service/navigation.service.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:48</a></div>
                         </td>
                     </tr>
 
@@ -842,8 +1286,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="90"
-                                    class="link-to-prism">src/app/main/service/navigation.service.ts:90</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:83</a></div>
                         </td>
                     </tr>
 
@@ -855,6 +1299,73 @@
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectRepo"></a>
+                    <span class="name">
+                        <span ><b>selectRepo</b></span>
+                        <a href="#selectRepo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectRepo(repo: <a href="../interfaces/Repos.html" target="_self">Repos</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="91"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:91</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>repo</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Repos.html" target="_self" >Repos</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -879,8 +1390,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="50"
-                                    class="link-to-prism">src/app/main/service/navigation.service.ts:50</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:44</a></div>
                         </td>
                     </tr>
 
@@ -892,6 +1403,212 @@
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateGroupPermission"></a>
+                    <span class="name">
+                        <span ><b>updateGroupPermission</b></span>
+                        <a href="#updateGroupPermission"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateGroupPermission(repoId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, group: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="126"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:126</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>repoId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>group</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>path</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateUserPermission"></a>
+                    <span class="name">
+                        <span ><b>updateUserPermission</b></span>
+                        <a href="#updateUserPermission"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateUserPermission(repoId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, user: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:111</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>repoId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>user</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>path</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -916,8 +1633,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="98"
-                                    class="link-to-prism">src/app/main/service/navigation.service.ts:98</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="148"
+                                    class="link-to-prism">src/app/main/service/navigation.service.ts:148</a></div>
                         </td>
                     </tr>
 
@@ -985,31 +1702,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="isAdmin"></a>
-                    <span class="name">
-                        <span ><b>isAdmin</b></span>
-                        <a href="#isAdmin"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>signal&lt;boolean&gt;(false)</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/main/service/navigation.service.ts:28</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="mode"></a>
                     <span class="name">
                         <span ><b>mode</b></span>
@@ -1024,7 +1716,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/main/service/navigation.service.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/main/service/navigation.service.ts:42</a></div>
                         </td>
                     </tr>
 
@@ -1049,7 +1741,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/main/service/navigation.service.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/main/service/navigation.service.ts:41</a></div>
                         </td>
                     </tr>
 
@@ -1073,8 +1765,20 @@ import {MatDialog} from &#x27;@angular/material/dialog&#x27;;
 import {ResourceUploadComponent} from &#x27;../popUp/resource-upload/resource-upload.component&#x27;;
 import {ResourceEditTagsComponent} from &#x27;../popUp/resource-edit-tags/resource-edit-tags.component&#x27;;
 import {ResourceMoveComponent} from &#x27;../popUp/resource-move/resource-move.component&#x27;;
-import {Resources} from &#x27;../../Model/apiResponseFileTree&#x27;;
 import {RepoEditTagsComponent} from &#x27;../popUp/repo-edit-tags/repo-edit-tags.component&#x27;;
+import {UserAddComponent} from &#x27;../popUp/user-add/user-add.component&#x27;;
+import {Repos} from &#x27;../../Model/apiResponseModelRepos&#x27;;
+import {UserService} from &#x27;./userService&#x27;;
+import {User} from &#x27;../../Model/apiResponseUser&#x27;;
+import {UserEditComponent} from &#x27;../popUp/user-edit/user-edit.component&#x27;;
+import {GroupAddComponent} from &#x27;../popUp/group-add/group-add.component&#x27;;
+import {GroupEditComponent} from &#x27;../popUp/group-edit/group-edit.component&#x27;;
+import {ToastrService} from &#x27;ngx-toastr&#x27;;
+import {AuthService} from &#x27;./authService&#x27;;
+import {UserPermissionAddComponent} from &#x27;../popUp/user-permission-add/user-permission-add.component&#x27;;
+import {UserPermissionUpdateComponent} from &#x27;../popUp/user-permission-update/user-permission-update.component&#x27;;
+import {GroupPermissionAddComponent} from &#x27;../popUp/group-permission-add/group-permission-add.component&#x27;;
+import {GroupPermissionUpdateComponent} from &#x27;../popUp/group-permission-update/group-permission-update.component&#x27;;
 
 @Injectable({
   providedIn: &#x27;root&#x27;
@@ -1082,34 +1786,16 @@ import {RepoEditTagsComponent} from &#x27;../popUp/repo-edit-tags/repo-edit-tags
 
 export class NavigationService {
   constructor(private router: Router,
-              private apiAuth: ApiAuth,
               private apiResource: ApiResource,
               private resourceService: ResourceService,
-              private dialog: MatDialog) {
+              private userService: UserService,
+              private dialog: MatDialog,
+              private authService: AuthService,
+              private toastr: ToastrService) {
   }
 
   toggle &#x3D; signal&lt;boolean&gt;(true);
-  isAdmin &#x3D; signal&lt;boolean&gt;(false);
   mode &#x3D; signal&lt;string&gt;(&quot;editor&quot;);
-
-  logAdminIn() {
-    this.isAdmin.set(true);
-  }
-
-  logUserIn() {
-    this.isAdmin.set(false);
-    //ToDo: ausbauen:
-    this.getTestUser();
-  }
-
-  getTestUser() {
-    this.apiAuth.testLogin().subscribe(response &#x3D;&gt; {
-        console.log(response)
-      },
-      (error) &#x3D;&gt; {
-        console.error(&quot;Fehler Bei testLogin &quot;, error)
-      });
-  }
 
   toggleSidebar() {
     this.toggle.update(current &#x3D;&gt; !current);
@@ -1133,21 +1819,20 @@ export class NavigationService {
 
   editedResourceCheck(data: ApiResponseModelResourceBeingEdited) {
     if (!data.content.isBeingEdited) { //Abfrage ob file editiert wird
-      let userId &#x3D; &quot;Niklas&quot; //ToDo: user id dynamic   -- user anlegen sonst bad request!
       console.log(&quot;File Editing&quot;)
-      // this.apiResource.setResourceBeingEdited(this.resourceService.selectedFile()?.repoId, this.resourceService.selectedFile()?.path, userId).subscribe(
-      //   data &#x3D;&gt; {
-      //     console.log(&quot;data &quot;, data)
-      //   },
-      //   error &#x3D;&gt; {
-      //     console.error(error)
-      //   }
-      // )
+      this.apiResource.setResourceBeingEdited(this.resourceService.selectedFile()?.repoId, this.resourceService.selectedFile()?.path, this.authService.username()).subscribe(
+        data &#x3D;&gt; {
+          console.log(&quot;data &quot;, data)
+        },
+        error &#x3D;&gt; {
+          console.error(error.error.error)
+        }
+      )
       this.router.navigate([&#x27;/main/editor&#x27;])
       this.mode.set(&quot;editor&quot;)
       this.resourceService.editingFile.set(this.resourceService.selectedFile());
     } else {
-      console.log(&quot;file is being edited&quot;)
+      this.toastr.error(&quot;File is being edited&quot;)
     }
   }
 
@@ -1159,37 +1844,119 @@ export class NavigationService {
     this.dialog.open(ResourceCreateNewComponent);
   }
 
-  uploadNewResource(data: string, path: string){
-    this.dialog.open(ResourceUploadComponent,
+  selectRepo(repo: Repos) {
+    this.userService.selectedRepo.set(repo)
+  }
+
+  createNewUser() {
+    this.dialog.open(UserAddComponent);
+  }
+
+  createNewGroup() {
+    this.dialog.open(GroupAddComponent);
+  }
+
+  createNewUserPermission(repo: string) {
+    this.dialog.open(UserPermissionAddComponent,
       {
-        data: {data,path}
+        data: {repo}
+      }
+    )
+  }
+
+  updateUserPermission(repoId: string, user: string, path: string, type: string) {
+    this.dialog.open(UserPermissionUpdateComponent,
+      {
+        data: {repoId, user, path, type}
+      })
+  }
+
+  createNewGroupPermission(repo: string) {
+    this.dialog.open(GroupPermissionAddComponent,
+      {
+        data: {repo}
+      }
+    )
+  }
+
+  updateGroupPermission(repoId: string, group: string, path: string, type: string) {
+    this.dialog.open(GroupPermissionUpdateComponent,
+      {
+        data: {repoId, group, path, type}
+      })
+  }
+
+  editGroup(groupId: string) {
+    this.dialog.open(GroupEditComponent,
+      {
+        data: {groupId}
+      }
+    )
+  }
+
+  editUser(repoId: string | undefined, user: User) {
+    this.dialog.open(UserEditComponent,
+      {
+        data: {repoId, user}
       });
   }
 
-  editResourceTags(repoId:string, path: string) {
+  uploadNewResource(data: string, path: string) {
+    this.dialog.open(ResourceUploadComponent,
+      {
+        data: {data, path}
+      });
+  }
+
+  editResourceTags(repoId: string | undefined, path: string | undefined) {
     this.dialog.open(ResourceEditTagsComponent,
       {
         data: {repoId, path}
       });
   }
 
-  editRepoTags(repoId: string){
+  editRepoTags(repoId: string) {
     this.dialog.open(RepoEditTagsComponent,
       {
         data: {repoId}
       });
   }
 
-  moveResource(repoId: string, path: string) {
-    console.log(&quot;repo&quot;, repoId)
-    this.dialog.open(ResourceMoveComponent,
+  editUnterRepoTags(repoId: string, path: string) {
+    this.dialog.open(ResourceEditTagsComponent,
       {
-        data: {repoId,path}
+        data: {repoId, path}
       });
   }
 
+  moveResource(repoId: string, path: string) {
+    this.dialog.open(ResourceMoveComponent,
+      {
+        data: {repoId, path}
+      });
+  }
+
+
   isEditorActive(): boolean {
     return this.router.isActive(&#x27;/main/editor&#x27;, {
+      paths: &#x27;exact&#x27;,
+      queryParams: &#x27;ignored&#x27;,
+      fragment: &#x27;ignored&#x27;,
+      matrixParams: &#x27;ignored&#x27;,
+    });
+  }
+
+  isAdminActive(): boolean {
+    return this.router.isActive(&#x27;/main/admin&#x27;, {
+      paths: &#x27;exact&#x27;,
+      queryParams: &#x27;ignored&#x27;,
+      fragment: &#x27;ignored&#x27;,
+      matrixParams: &#x27;ignored&#x27;,
+    });
+  }
+
+  isPermissionActive(): boolean {
+    return this.router.isActive(&#x27;/main/admin/permission&#x27;, {
       paths: &#x27;exact&#x27;,
       queryParams: &#x27;ignored&#x27;,
       fragment: &#x27;ignored&#x27;,

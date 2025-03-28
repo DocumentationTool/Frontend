@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { MainComponent } from './main.component';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {MainComponent} from './main.component';
+import {HttpClientModule} from '@angular/common/http';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
 
 describe('MainComponent', () => {
   let component: MainComponent;
@@ -8,9 +9,13 @@ describe('MainComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MainComponent]
+      imports: [MainComponent, HttpClientModule, ToastrModule.forRoot()
+      ],
+      providers: [
+        ToastrService
+      ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(MainComponent);
     component = fixture.componentInstance;

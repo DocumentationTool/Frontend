@@ -1,8 +1,10 @@
-import {Component, HostListener, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ResourceService} from '../../service/resource.service';
 import {ApiRepo} from '../../../api/apiRepo';
+import {ApiResource} from '../../../api/apiResource';
+import {AuthService} from '../../service/authService';
 
 @Component({
   selector: 'app-resource-upload',
@@ -13,17 +15,21 @@ import {ApiRepo} from '../../../api/apiRepo';
   templateUrl: './resource-upload.component.html',
   styleUrl: './resource-upload.component.css'
 })
-export class ResourceUploadComponent implements OnInit{
-  constructor(private dialogRef: MatDialogRef<ResourceUploadComponent>,
-              private resourceService: ResourceService,
+export class ResourceUploadComponent implements OnInit {
+  constructor(protected dialogRef: MatDialogRef<ResourceUploadComponent>,
+              protected resourceService: ResourceService,
               private apiRepo: ApiRepo,
+              private apiResource: ApiResource,
+              private authService: AuthService,
               @Inject(MAT_DIALOG_DATA) public dialogData: { data: any; path: string }) {
   }
 
   repoId: string = "";
   category: string = "";
-  tagIds: string[] = [];
+  tagsToAdd: string = "";
   allRepos: string[] = [];
+  allTags: string[] = [];
+  customTags = ""
 
   isReposActive = false;
 
@@ -33,34 +39,45 @@ export class ResourceUploadComponent implements OnInit{
         if (data && data.content) {
           this.allRepos = data.content.map(repo => repo.id);
         }
-        console.log("Repos:", this.allRepos);      }
+      }
     )
   }
 
   uploadResource() {
-    this.resourceService.addResource(this.repoId, this.dialogData.path, "niklas", this.category, this.tagIds, this.dialogData.data)
+    this.resourceService.addResource(this.repoId, this.dialogData.path, this.authService.username(), this.category, this.splitTags(this.tagsToAdd), this.dialogData.data)
     this.closeDialog();
   }
 
-  onRepos() {
-    this.isReposActive = true;
-  }
-
-  onSelectRepo(repo:string){
+  onSelectRepo(repo: string) {
     this.repoId = repo
+    this.getTag(repo);
   }
 
-  @HostListener('document:click', ['$event'])
-  onClickOutside(event: Event) {
-    const target = event.target as HTMLElement;
-    if (!target.closest('input.repoId')) {
-      this.isReposActive = false;
+  onSelectTag(tagId: string) {
+    this.tagsToAdd = tagId;
+  }
+
+  splitTags(tags: string) {
+    if (tags.includes(";")){
+      return tags.split(";").map(tag => tag.trim()).filter(tag => tag.length > 0);
     }
+    if (tags == "")
+      return []
+    return [tags];
   }
 
-  @HostListener('document:keydown.tab', ['$event'])
-  onEscapePress(event: KeyboardEvent) {
-    this.isReposActive = false;
+  getTag(repoId: string) {
+    this.apiResource.getTag(repoId).subscribe(
+      data => {
+        this.allTags = [];
+        if (data.content) {
+          this.allTags = Object.entries(data.content).map(([id]) => id);
+        }
+      },
+      error => {
+        console.error(error.error.error)
+      }
+    );
   }
 
   closeDialog() {

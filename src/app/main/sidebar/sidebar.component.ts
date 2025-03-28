@@ -1,4 +1,4 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, computed, HostListener, OnInit} from '@angular/core';
 import {NavigationService} from '../service/navigation.service';
 import {ResourceService} from '../service/resource.service';
 import {RouterLink, RouterLinkActive} from '@angular/router';
@@ -9,8 +9,12 @@ import {ToastrService} from 'ngx-toastr';
 import {AuthService} from '../service/authService';
 import {KeyValuePipe, NgClass, NgForOf} from '@angular/common';
 import {Resources} from '../../Model/apiResponseFileTree';
+import {ResizableDirective} from './service/resizable.directive';
 
-
+/**
+ * Holds the filetree,
+ * upload buttons and admin navigation
+ */
 @Component({
   selector: 'app-sidebar',
   imports: [
@@ -20,6 +24,7 @@ import {Resources} from '../../Model/apiResponseFileTree';
     KeyValuePipe,
     NgForOf,
     NgClass,
+    ResizableDirective
   ],
   templateUrl: './sidebar.component.html',
   standalone: true,
@@ -28,18 +33,20 @@ import {Resources} from '../../Model/apiResponseFileTree';
 export class SidebarComponent {
   openRepos: Set<string> = new Set();
 
-
+  /**
+   * constructor
+   * @param navigationService
+   * @param authService
+   * @param resourceService
+   * @param toastr
+   */
   constructor(protected navigationService: NavigationService,
               protected authService: AuthService,
               protected resourceService: ResourceService,
               private toastr: ToastrService) {
   }
 
-  repoId: string = ""
   path: string = ""
-  createdBy: string = ""
-  category: string | null = ""
-  tagIds: string[] | null = [];
   data: string = "";
 
   hoveredRepo: any;
@@ -49,12 +56,21 @@ export class SidebarComponent {
   menuPosition = {x: 0, y: 0};
   isOpen: Record<string, boolean> = {};
 
+  /**
+   * @param event cursor position
+   * @param resource selected resource
+   * sets the resource edit pop up window position and opens it
+   */
   openResourceMenu(event: MouseEvent, resource: Resources) {
     event.stopPropagation();
     this.selectedResource = resource;
-    this.menuPosition = {x: this.popUpInWindow(event.clientX -110), y: event.clientY + 10};
+    this.menuPosition = {x: this.popUpInWindow(event.clientX - 110), y: event.clientY + 10};
   }
 
+  /**
+   * @param resource
+   * deletes a resource
+   */
   deleteResource(resource: Resources) {
     if (window.confirm("Do you really want to delete '" + resource.path + "' in Repo: '" + resource.repoId + "'?")) {
       this.resourceService.removeResource(resource.repoId, resource.path);
@@ -62,24 +78,42 @@ export class SidebarComponent {
     }
   }
 
+  /**
+   * @param posX
+   * sets window position
+   * max x position 30
+   */
   popUpInWindow(posX: number) {
-    if (posX < 30){
+    if (posX < 30) {
       return 30
     }
     return posX
   }
 
-
-  openRepoMenu(event: MouseEvent, repoId: string){
+  /**
+   * @param event
+   * @param repoId
+   * sets the repo edit pop up window position and opens it
+   */
+  openRepoMenu(event: MouseEvent, repoId: string) {
     event.stopPropagation();
     this.selectedRepo = repoId;
-    this.menuPosition = {x: this.popUpInWindow(event.clientX -110), y: event.clientY + 10};
+    this.menuPosition = {x: this.popUpInWindow(event.clientX - 110), y: event.clientY + 10};
   }
 
+  /**
+   * @param repoPath
+   * toggles on click the children
+   */
   toggleRepo(repoPath: string) {
     this.isOpen[repoPath] = !this.isOpen[repoPath]; // Öffnen/Schließen der Unter-Repositories
   }
 
+  /**
+   * @param event
+   * checks for file changes
+   * call upload method
+   */
   onUpload(event: any) {
     if (this.resourceService.checkForFileChanges()) {
       if (window.confirm("Save changes?")) {
@@ -92,6 +126,11 @@ export class SidebarComponent {
     event.target.value = "";
   }
 
+  /**
+   * @param event
+   * opens explorer to upload a .docx or .md file
+   * handles the file upload for file type
+   */
   upload(event: any) {
     const fileInput = event.target as HTMLInputElement;
 
@@ -111,7 +150,13 @@ export class SidebarComponent {
     }
   }
 
-// Liest eine Markdown-Datei direkt
+
+  /**
+   * @param file
+   * @private
+   * file upload for .md file
+   * reads file data
+   */
   private readMarkdownFile(file: File) {
     const reader = new FileReader();
     reader.onload = () => {
@@ -120,7 +165,13 @@ export class SidebarComponent {
     reader.readAsText(file);
   }
 
-// Konvertiert eine .docx-Datei erst zu HTML, dann zu Markdown
+  /**
+   * @param file
+   * @private
+   * file upload for .docx files
+   * converts word data to html - ignores picture
+   * converts html to markdown
+   */
   private convertDocxToMarkdown(file: File) {
     const reader = new FileReader();
     reader.onload = async (event: any) => {
@@ -128,10 +179,10 @@ export class SidebarComponent {
 
       // Ignoriere Bilder und konvertiere nur den Text
       const options = {
-        convertImage: Mammoth.images.imgElement(() => Promise.resolve({ src: "" }))
+        convertImage: Mammoth.images.imgElement(() => Promise.resolve({src: ""}))
       };
 
-      Mammoth.convertToHtml({ arrayBuffer }, options)
+      Mammoth.convertToHtml({arrayBuffer}, options)
         .then((result) => {
           // HTML zu Markdown konvertieren
           const turndownService = new TurndownService();
@@ -143,18 +194,24 @@ export class SidebarComponent {
     reader.readAsArrayBuffer(file);
   }
 
-// Verarbeitet die Datei-Inhalte und führt den Upload durch
+  /**
+   * @param content
+   * @param fileName
+   * @private
+   * processes file content and opens pop up
+   * for filename
+   */
   private processFileContent(content: string, fileName: string) {
     this.data = content;
-    this.repoId = "repo2";
     this.path = fileName;
-    this.createdBy = this.authService.username() ;
-    this.category = null;
-    this.tagIds = null;
 
     this.navigationService.uploadNewResource(this.data, this.path);
   }
 
+  /**
+   * watches for clicks outside pup up
+   * and closes it
+   */
   @HostListener('document:click', ['$event'])
   closeMenu(_: Event) {
     this.selectedRepo = null

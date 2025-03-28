@@ -177,34 +177,6 @@
     </table>
 </section>
 
-    <section data-compodoc="block-index">
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#resourceService" >resourceService</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-
-
-
-
-
-
-        </tbody>
-    </table>
-</section>
 
     <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
@@ -212,12 +184,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(resourceService: <a href="../injectables/ResourceService.html" target="_self">ResourceService</a>)</code>
+<code>constructor(resourceService: <a href="../injectables/ResourceService.html" target="_self">ResourceService</a>, navigationService: <a href="../injectables/NavigationService.html" target="_self">NavigationService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/main/view/view.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/main/view/view.component.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -246,6 +218,18 @@
                                                     </td>
                                                     
                                                 </tr>
+                                                <tr>
+                                                        <td>navigationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NavigationService.html" target="_self" >NavigationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -260,48 +244,16 @@
 
 
 
-    <section data-compodoc="block-properties">
-    
-    <h3 id="inputs">
-        Properties
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="resourceService"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>resourceService</b></span>
-                        <a href="#resourceService"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../injectables/ResourceService.html" target="_self" >ResourceService</a></code>
-
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/main/view/view.component.ts:19</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-</section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component} from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, OnInit} from &#x27;@angular/core&#x27;;
 import {MarkdownComponent} from &quot;ngx-markdown&quot;;
 import {NgIf} from &quot;@angular/common&quot;;
 import {ResourceService} from &#x27;../service/resource.service&#x27;;
+import {NavigationService} from &#x27;../service/navigation.service&#x27;;
 
 @Component({
   selector: &#x27;app-view&#x27;,
@@ -316,9 +268,11 @@ import {ResourceService} from &#x27;../service/resource.service&#x27;;
  * Component shows resource preview
  */
 export class ViewComponent {
-  constructor(public resourceService: ResourceService) {
+  constructor(protected resourceService: ResourceService,
+              protected navigationService: NavigationService ) {
 
   }
+
 
 }
 </code></pre>
@@ -327,6 +281,26 @@ export class ViewComponent {
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div
   *ngIf&#x3D;&quot;this.resourceService.selectedFile()&quot;&gt;
+  @if (resourceService.selectedFile()?.permissionType !&#x3D; &quot;VIEW&quot;) {
+    &lt;div class&#x3D;&quot;tag-container&quot;&gt;
+      &lt;div class&#x3D;&quot;info-box&quot;&gt;
+        &lt;span class&#x3D;&quot;label&quot;&gt;Repo:&lt;/span&gt; &lt;span class&#x3D;&quot;value&quot;&gt;{{ resourceService.selectedFile()?.repoId }}&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;info-box&quot;&gt;
+        &lt;span class&#x3D;&quot;label&quot;&gt;Path:&lt;/span&gt; &lt;span class&#x3D;&quot;value&quot;&gt;{{ resourceService.selectedFile()?.path }}&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;select id&#x3D;&quot;tag-select&quot;&gt;
+        &lt;option selected disabled&gt;Tags&lt;/option&gt;
+        @for (tag of resourceService.allResourceTagIds(); track tag) {
+          &lt;option disabled&gt;{{ tag }}&lt;/option&gt;
+        }
+      &lt;/select&gt;
+      &lt;i
+        (click)&#x3D;&quot;navigationService.editResourceTags(resourceService.selectedFile()?.repoId,resourceService.selectedFile()?.path)&quot;
+        class&#x3D;&quot;ri-pencil-fill&quot;&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;hr&gt;
+  }
   &lt;markdown [data]&#x3D;&quot;resourceService.fileContent()&quot;&gt;&lt;/markdown&gt;
 &lt;/div&gt;
 </code></pre>
@@ -358,9 +332,9 @@ export class ViewComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div  *ngIf="this.resourceService.selectedFile()">  <markdown [data]="resourceService.fileContent()"></markdown></div></div>'
-    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EditorComponent', 'selector': 'app-editor'},{'name': 'EmptyPageComponent', 'selector': 'app-empty-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'RepoEditTagsComponent', 'selector': 'app-repo-edit-tags'},{'name': 'ResourceCreateNewComponent', 'selector': 'app-resource-upload'},{'name': 'ResourceEditTagsComponent', 'selector': 'app-resource-edit-tags'},{'name': 'ResourceMoveComponent', 'selector': 'app-resource-move'},{'name': 'ResourceUploadComponent', 'selector': 'app-resource-upload'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TreeChildComponent', 'selector': 'app-tree-child'},{'name': 'ViewComponent', 'selector': 'app-view'}];
-    var DIRECTIVES = [];
+        var COMPONENT_TEMPLATE = '<div><div  *ngIf="this.resourceService.selectedFile()">  @if (resourceService.selectedFile()?.permissionType != "VIEW") {    <div class="tag-container">      <div class="info-box">        <span class="label">Repo:</span> <span class="value">{{ resourceService.selectedFile()?.repoId }}</span>      </div>      <div class="info-box">        <span class="label">Path:</span> <span class="value">{{ resourceService.selectedFile()?.path }}</span>      </div>      <select id="tag-select">        <option selected disabled>Tags</option>        @for (tag of resourceService.allResourceTagIds(); track tag) {          <option disabled>{{ tag }}</option>        }      </select>      <i        (click)="navigationService.editResourceTags(resourceService.selectedFile()?.repoId,resourceService.selectedFile()?.path)"        class="ri-pencil-fill"></i>    </div>    <hr>  }  <markdown [data]="resourceService.fileContent()"></markdown></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EditorComponent', 'selector': 'app-editor'},{'name': 'GroupAddComponent', 'selector': 'app-group-add'},{'name': 'GroupEditComponent', 'selector': 'app-group-edit'},{'name': 'GroupPermissionAddComponent', 'selector': 'app-group-permission-add'},{'name': 'GroupPermissionUpdateComponent', 'selector': 'app-group-permission-update'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'RepoEditTagsComponent', 'selector': 'app-repo-edit-tags'},{'name': 'ResourceCreateNewComponent', 'selector': 'app-resource-upload'},{'name': 'ResourceEditTagsComponent', 'selector': 'app-resource-edit-tags'},{'name': 'ResourceMoveComponent', 'selector': 'app-resource-move'},{'name': 'ResourceUploadComponent', 'selector': 'app-resource-upload'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TreeChildComponent', 'selector': 'app-tree-child'},{'name': 'UserAddComponent', 'selector': 'app-user-add'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserPermissionAddComponent', 'selector': 'app-user-permission-add'},{'name': 'UserPermissionUpdateComponent', 'selector': 'app-user-permission-update'},{'name': 'ViewComponent', 'selector': 'app-view'}];
+    var DIRECTIVES = [{'name': 'ResizableDirective', 'selector': '[appResizable]'}];
     var ACTUAL_COMPONENT = {'name': 'ViewComponent'};
 </script>
 <script src="../js/tree.js"></script>

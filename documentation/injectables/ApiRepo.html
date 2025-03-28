@@ -282,7 +282,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;http://localhost:8080/api/repo/repository&#x27;</code>
+                        <i>Default value : </i><code>&#x27;http://localhost:8080/api/repo&#x27;</code>
                     </td>
                 </tr>
                     <tr>
@@ -311,7 +311,7 @@ export class ApiRepo {
   constructor(private http: HttpClient) {
   }
 
-  private baseUrl &#x3D; &#x27;http://localhost:8080/api/repo/repository&#x27;;
+  private baseUrl &#x3D; &#x27;http://localhost:8080/api/repo&#x27;;
 
   //get all existing repos
   getRepos() {

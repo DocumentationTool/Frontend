@@ -2,6 +2,7 @@ import {Injectable, signal} from '@angular/core';
 import {ApiGroup} from '../../api/apiGroup';
 import {ToastrService} from 'ngx-toastr';
 import {Permission} from '../../Model/permission';
+import {UserPermission} from '../../Model/apiResponseGetPermission';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class GroupService {
   }
 
   allGroupsOnRepo = signal<string[] | null>(null)
+  allGroupPermissions = signal<UserPermission[] | null>(null)
 
   addGroup(groupId: string, groupName: string) {
     this.apiGroup.addGroup(groupId, groupName).subscribe(
@@ -121,6 +123,14 @@ export class GroupService {
       },
       error => {
         this.toastr.error(error.error.error, "Update permission on group failed: ")
+      }
+    )
+  }
+
+  loadPermission(repo: string, user: string) {
+    this.apiGroup.getGroupPermission(repo, user).subscribe(
+      data => {
+        this.allGroupPermissions.set(data.content);
       }
     )
   }

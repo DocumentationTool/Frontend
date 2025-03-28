@@ -1,10 +1,9 @@
 import {Injectable, signal} from '@angular/core';
-import {Router} from '@angular/router';
 import {ApiUser} from '../../api/apiUser';
-import {ApiResponseFileTree} from '../../Model/apiResponseFileTree';
 import {Repos} from '../../Model/apiResponseModelRepos';
 import {User} from '../../Model/apiResponseUser';
 import {ToastrService} from 'ngx-toastr';
+import {UserPermission} from '../../Model/apiResponseGetPermission';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +11,14 @@ import {ToastrService} from 'ngx-toastr';
 
 export class UserService {
   constructor(
-    private router: Router,
     private apiUser: ApiUser,
     private toastr: ToastrService) {
   }
 
   selectedRepo = signal<Repos | null>(null);
   allUsersOnRepo = signal<User[] | null>(null)
+  allUserPermissions = signal<UserPermission[] | null>(null)
+
 
   createUser(userId: string, password: string,role: string, groupIds: string[] | null) {
     this.apiUser.addUser(userId, password, role, groupIds).subscribe(
@@ -27,7 +27,7 @@ export class UserService {
         this.toastr.success("User Created")
       },
       error => {
-        this.toastr.error(error.message, "User creation failed: ")
+        this.toastr.error(error.error.error, "User creation failed: ")
       }
     )
   }
@@ -39,7 +39,7 @@ export class UserService {
         this.toastr.success("User removed")
       },
       error => {
-        this.toastr.error(error.message, "User remove failed: ")
+        this.toastr.error(error.error.error, "User remove failed: ")
       }
     )
   }
@@ -50,7 +50,7 @@ export class UserService {
         this.allUsersOnRepo.set(data.content)
       },
       error => {
-        this.toastr.error(error.message, "Load user failed: ")
+        this.toastr.error(error.error.error, "Load user failed: ")
       }
     )
   }
@@ -61,7 +61,7 @@ export class UserService {
         this.toastr.success("User permission added")
       },
       error => {
-        this.toastr.error(error.message, "Add user permission failed: ")
+        this.toastr.error(error.error.error, "Add user permission failed: ")
       }
     )
   }
@@ -72,7 +72,7 @@ export class UserService {
         this.toastr.success("User permission removed")
       },
       error => {
-        this.toastr.error(error.message, "remove user permission failed: ")
+        this.toastr.error(error.error.error, "remove user permission failed: ")
       }
     )
   }
@@ -83,8 +83,16 @@ export class UserService {
         this.toastr.success("User permission updated")
       },
       error => {
-        this.toastr.error(error.message, "Update user permission failed: ")
+        this.toastr.error(error.error.error, "Update user permission failed: ")
 
+      }
+    )
+  }
+
+  loadPermission(repo: string, user: string) {
+    this.apiUser.getUserPermission(repo, user).subscribe(
+      data => {
+        this.allUserPermissions.set(data.content);
       }
     )
   }

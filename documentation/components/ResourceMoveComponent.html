@@ -196,19 +196,30 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#allPaths" >allPaths</a>
+                            </li>
+                            <li>
+                                <a href="#allRepos" >allRepos</a>
+                            </li>
+                            <li>
+                                <a href="#customPath" >customPath</a>
+                            </li>
+                            <li>
                                     <span class="modifier"></span>
                                     <span class="modifier">Public</span>
                                 <a href="#dialogData" >dialogData</a>
                             </li>
                             <li>
+                                <a href="#pathFrom" >pathFrom</a>
+                            </li>
+                            <li>
                                 <a href="#pathTo" >pathTo</a>
                             </li>
                             <li>
-                                <a href="#repoTo" >repoTo</a>
+                                <a href="#repoFrom" >repoFrom</a>
                             </li>
                             <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#resourceService" >resourceService</a>
+                                <a href="#repoTo" >repoTo</a>
                             </li>
                         </ul>
                     </td>
@@ -226,10 +237,19 @@
                                 <a href="#closeDialog" >closeDialog</a>
                             </li>
                             <li>
+                                <a href="#getAllResource" >getAllResource</a>
+                            </li>
+                            <li>
                                 <a href="#moveResource" >moveResource</a>
                             </li>
                             <li>
                                 <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onSelectPath" >onSelectPath</a>
+                            </li>
+                            <li>
+                                <a href="#onSelectRepo" >onSelectRepo</a>
                             </li>
                         </ul>
                     </td>
@@ -249,12 +269,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(dialogRef: <a href="../components/ResourceMoveComponent.html" target="_self">MatDialogRef&lt;ResourceMoveComponent&gt;</a>, resourceService: <a href="../injectables/ResourceService.html" target="_self">ResourceService</a>, dialogData: literal type)</code>
+<code>constructor(dialogRef: <a href="../components/ResourceMoveComponent.html" target="_self">MatDialogRef&lt;ResourceMoveComponent&gt;</a>, resourceService: <a href="../injectables/ResourceService.html" target="_self">ResourceService</a>, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, apiRepo: <a href="../injectables/ApiRepo.html" target="_self">ApiRepo</a>, apiResource: <a href="../injectables/ApiResource.html" target="_self">ApiResource</a>, dialogData: literal type)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -288,6 +308,42 @@
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/ResourceService.html" target="_self" >ResourceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>apiRepo</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ApiRepo.html" target="_self" >ApiRepo</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>apiResource</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ApiResource.html" target="_self" >ApiResource</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -345,8 +401,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="37"
-                                    class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:37</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:66</a></div>
                         </td>
                     </tr>
 
@@ -358,6 +414,73 @@
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllResource"></a>
+                    <span class="name">
+                        <span ><b>getAllResource</b></span>
+                        <a href="#getAllResource"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAllResource(repoId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>repoId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -382,8 +505,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:52</a></div>
                         </td>
                     </tr>
 
@@ -419,8 +542,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="39"
+                                    class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -436,12 +559,239 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSelectPath"></a>
+                    <span class="name">
+                        <span ><b>onSelectPath</b></span>
+                        <a href="#onSelectPath"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSelectPath(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>path</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSelectRepo"></a>
+                    <span class="name">
+                        <span ><b>onSelectRepo</b></span>
+                        <a href="#onSelectRepo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSelectRepo(repoId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>repoId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
     <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="allPaths"></a>
+                    <span class="name">
+                        <span ><b>allPaths</b></span>
+                        <a href="#allPaths"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="allRepos"></a>
+                    <span class="name">
+                        <span ><b>allRepos</b></span>
+                        <a href="#allRepos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="customPath"></a>
+                    <span class="name">
+                        <span ><b>customPath</b></span>
+                        <a href="#customPath"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -472,7 +822,38 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pathFrom"></a>
+                    <span class="name">
+                        <span ><b>pathFrom</b></span>
+                        <a href="#pathFrom"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -503,7 +884,38 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="repoFrom"></a>
+                    <span class="name">
+                        <span ><b>repoFrom</b></span>
+                        <a href="#repoFrom"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:34</a></div>
                         </td>
                     </tr>
 
@@ -534,34 +946,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:28</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="resourceService"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>resourceService</b></span>
-                        <a href="#resourceService"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../injectables/ResourceService.html" target="_self" >ResourceService</a></code>
-
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/main/popUp/resource-move/resource-move.component.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -580,6 +965,9 @@ import {MAT_DIALOG_DATA, MatDialogRef} from &#x27;@angular/material/dialog&#x27;
 import {ResourceService} from &#x27;../../service/resource.service&#x27;;
 import {NavigationService} from &#x27;../../service/navigation.service&#x27;;
 import {ApiRepo} from &#x27;../../../api/apiRepo&#x27;;
+import {AuthService} from &#x27;../../service/authService&#x27;;
+import {Resources} from &#x27;../../../Model/apiResponseFileTree&#x27;;
+import {ApiResource} from &#x27;../../../api/apiResource&#x27;;
 
 @Component({
   selector: &#x27;app-resource-move&#x27;,
@@ -590,28 +978,66 @@ import {ApiRepo} from &#x27;../../../api/apiRepo&#x27;;
   templateUrl: &#x27;./resource-move.component.html&#x27;,
   styleUrl: &#x27;./resource-move.component.css&#x27;
 })
-export class ResourceMoveComponent implements OnInit{
+export class ResourceMoveComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef&lt;ResourceMoveComponent&gt;,
-              public resourceService: ResourceService,
+              protected resourceService: ResourceService,
+              private authService: AuthService,
+              private apiRepo: ApiRepo,
+              private apiResource: ApiResource,
               @Inject(MAT_DIALOG_DATA) public dialogData: { repoId: string, path: string }) {
   }
 
-  ngOnInit() {
-    this.repoTo &#x3D; this.dialogData.repoId;
-    this.pathTo &#x3D; this.dialogData.path;
-  }
 
+  allRepos: string[] &#x3D; [];
+  allPaths: string[] &#x3D; [];
   repoTo: string &#x3D; &quot;&quot;;
   pathTo: string &#x3D; &quot;&quot;;
+  repoFrom: string &#x3D; &quot;&quot;;
+  pathFrom: string &#x3D; &quot;&quot;;
+  customPath: string &#x3D; &quot;&quot;;
+
+
+  ngOnInit() {
+    this.apiRepo.getRepos().subscribe(
+      data &#x3D;&gt; {
+        if (data &amp;&amp; data.content) {
+          this.allRepos &#x3D; data.content.map(repo &#x3D;&gt; repo.id);
+        }
+      }
+    )
+
+    this.repoFrom &#x3D; this.dialogData.repoId;
+    this.pathFrom &#x3D; this.dialogData.path;
+  }
 
   moveResource() {
-    //ToDo: user
-    this.resourceService.moveResource(&quot;niklas&quot;, this.dialogData.repoId,this.dialogData.path,this.repoTo, this.pathTo)
+    this.resourceService.moveResource(this.authService.username(), this.dialogData.repoId, this.dialogData.path, this.repoTo, this.pathTo)
     this.closeDialog();
+  }
+
+  onSelectRepo(repoId: string) {
+    this.repoTo &#x3D; repoId;
+    this.getAllResource(repoId);
+  }
+
+  onSelectPath(path: string) {
+    this.pathTo &#x3D; path;
   }
 
   closeDialog() {
     this.dialogRef.close();
+  }
+
+  getAllResource(repoId: string) {
+    this.apiResource.getResource(null, null, repoId, null, [], [], false, 10000).subscribe(
+      data &#x3D;&gt; {
+        if (data &amp;&amp; data.content) {
+          this.allPaths &#x3D; Object.values(data.content).flat()
+            .map((resource: Resources) &#x3D;&gt; resource.path);
+        } else {
+          this.allPaths &#x3D; [];
+        }
+      });
   }
 
 }
@@ -622,16 +1048,41 @@ export class ResourceMoveComponent implements OnInit{
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;upload-dialog&quot;&gt;
   &lt;h2&gt;Move Resource {{this.dialogData.path}}&lt;/h2&gt;
   &lt;form (submit)&#x3D;&quot;moveResource()&quot;&gt;
+
+    &lt;label&gt;Repo From:  {{repoFrom}}&lt;/label&gt;
+    &lt;br&gt;
     &lt;label&gt;Repo to:&lt;/label&gt;
-    &lt;input name&#x3D;&quot;repoTo&quot; type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;repoTo&quot; required/&gt;
+    &lt;select class&#x3D;&quot;select&quot; #repoSelect (change)&#x3D;&quot;onSelectRepo(repoSelect.value)&quot;&gt;
+      &lt;option value&#x3D;&quot;&quot; disabled selected&gt;&lt;/option&gt;
+      @for (repo of allRepos; track repo) {
+        &lt;option&gt;
+          {{ repo }}
+        &lt;/option&gt;
+      }
+    &lt;/select&gt;
+    &lt;hr&gt;
 
+    &lt;label&gt;Path From:  {{pathFrom}}&lt;/label&gt;
+    &lt;br&gt;
     &lt;label&gt;Path to:&lt;/label&gt;
-    &lt;div class&#x3D;&quot;repo-container&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot;&gt;
-      &lt;input name&#x3D;&quot;pathTo&quot; type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;pathTo&quot; autocomplete&#x3D;&quot;off&quot; required/&gt;
-    &lt;/div&gt;
+    &lt;select class&#x3D;&quot;select&quot; #pathSelect (change)&#x3D;&quot;onSelectPath(pathSelect.value)&quot; [disabled]&#x3D;&quot;!repoTo&quot;&gt;
+      &lt;option value&#x3D;&quot;&quot; disabled selected&gt;&lt;/option&gt;
+      @for (path of allPaths; track path) {
+        &lt;option&gt;
+          {{ path }}
+        &lt;/option&gt;
+      }
 
-    &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;cancel-btn&quot;&gt;Move&lt;/button&gt;
-    &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;upload-btn&quot; (click)&#x3D;&quot;closeDialog()&quot;&gt;Cancel&lt;/button&gt;
+      &lt;option value&#x3D;&quot;custom&quot;&gt;Other...&lt;/option&gt;
+    &lt;/select&gt;
+
+    @if (pathSelect.value &#x3D;&#x3D;&#x3D; &#x27;custom&#x27;) {
+      &lt;input class&#x3D;&quot;input-pupUp&quot; type&#x3D;&quot;text&quot; (input)&#x3D;&quot;onSelectPath(customPath)&quot; placeholder&#x3D;&quot;Enter custom path&quot; [(ngModel)]&#x3D;&quot;customPath&quot;
+             [ngModelOptions]&#x3D;&quot;{standalone: true}&quot;/&gt;
+    }
+
+    &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;upload-btn&quot;&gt;Move&lt;/button&gt;
+    &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;cancel-btn&quot; (click)&#x3D;&quot;closeDialog()&quot;&gt;Cancel&lt;/button&gt;
   &lt;/form&gt;
 &lt;/div&gt;
 </code></pre>
@@ -663,9 +1114,9 @@ export class ResourceMoveComponent implements OnInit{
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="upload-dialog">  <h2>Move Resource {{this.dialogData.path}}</h2>  <form (submit)="moveResource()">    <label>Repo to:</label>    <input name="repoTo" type="text" [(ngModel)]="repoTo" required/>    <label>Path to:</label>    <div class="repo-container" (click)="$event.stopPropagation()">      <input name="pathTo" type="text" [(ngModel)]="pathTo" autocomplete="off" required/>    </div>    <button type="submit" class="cancel-btn">Move</button>    <button type="button" class="upload-btn" (click)="closeDialog()">Cancel</button>  </form></div></div>'
-    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EditorComponent', 'selector': 'app-editor'},{'name': 'EmptyPageComponent', 'selector': 'app-empty-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'RepoEditTagsComponent', 'selector': 'app-repo-edit-tags'},{'name': 'ResourceCreateNewComponent', 'selector': 'app-resource-upload'},{'name': 'ResourceEditTagsComponent', 'selector': 'app-resource-edit-tags'},{'name': 'ResourceMoveComponent', 'selector': 'app-resource-move'},{'name': 'ResourceUploadComponent', 'selector': 'app-resource-upload'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TreeChildComponent', 'selector': 'app-tree-child'},{'name': 'ViewComponent', 'selector': 'app-view'}];
-    var DIRECTIVES = [];
+        var COMPONENT_TEMPLATE = '<div><div class="upload-dialog">  <h2>Move Resource {{this.dialogData.path}}</h2>  <form (submit)="moveResource()">    <label>Repo From:  {{repoFrom}}</label>    <br>    <label>Repo to:</label>    <select class="select" #repoSelect (change)="onSelectRepo(repoSelect.value)">      <option value="" disabled selected></option>      @for (repo of allRepos; track repo) {        <option>          {{ repo }}        </option>      }    </select>    <hr>    <label>Path From:  {{pathFrom}}</label>    <br>    <label>Path to:</label>    <select class="select" #pathSelect (change)="onSelectPath(pathSelect.value)" [disabled]="!repoTo">      <option value="" disabled selected></option>      @for (path of allPaths; track path) {        <option>          {{ path }}        </option>      }      <option value="custom">Other...</option>    </select>    @if (pathSelect.value === \'custom\') {      <input class="input-pupUp" type="text" (input)="onSelectPath(customPath)" placeholder="Enter custom path" [(ngModel)]="customPath"             [ngModelOptions]="{standalone: true}"/>    }    <button type="submit" class="upload-btn">Move</button>    <button type="button" class="cancel-btn" (click)="closeDialog()">Cancel</button>  </form></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EditorComponent', 'selector': 'app-editor'},{'name': 'GroupAddComponent', 'selector': 'app-group-add'},{'name': 'GroupEditComponent', 'selector': 'app-group-edit'},{'name': 'GroupPermissionAddComponent', 'selector': 'app-group-permission-add'},{'name': 'GroupPermissionUpdateComponent', 'selector': 'app-group-permission-update'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'RepoEditTagsComponent', 'selector': 'app-repo-edit-tags'},{'name': 'ResourceCreateNewComponent', 'selector': 'app-resource-upload'},{'name': 'ResourceEditTagsComponent', 'selector': 'app-resource-edit-tags'},{'name': 'ResourceMoveComponent', 'selector': 'app-resource-move'},{'name': 'ResourceUploadComponent', 'selector': 'app-resource-upload'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TreeChildComponent', 'selector': 'app-tree-child'},{'name': 'UserAddComponent', 'selector': 'app-user-add'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserPermissionAddComponent', 'selector': 'app-user-permission-add'},{'name': 'UserPermissionUpdateComponent', 'selector': 'app-user-permission-update'},{'name': 'ViewComponent', 'selector': 'app-view'}];
+    var DIRECTIVES = [{'name': 'ResizableDirective', 'selector': '[appResizable]'}];
     var ACTUAL_COMPONENT = {'name': 'ResourceMoveComponent'};
 </script>
 <script src="../js/tree.js"></script>
