@@ -1,62 +1,83 @@
 pipeline {
-	agent any
+  agent any
 
     environment {
-		NODE_HOME = '/usr/local/bin/node'
-        ANGULAR_CLI_VERSION = '19.1.6'
+    ANGULAR_CLI_VERSION = '19.1.6'
+        STAGING_PATH = "/opt/frontend-staging"
+        APP_NAME = "document-web"
+        DEPLOY_USER = "user"
+        DEPLOY_HOST = "your-server"
+        DEPLOY_PATH = "/var/www/html"
     }
 
     stages {
-
-    stage('Install Dependencies') {
-			steps {
-				script {
-					sh 'curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -'
+    stage('Install Node & Angular CLI') {
+      steps {
+        script {
+          sh 'curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -'
                     sh 'sudo apt-get install -y nodejs'
-
                     sh 'npm install -g @angular/cli@${ANGULAR_CLI_VERSION}'
+                }
+            }
+        }
 
-                    sh 'npm install'
+        stage('Install Dependencies') {
+      steps {
+        script {
+          sh 'npm install'
                 }
             }
         }
 
         stage('Build Angular App') {
-			steps {
-				script {
-					sh 'npm run build --prod'
+      steps {
+        script {
+          sh 'npm run build --prod'
                 }
             }
         }
 
-        // Schritt 4: Deployment der Build-Dateien (z.B. auf einem Webserver oder S3)
-        stage('Deploy') {
-			steps {
-				script {
-					// Beispiel: Deployment auf einem Webserver (z.B. FTP, SFTP, oder anderen)
-                    // Du kannst diesen Abschnitt anpassen, je nachdem, wie dein Deployment-Ziel aussieht
-                    sh 'scp -r dist/document-web/* user@your-server:/path/to/deploy'
+        stage('Move Build to Staging Folder') {
+      steps {
+        script {
+          sh "rm -rf ${STAGING_PATH}/*"
+                    sh "cp -r dist/${APP_NAME}/* ${STAGING_PATH}/"
+                }
+            }
+        }
 
-                    // Falls du auf AWS S3 deployen möchtest, könntest du diesen Befehl verwenden:
-                    // sh 'aws s3 sync dist/document-web s3://your-bucket-name/'
+        stage('Deploy to Server') {
+      steps {
+        script {
+          // You can adjust this depending on the setup:
+                    sh "scp -r ${STAGING_PATH}/* ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/"
+                }
+            }
+        }
 
-                    // Alternativ kannst du hier z.B. einen Docker-Container oder ein Kubernetes-Deployment verwenden
+        // Optional: Restart frontend server if needed (e.g., nginx reload)
+        stage('Restart Web Server') {
+      steps {
+        script {
+          sh """
+                        ssh ${DEPLOY_USER}@${DEPLOY_HOST} 'sudo systemctl reload nginx'
+                    """
                 }
             }
         }
     }
 
-post {
-		always {
-			echo 'Pipeline execution finished.'
+    post {
+    always {
+      echo 'Pipeline execution finished.'
         }
 
         success {
-			echo '✅ Deployment was successful.'
+      echo '✅ Frontend deployment was successful.'
         }
 
         failure {
-			echo '❌ Deployment failed.'
+      echo '❌ Frontend deployment failed.'
         }
     }
 }
