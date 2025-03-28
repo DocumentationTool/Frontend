@@ -14,14 +14,15 @@ pipeline {
     stage('Install Node & Angular CLI') {
       steps {
         script {
-          sh 'curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -'
-                    sh 'sudo apt-get install -y nodejs'
-                    sh 'npm install -g @angular/cli@${ANGULAR_CLI_VERSION}'
-                }
-            }
+          sh 'curl -sL https://deb.nodesource.com/setup_16.x | bash -'
+            sh 'apt-get install -y nodejs'
+            sh 'npm install -g @angular/cli@${ANGULAR_CLI_VERSION}'
         }
+      }
+    }
 
-        stage('Install Dependencies') {
+
+     stage('Install Dependencies') {
       steps {
         script {
           sh 'npm install'
