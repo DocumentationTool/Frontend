@@ -15,7 +15,7 @@ pipeline {
     stage('Install Dependencies') {
       steps {
         script {
-          sh 'npm install'
+          sh 'npm ci'
           }
         }
       }
@@ -49,10 +49,10 @@ pipeline {
       steps {
         script {
           sh """
-                          ssh ${DEPLOY_USER}@${DEPLOY_HOST} 'sudo systemctl reload nginx'
-                      """
-                  }
-              }
+               ssh ${DEPLOY_USER}@${DEPLOY_HOST} 'sudo systemctl reload nginx'
+             """
+          }
+        }
       }
   }
 
