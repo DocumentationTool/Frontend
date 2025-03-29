@@ -120,6 +120,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>recursive tree component</p>
+
+    </p>
 
 
 
@@ -241,13 +248,7 @@
                                 <a href="#closeMenu" >closeMenu</a>
                             </li>
                             <li>
-                                <a href="#deleteRepo" >deleteRepo</a>
-                            </li>
-                            <li>
                                 <a href="#deleteResource" >deleteResource</a>
-                            </li>
-                            <li>
-                                <a href="#openRepoMenu" >openRepoMenu</a>
                             </li>
                             <li>
                                 <a href="#openResourceMenu" >openResourceMenu</a>
@@ -315,12 +316,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:20</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>constructor</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -388,9 +391,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:33</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>gives children for recursive usage</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
@@ -414,9 +423,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:41</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>gives parentPath</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
@@ -440,9 +455,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:37</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>gives parent repoId</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -467,19 +488,54 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>document:click(event: Event)</code>
+<code>document:click(_: Event)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="63"
-                                    class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:63</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="94"
+                                    class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:94</a></div>
                         </td>
                     </tr>
 
 
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>closes popUp when click</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>_</td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>closes popUp when click</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                </td>
+            </tr>
         </tbody>
     </table>
 </section>
@@ -508,14 +564,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="45"
-                                    class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:45</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:66</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>builds full path with parentPath and childKey</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -526,6 +584,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -540,6 +599,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>builds full path with parentPath and childKey</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -570,7 +633,7 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>closeMenu(event: Event)</code>
+                    <code>closeMenu(_: Event)</code>
                 </td>
             </tr>
 
@@ -584,14 +647,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="63"
-                                    class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:63</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="94"
+                                    class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:94</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>closes popUp when click</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -602,11 +667,12 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>event</td>
+                                                <td>_</td>
                                             <td>
                                                         <code>Event</code>
                                             </td>
@@ -616,73 +682,10 @@
                                             </td>
 
 
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="deleteRepo"></a>
-                    <span class="name">
-                        <span ><b>deleteRepo</b></span>
-                        <a href="#deleteRepo"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>deleteRepo(repoId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="76"
-                                    class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:76</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>repoId</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                    <p>closes popUp when click</p>
+
                                             </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
                                         </tr>
                                     </tbody>
                                 </table>
@@ -718,14 +721,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="69"
-                                    class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:69</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="103"
+                                    class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:103</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>deletes a resource with full path</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -736,6 +741,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -750,85 +756,10 @@
                                             </td>
 
 
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="openRepoMenu"></a>
-                    <span class="name">
-                        <span ><b>openRepoMenu</b></span>
-                        <a href="#openRepoMenu"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>openRepoMenu(event: MouseEvent, repoId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="39"
-                                    class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:39</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>event</td>
                                             <td>
-                                                        <code>MouseEvent</code>
+                                                    <p>deletes a resource with full path</p>
+
                                             </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>repoId</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
                                         </tr>
                                     </tbody>
                                 </table>
@@ -864,14 +795,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="33"
-                                    class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:33</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:56</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>opens resource popUp on mouse cursor</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -882,6 +815,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -896,6 +830,8 @@
                                             </td>
 
 
+                                            <td>
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>resource</td>
@@ -908,6 +844,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>opens resource popUp on mouse cursor</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -943,14 +883,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="49"
-                                    class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:49</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="74"
+                                    class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:74</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>checks that pupUp is not over 30px on X coordinate</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -961,6 +903,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -975,6 +918,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>checks that pupUp is not over 30px on X coordinate</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1010,14 +957,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="57"
-                                    class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:57</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="85"
+                                    class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:85</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>toggles children</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -1028,6 +977,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1042,6 +992,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>toggles children</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1082,7 +1036,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:49</a></div>
                         </td>
                     </tr>
 
@@ -1108,7 +1062,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:48</a></div>
                         </td>
                     </tr>
 
@@ -1139,7 +1093,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:42</a></div>
                         </td>
                     </tr>
 
@@ -1170,7 +1124,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:45</a></div>
                         </td>
                     </tr>
 
@@ -1197,7 +1151,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -1224,7 +1178,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:80</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:43</a></div>
                         </td>
                     </tr>
 
@@ -1251,7 +1205,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -1282,7 +1236,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:47</a></div>
                         </td>
                     </tr>
 
@@ -1313,7 +1267,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/main/sidebar/tree-child/tree-child.component.ts:46</a></div>
                         </td>
                     </tr>
 
@@ -1332,6 +1286,9 @@ import {KeyValuePipe, NgClass, NgForOf} from &#x27;@angular/common&#x27;;
 import {ResourceService} from &#x27;../../service/resource.service&#x27;;
 import {NavigationService} from &#x27;../../service/navigation.service&#x27;;
 
+/**
+ * recursive tree component
+ */
 @Component({
   selector: &#x27;app-tree-child&#x27;,
   imports: [
@@ -1343,14 +1300,29 @@ import {NavigationService} from &#x27;../../service/navigation.service&#x27;;
   styleUrl: &#x27;./tree-child.component.css&#x27;
 })
 export class TreeChildComponent {
+  /**
+   * constructor
+   * @param resourceService
+   * @param navigationService
+   */
   constructor(public resourceService: ResourceService,
               public navigationService: NavigationService) {
   }
 
+  /**
+   * gives children for recursive usage
+   */
   @Input() children: Record&lt;string, ContentGroup&gt; &#x3D; {};
+  /**
+   * gives parent repoId
+   */
   @Input() parentRepoId: string | null &#x3D; null;
+  /**
+   * gives parentPath
+   */
   @Input() parentPath: string | undefined &#x3D; &#x27;&#x27;;
   isOpen: Record&lt;string, boolean&gt; &#x3D; {};
+  protected readonly Object &#x3D; Object;
 
   menuPosition &#x3D; {x: 0, y: 0};
   selectedResource: Resources | null &#x3D; null;
@@ -1358,22 +1330,29 @@ export class TreeChildComponent {
   hoveredResource: any;
   hoveredRepo: any;
 
+  /**
+   * @param event
+   * @param resource
+   * opens resource popUp on mouse cursor
+   */
   openResourceMenu(event: MouseEvent, resource: Resources) {
     event.stopPropagation();
     this.selectedResource &#x3D; resource;
     this.menuPosition &#x3D; {x: this.popUpInWindow(event.clientX -110), y: event.clientY + 10};
   }
 
-  openRepoMenu(event: MouseEvent, repoId: string){
-    event.stopPropagation();
-    this.selectedPath &#x3D; repoId;
-    this.menuPosition &#x3D; {x: this.popUpInWindow(event.clientX -110), y: event.clientY + 10};
-  }
-
+  /**
+   * @param childKey
+   * builds full path with parentPath and childKey
+   */
   buildFullPath(childKey: string): string {
     return this.parentPath ? &#x60;${this.parentPath}\\${childKey}&#x60; : childKey;
   }
 
+  /**
+   * @param posX
+   * checks that pupUp is not over 30px on X coordinate
+   */
   popUpInWindow(posX: number) {
     if (posX &lt; 30){
       return 30
@@ -1381,19 +1360,28 @@ export class TreeChildComponent {
     return posX
   }
 
-
+  /**
+   * @param repoId
+   * toggles children
+   */
   toggleChildren(repoId: string) {
     this.isOpen[repoId] &#x3D; !this.isOpen[repoId];
   }
 
-  // Schließt das Menü, wenn irgendwo anders geklickt wird
+  /**
+    * @param _
+   * closes popUp when click
+   */
   @ HostListener(&#x27;document:click&#x27;, [&#x27;$event&#x27;])
-  closeMenu(event: Event) {
+  closeMenu(_: Event) {
     this.selectedResource &#x3D; null;
     this.selectedPath &#x3D; null
   }
 
-
+  /**
+   * @param resource
+   * deletes a resource with full path
+   */
   deleteResource(resource: Resources) {
     if (window.confirm(&quot;Do you really want to delete &#x27;&quot; + resource.path + &quot;&#x27; in Repo: &#x27;&quot; + resource.repoId + &quot;&#x27;?&quot;)) {
       this.resourceService.removeResource(resource.repoId, resource.path);
@@ -1401,11 +1389,6 @@ export class TreeChildComponent {
     }
   }
 
-  deleteRepo(repoId: string) {
-    console.log(&quot;delete Repo&quot;, repoId)
-  }
-
-  protected readonly Object &#x3D; Object;
 }
 </code></pre>
     </div>

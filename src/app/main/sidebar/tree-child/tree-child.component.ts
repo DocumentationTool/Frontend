@@ -40,6 +40,7 @@ export class TreeChildComponent {
    */
   @Input() parentPath: string | undefined = '';
   isOpen: Record<string, boolean> = {};
+  protected readonly Object = Object;
 
   menuPosition = {x: 0, y: 0};
   selectedResource: Resources | null = null;
@@ -47,16 +48,29 @@ export class TreeChildComponent {
   hoveredResource: any;
   hoveredRepo: any;
 
+  /**
+   * @param event
+   * @param resource
+   * opens resource popUp on mouse cursor
+   */
   openResourceMenu(event: MouseEvent, resource: Resources) {
     event.stopPropagation();
     this.selectedResource = resource;
     this.menuPosition = {x: this.popUpInWindow(event.clientX -110), y: event.clientY + 10};
   }
 
+  /**
+   * @param childKey
+   * builds full path with parentPath and childKey
+   */
   buildFullPath(childKey: string): string {
     return this.parentPath ? `${this.parentPath}\\${childKey}` : childKey;
   }
 
+  /**
+   * @param posX
+   * checks that pupUp is not over 30px on X coordinate
+   */
   popUpInWindow(posX: number) {
     if (posX < 30){
       return 30
@@ -64,18 +78,28 @@ export class TreeChildComponent {
     return posX
   }
 
-
+  /**
+   * @param repoId
+   * toggles children
+   */
   toggleChildren(repoId: string) {
     this.isOpen[repoId] = !this.isOpen[repoId];
   }
 
-  // Schließt das Menü, wenn irgendwo anders geklickt wird
+  /**
+    * @param _
+   * closes popUp when click
+   */
   @ HostListener('document:click', ['$event'])
   closeMenu(_: Event) {
     this.selectedResource = null;
     this.selectedPath = null
   }
 
+  /**
+   * @param resource
+   * deletes a resource with full path
+   */
   deleteResource(resource: Resources) {
     if (window.confirm("Do you really want to delete '" + resource.path + "' in Repo: '" + resource.repoId + "'?")) {
       this.resourceService.removeResource(resource.repoId, resource.path);
@@ -83,5 +107,4 @@ export class TreeChildComponent {
     }
   }
 
-  protected readonly Object = Object;
 }

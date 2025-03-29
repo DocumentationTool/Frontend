@@ -2,7 +2,6 @@ import {jwtDecode} from 'jwt-decode';
 import {Injectable, signal} from '@angular/core';
 import {ApiAuth} from '../../api/apiAuth';
 import {ToastrService} from 'ngx-toastr';
-import {ResourceService} from './resource.service';
 import {ApiResource} from '../../api/apiResource';
 
 @Injectable({

@@ -33,8 +33,8 @@ export class MainComponent implements OnInit {
    * @param navigationService
    * @param resizeService
    */
-  constructor(public resourceService: ResourceService,
-              public navigationService: NavigationService,
+  constructor(protected resourceService: ResourceService,
+              protected navigationService: NavigationService,
               protected resizeService: ResizeService) {
 
   }

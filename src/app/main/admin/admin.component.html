@@ -19,7 +19,7 @@
     <h2>User management</h2>
     <br>
     <ul>
-      @for (user of userService.allUsersOnRepo(); track user.userId) {
+      @for (user of userService.allUsers(); track user.userId) {
         <li>
           {{ user.userId }}
           <div class="button-group">

@@ -7,11 +7,21 @@ import {ToastrService} from 'ngx-toastr';
 import {AuthService} from './authService';
 import {executeBrowserBuilder} from '@angular-devkit/build-angular';
 
+/**
+ * service for apiResource
+ */
 @Injectable({
   providedIn: 'root'
 })
 
 export class ResourceService {
+  /**
+   * constructor
+   * @param router
+   * @param apiResource
+   * @param toastr
+   * @param authService
+   */
   constructor(
     private router: Router,
     private apiResource: ApiResource,
@@ -29,7 +39,12 @@ export class ResourceService {
   allRepoTagIds = signal<string[]>([]);
   allResourceTagIds = signal<string[]>([]);
 
-
+  /**
+   * @param file
+   * gets called when click on resource in filetree
+   * checks for changes
+   * calls selectResource
+   */
   onSelectResource(file: any) {
     if (this.checkForFileChanges()) {
       if (window.confirm("Save changes?")) {
@@ -41,14 +56,16 @@ export class ResourceService {
     }
   }
 
-  selectResource(file: any) { //Bei file Auswahl, den Inhalt holen
+  /**
+   * @param file
+   *
+   */
+  selectResource(file: any) {
     this.getResourceTags(null, file.path, file.repoId, this.authService.username(), [], [])
     this.apiResource.getResource(null, file.path, file.repoId, null, [], [], true, 1).subscribe(
       data => {
-        // Greife auf die Ressourcen des entsprechenden Repos zu
         const resources: Resources[] | undefined = data.content[file.repoId];
         if (resources && resources.length > 0) {
-          // Optional: Finde den Resource-Eintrag anhand des Pfads, falls es mehrere Einträge gibt
           const resource = resources.find(r => r.path === file.path);
           if (resource) {
             this.selectedFile.set(resource);

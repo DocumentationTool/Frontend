@@ -4,6 +4,9 @@ import {ToastrService} from 'ngx-toastr';
 import {Permission} from '../../Model/permission';
 import {UserPermission} from '../../Model/apiResponseGetPermission';
 
+/**
+ * service
+ */
 @Injectable({
   providedIn: 'root'
 })

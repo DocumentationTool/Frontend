@@ -208,14 +208,6 @@ implements navbar, sidebar and router outlet</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#navigationService" >navigationService</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#resourceService" >resourceService</a>
-                            </li>
-                            <li>
                                 <a href="#sidebarWidth" >sidebarWidth</a>
                             </li>
                         </ul>
@@ -265,6 +257,8 @@ implements navbar, sidebar and router outlet</p>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>constructor</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -350,8 +344,8 @@ implements navbar, sidebar and router outlet</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="46"
-                                    class="link-to-prism">src/app/main/main.component.ts:46</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/main/main.component.ts:51</a></div>
                         </td>
                     </tr>
 
@@ -389,8 +383,8 @@ implements navbar, sidebar and router outlet</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="55"
-                                    class="link-to-prism">src/app/main/main.component.ts:55</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="60"
+                                    class="link-to-prism">src/app/main/main.component.ts:60</a></div>
                         </td>
                     </tr>
 
@@ -419,60 +413,6 @@ differentiates between editor active and sidebar toggled</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="navigationService"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>navigationService</b></span>
-                        <a href="#navigationService"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../injectables/NavigationService.html" target="_self" >NavigationService</a></code>
-
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/main/main.component.ts:32</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="resourceService"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>resourceService</b></span>
-                        <a href="#resourceService"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../injectables/ResourceService.html" target="_self" >ResourceService</a></code>
-
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/main/main.component.ts:31</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="sidebarWidth"></a>
                     <span class="name">
                         <span ><b>sidebarWidth</b></span>
@@ -487,7 +427,7 @@ differentiates between editor active and sidebar toggled</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/main/main.component.ts:40</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/main/main.component.ts:45</a></div>
                         </td>
                     </tr>
 
@@ -535,9 +475,14 @@ import {ResizeService} from &#x27;./sidebar/service/resize.service&#x27;;
 })
 
 export class MainComponent implements OnInit {
-
-  constructor(public resourceService: ResourceService,
-              public navigationService: NavigationService,
+  /**
+   * constructor
+   * @param resourceService
+   * @param navigationService
+   * @param resizeService
+   */
+  constructor(protected resourceService: ResourceService,
+              protected navigationService: NavigationService,
               protected resizeService: ResizeService) {
 
   }
@@ -578,7 +523,7 @@ export class MainComponent implements OnInit {
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;app-navbar&gt;&lt;/app-navbar&gt;
 &lt;div style&#x3D;&quot;padding-top: 40px&quot;&gt;
-  &lt;app-sidebar&gt;&lt;/app-sidebar&gt;
+  &lt;app-sidebar&gt;&lt;/app-sidebar &gt;
   &lt;div
     [ngStyle]&#x3D;&quot;{&#x27;margin-left.px&#x27;: width()}&quot;
 
@@ -625,7 +570,7 @@ export class MainComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><app-navbar></app-navbar><div style="padding-top: 40px">  <app-sidebar></app-sidebar>  <div    [ngStyle]="{\'margin-left.px\': width()}"    [ngClass]="{  \'editor-sidebar\': this.navigationService.isEditorActive() && this.navigationService.toggle(),  \'editor\': this.navigationService.isEditorActive() && !this.navigationService.toggle(),  \'main-sidebar\': !this.navigationService.isEditorActive() && this.navigationService.toggle(),  \'main\': !this.navigationService.isEditorActive() && !this.navigationService.toggle()}">    @if (resourceService.selectedFile() || this.navigationService.isAdminActive() || this.navigationService.isPermissionActive()) {      <router-outlet></router-outlet>    } @else {      Please Select a resource!    }  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><app-navbar></app-navbar><div style="padding-top: 40px">  <app-sidebar></app-sidebar >  <div    [ngStyle]="{\'margin-left.px\': width()}"    [ngClass]="{  \'editor-sidebar\': this.navigationService.isEditorActive() && this.navigationService.toggle(),  \'editor\': this.navigationService.isEditorActive() && !this.navigationService.toggle(),  \'main-sidebar\': !this.navigationService.isEditorActive() && this.navigationService.toggle(),  \'main\': !this.navigationService.isEditorActive() && !this.navigationService.toggle()}">    @if (resourceService.selectedFile() || this.navigationService.isAdminActive() || this.navigationService.isPermissionActive()) {      <router-outlet></router-outlet>    } @else {      Please Select a resource!    }  </div></div></div>'
     var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EditorComponent', 'selector': 'app-editor'},{'name': 'GroupAddComponent', 'selector': 'app-group-add'},{'name': 'GroupEditComponent', 'selector': 'app-group-edit'},{'name': 'GroupPermissionAddComponent', 'selector': 'app-group-permission-add'},{'name': 'GroupPermissionUpdateComponent', 'selector': 'app-group-permission-update'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'RepoEditTagsComponent', 'selector': 'app-repo-edit-tags'},{'name': 'ResourceCreateNewComponent', 'selector': 'app-resource-upload'},{'name': 'ResourceEditTagsComponent', 'selector': 'app-resource-edit-tags'},{'name': 'ResourceMoveComponent', 'selector': 'app-resource-move'},{'name': 'ResourceUploadComponent', 'selector': 'app-resource-upload'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TreeChildComponent', 'selector': 'app-tree-child'},{'name': 'UserAddComponent', 'selector': 'app-user-add'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserPermissionAddComponent', 'selector': 'app-user-permission-add'},{'name': 'UserPermissionUpdateComponent', 'selector': 'app-user-permission-update'},{'name': 'ViewComponent', 'selector': 'app-view'}];
     var DIRECTIVES = [{'name': 'ResizableDirective', 'selector': '[appResizable]'}];
     var ACTUAL_COMPONENT = {'name': 'MainComponent'};
