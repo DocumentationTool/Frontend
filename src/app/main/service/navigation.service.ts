@@ -1,6 +1,5 @@
 import {Injectable, signal} from '@angular/core';
 import {Router} from '@angular/router';
-import {ApiAuth} from '../../api/apiAuth';
 import {ApiResource} from '../../api/apiResource';
 import {ResourceService} from './resource.service';
 import {ApiResponseModelResourceBeingEdited} from '../../Model/apiResponseModelResourceBeingEdited';
@@ -11,8 +10,6 @@ import {ResourceEditTagsComponent} from '../popUp/resource-edit-tags/resource-ed
 import {ResourceMoveComponent} from '../popUp/resource-move/resource-move.component';
 import {RepoEditTagsComponent} from '../popUp/repo-edit-tags/repo-edit-tags.component';
 import {UserAddComponent} from '../popUp/user-add/user-add.component';
-import {Repos} from '../../Model/apiResponseModelRepos';
-import {UserService} from './userService';
 import {User} from '../../Model/apiResponseUser';
 import {UserEditComponent} from '../popUp/user-edit/user-edit.component';
 import {GroupAddComponent} from '../popUp/group-add/group-add.component';
@@ -32,7 +29,6 @@ export class NavigationService {
   constructor(private router: Router,
               private apiResource: ApiResource,
               private resourceService: ResourceService,
-              private userService: UserService,
               private dialog: MatDialog,
               private authService: AuthService,
               private toastr: ToastrService) {
@@ -86,10 +82,6 @@ export class NavigationService {
 
   createNewResource() {
     this.dialog.open(ResourceCreateNewComponent);
-  }
-
-  selectRepo(repo: Repos) {
-    this.userService.selectedRepo.set(repo)
   }
 
   createNewUser() {

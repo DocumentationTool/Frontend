@@ -58,7 +58,10 @@ export class ResourceService {
 
   /**
    * @param file
-   *
+   * gets the resource clicked with data
+   * sets selected file
+   * sets data navigates to view
+   * handles error
    */
   selectResource(file: any) {
     this.getResourceTags(null, file.path, file.repoId, this.authService.username(), [], [])
@@ -80,12 +83,16 @@ export class ResourceService {
           this.toastr.error("Resource not found")
         }
       },
-      error => {
+      _ => {
         this.toastr.error("Resource not found")
       }
     );
   }
 
+  /**
+   * removes a file being edited
+   * handles error
+   */
   removeFileEditing() {
     console.log("remove FIle Edit: ", this.editingFile()?.repoId, this.editingFile()?.path)
     this.apiResource.removesResourceBeingEdited(this.editingFile()?.repoId, this.editingFile()?.path).subscribe(
@@ -93,23 +100,40 @@ export class ResourceService {
         console.log(data)
       },
       error => {
-        console.error(error.error)
+        console.error(error.error.error)
       }
     )
   }
 
+  /**
+   * checks for file changes
+   * compares data when loaded with current data
+   */
   checkForFileChanges() {
     return this._fileContent() != this.fileContentBeforeChanges;
   }
 
+
+  /**
+   * getter for file content
+   */
   get fileContent(): WritableSignal<string> {
     return this._fileContent;
   }
 
+  /**
+   * @param value
+   * setter for file content
+   */
   set fileContent(value: WritableSignal<string>) {
     this._fileContent = value;
   }
 
+  /**
+   * updates resource data
+   * saves data
+   * handles error
+   */
   updateResource() {
     this.removeFileEditing();
     this.apiResource.updateResource(this.editingFile()?.repoId, this.editingFile()?.path, this.authService.username(), null, null, null, null, this.fileContent(), false).subscribe(
@@ -124,6 +148,17 @@ export class ResourceService {
     )
   }
 
+  /**
+   * @param repoId
+   * @param path
+   * @param createdBy
+   * @param category
+   * @param tagIds
+   * @param data
+   * adds a new resource
+   * loads file tree
+   * handles error
+   */
   addResource(repoId: string, path: string, createdBy: string, category: string | null, tagIds: string[] | null, data: string) {
     this.apiResource.addResource(repoId, path, createdBy, category, tagIds, data).subscribe(
       _ => {
@@ -136,6 +171,15 @@ export class ResourceService {
     )
   }
 
+  /**
+   * @param repoId
+   * @param path
+   * @param tagsToAdd
+   * @param tagsToRemove
+   * adds a tag to a resource
+   * removes a tag from resource
+   * handles error
+   */
   editResourceTags(repoId: string, path: string, tagsToAdd: string[], tagsToRemove: string[]) {
     this.apiResource.updateResource(repoId, path, null, tagsToAdd, tagsToRemove, null, null, null, false).subscribe(
       _ => {
@@ -150,6 +194,15 @@ export class ResourceService {
     )
   }
 
+  /**
+   * @param repoId
+   * @param tagIdsToAdd
+   * @param tagNamesToAdd
+   * @param tagIdsToRemove
+   * adds a tag to a repo
+   * removes a tog from a repo
+   * handles error
+   */
   editRepoTags(repoId: string, tagIdsToAdd: string[], tagNamesToAdd: string[], tagIdsToRemove: string[]) {
     if (tagIdsToAdd && tagNamesToAdd && tagIdsToAdd.length === tagNamesToAdd.length) {
       for (let i = 0; i < tagIdsToAdd.length; i++) {
@@ -178,6 +231,12 @@ export class ResourceService {
     }
   }
 
+  /**
+   * @param repoId
+   * gets all tags from a repo
+   * saves them in signal
+   * handles error
+   */
   getTag(repoId: string) {
     this.apiResource.getTag(repoId).subscribe(
       data => {
@@ -192,6 +251,10 @@ export class ResourceService {
     );
   }
 
+  /**
+   * gets all available tags
+   * handles error
+   */
   getAllTags() {
     this.apiResource.getTag(null).subscribe(
       data => {
@@ -204,6 +267,12 @@ export class ResourceService {
     return this.allTags;
   }
 
+  /**
+   * @param repoId
+   * @param path
+   * removes a resource
+   * handles error
+   */
   removeResource(repoId: string, path: string) {
     this.apiResource.removeResource(repoId, path).subscribe(
       _ => {
@@ -216,6 +285,15 @@ export class ResourceService {
     )
   }
 
+  /**
+   * @param userId
+   * @param repoFrom
+   * @param pathFrom
+   * @param repoTo
+   * @param pathTo
+   * moves a resource to another path
+   * handles error
+   */
   moveResource(userId: string, repoFrom: string, pathFrom: string, repoTo: string, pathTo: string) {
     this.apiResource.moveResource(userId, repoFrom, pathFrom, repoTo, pathTo).subscribe(
       _ => {
@@ -227,6 +305,16 @@ export class ResourceService {
     )
   }
 
+  /**
+   * @param searchTerm
+   * @param path
+   * @param repoId
+   * @param userId
+   * @param whiteListTags
+   * @param blacklistListTags
+   * searches all resources
+   * handles error
+   */
   getResource(searchTerm: string | null, path: string | null, repoId: string | null, userId: string | null,
               whiteListTags: string[], blacklistListTags: string[]) {
     this.apiResource.getResource(searchTerm, path, repoId, userId, whiteListTags, blacklistListTags, false, 1073741824).subscribe(
@@ -240,10 +328,19 @@ export class ResourceService {
     )
   }
 
-  // holt alle Tags, von einer Resource
+  /**
+   * @param searchTerm
+   * @param path
+   * @param repoId
+   * @param userId
+   * @param whiteListTags
+   * @param blacklistListTags
+   * gets all tags from a resource
+   * handles error
+   */
   getResourceTags(searchTerm: string | null, path: string | null, repoId: string | null, userId: string | null,
                   whiteListTags: string[], blacklistListTags: string[]) {
-    this.apiResource.getResource(searchTerm, path, repoId, null, [], [], false, 1).subscribe(
+    this.apiResource.getResource(searchTerm, path, repoId, userId, whiteListTags, blacklistListTags, false, 1).subscribe(
       data => { // Alle Tags einer Resource in signal speichern
         let tagsFound = false; // Flag, um zu prüfen, ob Tags vorhanden sind
         Object.values(data.content).forEach((resourcesArray) => {
@@ -273,6 +370,9 @@ export class ResourceService {
     );
   }
 
+  /**
+   * loads the file tree
+   */
   loadFileTree() {
     this.apiResource.loadFileTree(null, null, null, this.authService.username(), [], [], false, 1073741824).subscribe(
       data => {
@@ -285,10 +385,17 @@ export class ResourceService {
     );
   }
 
+  /**
+   * getter for file tree
+   */
   get content() {
     return this.fileTree();
   }
 
+  /**
+   * @param path
+   * splits the resource path \\
+   */
   splitResourcePath(path: string) {
     return path.split("\\").pop() || '';
   }
