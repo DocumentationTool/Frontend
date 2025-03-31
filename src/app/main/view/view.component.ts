@@ -3,6 +3,7 @@ import {MarkdownComponent} from "ngx-markdown";
 import {NgIf} from "@angular/common";
 import {ResourceService} from '../service/resource.service';
 import {NavigationService} from '../service/navigation.service';
+import {AuthService} from '../service/authService';
 
 /**
  * when resource selected, shows data preview
@@ -23,9 +24,11 @@ export class ViewComponent {
    * constructor
    * @param resourceService
    * @param navigationService
+   * @param authService
    */
   constructor(protected resourceService: ResourceService,
-              protected navigationService: NavigationService) {
+              protected navigationService: NavigationService,
+              protected authService: AuthService) {
 
   }
 }

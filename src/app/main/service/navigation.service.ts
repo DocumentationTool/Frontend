@@ -21,11 +21,23 @@ import {UserPermissionUpdateComponent} from '../popUp/user-permission-update/use
 import {GroupPermissionAddComponent} from '../popUp/group-permission-add/group-permission-add.component';
 import {GroupPermissionUpdateComponent} from '../popUp/group-permission-update/group-permission-update.component';
 
+/**
+ * service for navigation through the app
+ */
 @Injectable({
   providedIn: 'root'
 })
 
 export class NavigationService {
+  /**
+   * constructor
+   * @param router
+   * @param apiResource
+   * @param resourceService
+   * @param dialog
+   * @param authService
+   * @param toastr
+   */
   constructor(private router: Router,
               private apiResource: ApiResource,
               private resourceService: ResourceService,
@@ -37,10 +49,17 @@ export class NavigationService {
   toggle = signal<boolean>(true);
   mode = signal<string>("editor");
 
+  /**
+   * toggles the sidebar
+   */
   toggleSidebar() {
     this.toggle.update(current => !current);
   }
 
+  /**
+   * checks if allowed to edit file
+   * opens editor
+   */
   onEditor() {
     if (!this.isEditorActive()) { //wenn nur zwischen editor und preview hin und her gesrpungen wird, keine abfrage ob file editiert wird
       this.apiResource.checksResourceBeingEdited(this.resourceService.selectedFile()?.repoId, this.resourceService.selectedFile()?.path).subscribe(
@@ -57,6 +76,12 @@ export class NavigationService {
     }
   }
 
+  /**
+   * @param data
+   * checks if a file is currently being edited
+   * handles navigation
+   * handles error
+   */
   editedResourceCheck(data: ApiResponseModelResourceBeingEdited) {
     if (!data.content.isBeingEdited) { //Abfrage ob file editiert wird
       console.log("File Editing")
@@ -76,22 +101,38 @@ export class NavigationService {
     }
   }
 
+  /**
+   * navigates to preview
+   */
   onPreview() {
     this.mode.set("preview")
   }
 
+  /**
+   * opens popUp ResourceCreateNewComponent
+   */
   createNewResource() {
     this.dialog.open(ResourceCreateNewComponent);
   }
 
+  /**
+   * opens popUp UserAddComponent
+   */
   createNewUser() {
     this.dialog.open(UserAddComponent);
   }
 
+  /**
+   * opens popUp GroupAddComponent
+   */
   createNewGroup() {
     this.dialog.open(GroupAddComponent);
   }
 
+  /**
+   * @param repo
+   * opens popUp UserPermissionAddComponent
+   */
   createNewUserPermission(repo: string) {
     this.dialog.open(UserPermissionAddComponent,
       {
@@ -100,6 +141,13 @@ export class NavigationService {
     )
   }
 
+  /**
+   * @param repoId
+   * @param user
+   * @param path
+   * @param type
+   * opens popUps UserPermissionUpdateComponent
+   */
   updateUserPermission(repoId: string, user: string, path: string, type: string) {
     this.dialog.open(UserPermissionUpdateComponent,
       {
@@ -107,6 +155,10 @@ export class NavigationService {
       })
   }
 
+  /**
+   * @param repo
+   * opens popUp GroupPermissionAddComponent
+   */
   createNewGroupPermission(repo: string) {
     this.dialog.open(GroupPermissionAddComponent,
       {
@@ -115,6 +167,13 @@ export class NavigationService {
     )
   }
 
+  /**
+   * @param repoId
+   * @param group
+   * @param path
+   * @param type
+   * opens popUp GroupPermissionUpdateComponent
+   */
   updateGroupPermission(repoId: string, group: string, path: string, type: string) {
     this.dialog.open(GroupPermissionUpdateComponent,
       {
@@ -122,6 +181,10 @@ export class NavigationService {
       })
   }
 
+  /**
+   * @param groupId
+   * opens popUp GroupEditComponent
+   */
   editGroup(groupId: string) {
     this.dialog.open(GroupEditComponent,
       {
@@ -130,6 +193,11 @@ export class NavigationService {
     )
   }
 
+  /**
+   * @param repoId
+   * @param user
+   * opens popUp UserEditComponent
+   */
   editUser(repoId: string | undefined, user: User) {
     this.dialog.open(UserEditComponent,
       {
@@ -137,6 +205,11 @@ export class NavigationService {
       });
   }
 
+  /**
+   * @param data
+   * @param path
+   * opens popUp ResourceUploadComponent
+   */
   uploadNewResource(data: string, path: string) {
     this.dialog.open(ResourceUploadComponent,
       {
@@ -144,6 +217,11 @@ export class NavigationService {
       });
   }
 
+  /**
+   * @param repoId
+   * @param path
+   * opens popUp ResourceEditTagsComponent
+   */
   editResourceTags(repoId: string | undefined, path: string | undefined) {
     this.dialog.open(ResourceEditTagsComponent,
       {
@@ -151,6 +229,10 @@ export class NavigationService {
       });
   }
 
+  /**
+   * @param repoId
+   * opens popUp RepoEditTagsComponent
+   */
   editRepoTags(repoId: string) {
     this.dialog.open(RepoEditTagsComponent,
       {
@@ -158,6 +240,11 @@ export class NavigationService {
       });
   }
 
+  /**
+   * @param repoId
+   * @param path
+   * opens popUp ResourceEditTagsComponent
+   */
   editUnterRepoTags(repoId: string, path: string) {
     this.dialog.open(ResourceEditTagsComponent,
       {
@@ -165,6 +252,11 @@ export class NavigationService {
       });
   }
 
+  /**
+   * @param repoId
+   * @param path
+   * opens popUp ResourceMoveComponent
+   */
   moveResource(repoId: string, path: string) {
     this.dialog.open(ResourceMoveComponent,
       {
@@ -172,7 +264,9 @@ export class NavigationService {
       });
   }
 
-
+  /**
+   * checks if editor window is currently active
+   */
   isEditorActive(): boolean {
     return this.router.isActive('/main/editor', {
       paths: 'exact',
@@ -182,6 +276,9 @@ export class NavigationService {
     });
   }
 
+  /**
+   * checks if admin window is currently active
+   */
   isAdminActive(): boolean {
     return this.router.isActive('/main/admin', {
       paths: 'exact',
@@ -191,6 +288,9 @@ export class NavigationService {
     });
   }
 
+  /**
+   * checks if permission window is currently active
+   */
   isPermissionActive(): boolean {
     return this.router.isActive('/main/admin/permission', {
       paths: 'exact',

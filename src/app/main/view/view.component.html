@@ -17,6 +17,10 @@
       <i
         (click)="navigationService.editResourceTags(resourceService.selectedFile()?.repoId,resourceService.selectedFile()?.path)"
         class="ri-pencil-fill"></i>
+      @if (authService.username() === "admin") {
+        <i class="ri-close-line"
+           (click)="resourceService.removeFileEditingAdmin(resourceService.selectedFile()?.repoId, resourceService.selectedFile()?.path)"></i>
+      }
     </div>
     <hr>
   }

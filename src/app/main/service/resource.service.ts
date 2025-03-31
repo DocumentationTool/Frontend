@@ -94,7 +94,6 @@ export class ResourceService {
    * handles error
    */
   removeFileEditing() {
-    console.log("remove FIle Edit: ", this.editingFile()?.repoId, this.editingFile()?.path)
     this.apiResource.removesResourceBeingEdited(this.editingFile()?.repoId, this.editingFile()?.path).subscribe(
       data => {
         console.log(data)
@@ -106,13 +105,30 @@ export class ResourceService {
   }
 
   /**
+   * @param repoId
+   * @param path
+   * as admin, you can remove a file from being edited
+   */
+  removeFileEditingAdmin(repoId: string | undefined, path: string | undefined){
+    if (window.confirm("Remove resouce being edited?")){
+      this.apiResource.removesResourceBeingEdited(repoId, path).subscribe(
+        _ => {
+          this.toastr.success("File is not being edited anymore")
+        },
+        error => {
+          this.toastr.error(error.error.error)
+        }
+      )
+    }
+  }
+
+  /**
    * checks for file changes
    * compares data when loaded with current data
    */
   checkForFileChanges() {
     return this._fileContent() != this.fileContentBeforeChanges;
   }
-
 
   /**
    * getter for file content
