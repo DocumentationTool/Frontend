@@ -37,8 +37,8 @@ pipeline {
     stage('Deploy to Server') {
       steps {
         script {
-          sh "rm -rf ${DEPLOY_PATH}/*"
-          sh "cp -r ${STAGING_PATH}/* ${DEPLOY_PATH}/"
+          sh "sudo rm -rf ${DEPLOY_PATH}/*"
+          sh "sudo cp -r ${STAGING_PATH}/* ${DEPLOY_PATH}/"
         }
       }
     }
