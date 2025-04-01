@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     // Falls der Benutzer nicht "admin" ist, umleiten
-    this.router.navigate(['/main']);
+    this.router.navigate(['']);
     return false;
   }
 

@@ -23,6 +23,6 @@ export class NotFoundComponent {
    * navigation back to main page
    */
   onBack() {
-    this.router.navigate(['main'])
+    this.router.navigate([''])
   }
 }

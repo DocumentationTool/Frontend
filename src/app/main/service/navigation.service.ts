@@ -93,7 +93,7 @@ export class NavigationService {
           console.error(error.error.error)
         }
       )
-      this.router.navigate(['/main/editor'])
+      this.router.navigate(['/editor'])
       this.mode.set("editor")
       this.resourceService.editingFile.set(this.resourceService.selectedFile());
     } else {

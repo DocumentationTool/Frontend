@@ -7,12 +7,9 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {AuthGuard} from './AuthGuard/authGuad';
 
 export const routes: Routes = [
+
   {
-    path: '', redirectTo: 'main',
-    pathMatch: "full"
-  },
-  {
-    path: 'main',
+    path: '',
     component: MainComponent,
     children: [
       {

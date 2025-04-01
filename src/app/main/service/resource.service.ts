@@ -75,7 +75,7 @@ export class ResourceService {
             this.selectedFile.set(resource);
             this._fileContent.set(resource.data);
             this.fileContentBeforeChanges = resource.data;
-            this.router.navigate(['/main/view'])
+            this.router.navigate(['/view'])
 
           }
         }
