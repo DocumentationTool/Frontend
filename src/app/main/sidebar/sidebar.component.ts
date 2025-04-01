@@ -74,9 +74,7 @@ export class SidebarComponent {
   deleteResource(resource: Resources) {
     if (window.confirm("Do you really want to delete '" + resource.path + "' in Repo: '" + resource.repoId + "'?")) {
       this.resourceService.removeResource(resource.repoId, resource.path);
-      setTimeout(() => {
-        this.resourceService.loadFileTree();
-      }, 2000)
+      this.resourceService.loadFileTree();
     }
   }
 
