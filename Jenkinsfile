@@ -20,7 +20,7 @@ pipeline {
     stage('Build Angular App') {
       steps {
         script {
-          sh 'npm run build --prod'
+          sh 'ng build --configuration=production'  // ✅ Richtiger Befehl
         }
       }
     }
