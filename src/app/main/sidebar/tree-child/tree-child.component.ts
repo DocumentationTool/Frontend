@@ -56,7 +56,7 @@ export class TreeChildComponent {
   openResourceMenu(event: MouseEvent, resource: Resources) {
     event.stopPropagation();
     this.selectedResource = resource;
-    this.menuPosition = {x: this.popUpInWindow(event.clientX -110), y: event.clientY + 10};
+    this.menuPosition = {x: this.popUpInWindow(event.clientX - 110), y: event.clientY + 10};
   }
 
   /**
@@ -72,7 +72,7 @@ export class TreeChildComponent {
    * checks that pupUp is not over 30px on X coordinate
    */
   popUpInWindow(posX: number) {
-    if (posX < 30){
+    if (posX < 30) {
       return 30
     }
     return posX
@@ -87,7 +87,7 @@ export class TreeChildComponent {
   }
 
   /**
-    * @param _
+   * @param _
    * closes popUp when click
    */
   @ HostListener('document:click', ['$event'])
@@ -103,9 +103,7 @@ export class TreeChildComponent {
   deleteResource(resource: Resources) {
     if (window.confirm("Do you really want to delete '" + resource.path + "' in Repo: '" + resource.repoId + "'?")) {
       this.resourceService.removeResource(resource.repoId, resource.path);
-      setTimeout(() => {
-        this.resourceService.loadFileTree();
-      }, 2000)
+      this.resourceService.loadFileTree();
     }
   }
 
