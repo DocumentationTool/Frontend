@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://markdoc.net/'  // Produktions-Backend
+  apiUrl: 'https://5.75.149.191/'  // Produktions-Backend
 };
