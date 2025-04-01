@@ -293,7 +293,6 @@ export class ResourceService {
     this.apiResource.removeResource(repoId, path).subscribe(
       _ => {
         this.toastr.success("Resource removed!")
-        this.loadFileTree();
       },
       error => {
         this.toastr.error(error.error.error, "Remove resource failed: ")
