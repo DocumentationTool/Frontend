@@ -64,6 +64,7 @@ export class ResourceService {
    * handles error
    */
   selectResource(file: any) {
+    console.log("TESTII")
     this.getResourceTags(null, file.path, file.repoId, this.authService.username(), [], [])
     this.apiResource.getResource(null, file.path, file.repoId, null, [], [], true, 1).subscribe(
       data => {
@@ -76,16 +77,12 @@ export class ResourceService {
             this.fileContentBeforeChanges = resource.data;
             this.router.navigate(['/main/view'])
 
-          } else {
-            this.toastr.error("Resource not found")
           }
-        } else {
-          this.toastr.error("Resource not found")
         }
       },
       _ => {
         this.toastr.error("Resource not found")
-      }
+      },
     );
   }
 
@@ -109,8 +106,8 @@ export class ResourceService {
    * @param path
    * as admin, you can remove a file from being edited
    */
-  removeFileEditingAdmin(repoId: string | undefined, path: string | undefined){
-    if (window.confirm("Remove resouce being edited?")){
+  removeFileEditingAdmin(repoId: string | undefined, path: string | undefined) {
+    if (window.confirm("Remove resouce being edited?")) {
       this.apiResource.removesResourceBeingEdited(repoId, path).subscribe(
         _ => {
           this.toastr.success("File is not being edited anymore")
