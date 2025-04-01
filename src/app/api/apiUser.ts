@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {ApiResponseUser} from '../Model/apiResponseUser';
 import {ApiResponseGetPermission} from '../Model/apiResponseGetPermission';
+import {environment} from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,9 @@ export class ApiUser {
   constructor(private http: HttpClient) {
   }
 
-  private baseUrl = 'http://localhost:8080/api/user';
+  private baseUrl = environment.apiUrl + 'api/user';
 
-  addUser(userId: string, password: string,role: string, groupIds: string[] | null) {
+  addUser(userId: string, password: string, role: string, groupIds: string[] | null) {
     let params = new HttpParams()
       .set('userId', userId)
       .set('password', password)

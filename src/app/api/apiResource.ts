@@ -1,9 +1,10 @@
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {ApiResponseFileTree, Resources} from '../Model/apiResponseFileTree';
+import {ApiResponseFileTree} from '../Model/apiResponseFileTree';
 import {ApiResponseResource} from '../Model/apiResponseResource';
 import {ApiResponseModelResourceBeingEdited} from '../Model/apiResponseModelResourceBeingEdited';
 import {ApiResponseTags} from '../Model/apiResponseTags';
+import {environment} from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ApiResource {
   constructor(private http: HttpClient) {
   }
 
-  private baseUrl = 'http://localhost:8080/api/resource';
+  private baseUrl = environment.apiUrl + 'api/resource';
 
   updateResource(repoId: string | undefined, path: string | undefined, userId: string | null, tagsToAdd: string[] | null, tagsToRemove: string[] | null,
                  tagsToSet: string[] | null, category: string | null, data: string | null, treatNullsAsValues: boolean) {

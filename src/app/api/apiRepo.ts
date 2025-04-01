@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ApiResponseModelRepos} from '../Model/apiResponseModelRepos';
+import {environment} from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class ApiRepo {
   constructor(private http: HttpClient) {
   }
 
-  private baseUrl = 'http://localhost:8080/api/repo';
+  private baseUrl = environment.apiUrl + 'api/repo';
 
   //get all existing repos
   getRepos() {

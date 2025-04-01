@@ -3,17 +3,19 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {ApiResponseGroup} from '../Model/apiResponseGroup';
 import {Permission} from '../Model/permission';
 import {ApiResponseGetPermission} from '../Model/apiResponseGetPermission';
+import {environment} from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApiGroup{
+export class ApiGroup {
   constructor(private http: HttpClient) {
   }
-  private baseUrl = 'http://localhost:8080/api/group';
+
+  private baseUrl = environment.apiUrl + 'api/group';
 
 
-  addGroup(groupId: string, groupName:string) {
+  addGroup(groupId: string, groupName: string) {
     let params = new HttpParams()
     if (groupId) params = params.set('groupId', groupId);
     if (groupName) params = params.set('groupName', groupName);
@@ -26,7 +28,7 @@ export class ApiGroup{
     return this.http.post(this.baseUrl + "/remove", params);
   }
 
-  renameGroup(groupId: string, newName:string) {
+  renameGroup(groupId: string, newName: string) {
     let params = new HttpParams()
     if (groupId) params = params.set('groupId', groupId);
     if (newName) params = params.set('newName', newName);
@@ -39,14 +41,14 @@ export class ApiGroup{
     return this.http.get<ApiResponseGroup>(this.baseUrl + "/get", {params})
   }
 
-  addUserToGroup( userId:string, groupId: string) {
+  addUserToGroup(userId: string, groupId: string) {
     let params = new HttpParams()
     if (userId) params = params.set('userId', userId);
     if (groupId) params = params.set('groupId', groupId);
     return this.http.post(this.baseUrl + "/user/add", params);
   }
 
-  removeUserFromGroup(userId:string, groupId: string) {
+  removeUserFromGroup(userId: string, groupId: string) {
     let params = new HttpParams()
     if (userId) params = params.set('userId', userId);
     if (groupId) params = params.set('groupId', groupId);
@@ -85,8 +87,6 @@ export class ApiGroup{
       .set('groupId', groupId)
     return this.http.get<ApiResponseGetPermission>(this.baseUrl + "/permission/get", {params})
   }
-
-
 
 
 }

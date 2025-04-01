@@ -217,7 +217,6 @@ export class SidebarComponent {
    */
   @HostListener('document:click', ['$event'])
   closeMenu(_: Event) {
-    console.log("hallo")
     this.selectedRepo = null
     this.selectedResource = null
   }

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ApiResponseLogin} from '../Model/apiResponseLogin';
+import {environment} from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class ApiAuth {
   constructor(private http: HttpClient) {
   }
 
-  private baseUrl = 'http://localhost:8080/auth';
+  private baseUrl = environment.apiUrl + "auth";
 
   login(userId: string, password: string) {
     const params = {userId, password}
