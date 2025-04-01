@@ -50,7 +50,10 @@ export class ResourceMoveComponent implements OnInit {
   }
 
   moveResource() {
-    this.resourceService.moveResource(this.authService.username(), this.dialogData.repoId, this.dialogData.path, this.repoTo, this.pathTo)
+    this.resourceService.moveResource(this.authService.username(), this.dialogData.repoId, this.dialogData.path, this.repoTo, this.pathTo + '.md')
+    setTimeout(() => {
+      this.resourceService.loadFileTree();
+    },200)
     this.closeDialog();
   }
 
