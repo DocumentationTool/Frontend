@@ -4,7 +4,7 @@ pipeline {
   environment {
     ANGULAR_CLI_VERSION = '19.1.6'
     STAGING_PATH = "/opt/frontend-staging"
-    APP_NAME = "document-web"
+    APP_NAME = "MarkDoc"
     DEPLOY_PATH = "/var/www/html"
   }
 
