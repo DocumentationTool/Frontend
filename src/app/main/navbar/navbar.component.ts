@@ -20,25 +20,30 @@ import {ApiUser} from '../../api/apiUser';
   standalone: true,
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
   constructor(protected navigationService: NavigationService,
               protected resourceService: ResourceService,
               protected authService: AuthService) {
-  }
-
-  onToggleSidebar() {
-    this.navigationService.toggleSidebar()
   }
 
   prefix: string = "$"
   searchTerm: string = '';
   filteredFiles: Resources[] = [];
   isSearchActive: boolean = false;
-  isTagFilterActive: boolean = false;
+  isTagFilterActive: boolean = true;
   allTags: string[] | undefined = []
   whiteListTags: string[] = []
   blackListTags: string[] = []
   @ViewChild('searchInput') searchInput!: ElementRef;
+
+  ngOnInit() {
+    this.onTagFilter();
+  }
+
+  onToggleSidebar() {
+    this.navigationService.toggleSidebar()
+  }
+
 
   onTag(tag: string) {
     if (this.checkTag(tag) === "whiteList") {
