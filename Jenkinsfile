@@ -12,7 +12,7 @@ pipeline {
     stage('Install Dependencies') {
       steps {
         script {
-          sh 'npm ci'
+          sh 'npm install'
         }
       }
     }
