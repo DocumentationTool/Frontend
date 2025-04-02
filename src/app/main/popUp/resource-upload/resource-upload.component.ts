@@ -16,8 +16,8 @@ import {AuthService} from '../../service/authService';
   styleUrl: './resource-upload.component.css'
 })
 export class ResourceUploadComponent implements OnInit {
-  constructor(protected dialogRef: MatDialogRef<ResourceUploadComponent>,
-              protected resourceService: ResourceService,
+  constructor(public dialogRef: MatDialogRef<ResourceUploadComponent>,
+              public resourceService: ResourceService,
               private apiRepo: ApiRepo,
               private apiResource: ApiResource,
               private authService: AuthService,

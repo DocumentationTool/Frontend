@@ -3,7 +3,7 @@
     <i class="ri-menu-line" (click)="onToggleSidebar()"></i>
   </div>
 
-    <img src="assets/logo.ico" height="30px" alt="logo" (click)="resourceService.loadFileTree()">
+    <img src="assets/logo.ico" height="45px" alt="logo" (click)="resourceService.loadFileTree()">
   @if (resourceService.selectedFile()?.permissionType && resourceService.selectedFile()?.permissionType != "VIEW"){
     <div class="box">
       <button (click)="this.navigationService.onEditor()" [disabled]="!this.resourceService.selectedFile()"

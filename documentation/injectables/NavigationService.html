@@ -1905,7 +1905,7 @@ export class NavigationService {
           console.error(error.error.error)
         }
       )
-      this.router.navigate([&#x27;/main/editor&#x27;])
+      this.router.navigate([&#x27;/editor&#x27;])
       this.mode.set(&quot;editor&quot;)
       this.resourceService.editingFile.set(this.resourceService.selectedFile());
     } else {
@@ -2080,7 +2080,7 @@ export class NavigationService {
    * checks if editor window is currently active
    */
   isEditorActive(): boolean {
-    return this.router.isActive(&#x27;/main/editor&#x27;, {
+    return this.router.isActive(&#x27;/editor&#x27;, {
       paths: &#x27;exact&#x27;,
       queryParams: &#x27;ignored&#x27;,
       fragment: &#x27;ignored&#x27;,
@@ -2092,7 +2092,7 @@ export class NavigationService {
    * checks if admin window is currently active
    */
   isAdminActive(): boolean {
-    return this.router.isActive(&#x27;/main/admin&#x27;, {
+    return this.router.isActive(&#x27;/admin&#x27;, {
       paths: &#x27;exact&#x27;,
       queryParams: &#x27;ignored&#x27;,
       fragment: &#x27;ignored&#x27;,

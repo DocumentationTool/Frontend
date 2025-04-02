@@ -424,8 +424,8 @@ upload buttons and admin navigation</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="216"
-                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:216</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="219"
+                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:219</a></div>
                         </td>
                     </tr>
 
@@ -475,8 +475,8 @@ and closes it</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="216"
-                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:216</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="219"
+                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:219</a></div>
                         </td>
                     </tr>
 
@@ -547,8 +547,8 @@ and closes it</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="175"
-                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:175</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="178"
+                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:178</a></div>
                         </td>
                     </tr>
 
@@ -692,8 +692,8 @@ converts html to markdown</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="117"
-                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:117</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="120"
+                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:120</a></div>
                         </td>
                     </tr>
 
@@ -768,8 +768,8 @@ call upload method</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="98"
-                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:98</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="101"
+                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:101</a></div>
                         </td>
                     </tr>
 
@@ -947,8 +947,8 @@ sets the resource edit pop up window position and opens it</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="86"
-                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:86</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:89</a></div>
                         </td>
                     </tr>
 
@@ -1025,8 +1025,8 @@ max x position 30</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="204"
-                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:204</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="207"
+                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:207</a></div>
                         </td>
                     </tr>
 
@@ -1109,8 +1109,8 @@ for filename</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="160"
-                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:160</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="163"
+                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:163</a></div>
                         </td>
                     </tr>
 
@@ -1179,8 +1179,8 @@ reads file data</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="108"
-                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:108</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:111</a></div>
                         </td>
                     </tr>
 
@@ -1253,8 +1253,8 @@ reads file data</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="134"
-                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:134</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="137"
+                                    class="link-to-prism">src/app/main/sidebar/sidebar.component.ts:137</a></div>
                         </td>
                     </tr>
 
@@ -1666,7 +1666,10 @@ export class SidebarComponent {
   deleteResource(resource: Resources) {
     if (window.confirm(&quot;Do you really want to delete &#x27;&quot; + resource.path + &quot;&#x27; in Repo: &#x27;&quot; + resource.repoId + &quot;&#x27;?&quot;)) {
       this.resourceService.removeResource(resource.repoId, resource.path);
-      this.resourceService.loadFileTree();
+      setTimeout (() &#x3D;&gt; {
+
+        this.resourceService.loadFileTree();
+      }, 300)
     }
   }
 

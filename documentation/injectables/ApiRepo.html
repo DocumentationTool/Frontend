@@ -176,7 +176,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/api/apiRepo.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/api/apiRepo.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -239,8 +239,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="15"
-                                    class="link-to-prism">src/app/api/apiRepo.ts:15</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="16"
+                                    class="link-to-prism">src/app/api/apiRepo.ts:16</a></div>
                         </td>
                     </tr>
 
@@ -276,18 +276,12 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;http://localhost:8080/api/repo&#x27;</code>
+                        <i>Default value : </i><code>environment.apiUrl + &#x27;api/repo&#x27;</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/api/apiRepo.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/api/apiRepo.ts:13</a></div>
                         </td>
                     </tr>
 
@@ -303,6 +297,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Injectable} from &#x27;@angular/core&#x27;;
 import {HttpClient} from &#x27;@angular/common/http&#x27;;
 import {ApiResponseModelRepos} from &#x27;../Model/apiResponseModelRepos&#x27;;
+import {environment} from &#x27;../environments/environment&#x27;;
 
 @Injectable({
   providedIn: &#x27;root&#x27;
@@ -311,7 +306,7 @@ export class ApiRepo {
   constructor(private http: HttpClient) {
   }
 
-  private baseUrl &#x3D; &#x27;http://localhost:8080/api/repo&#x27;;
+  private baseUrl &#x3D; environment.apiUrl + &#x27;api/repo&#x27;;
 
   //get all existing repos
   getRepos() {

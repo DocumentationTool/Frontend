@@ -192,12 +192,12 @@ shows resource information</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(resourceService: <a href="../injectables/ResourceService.html" target="_self">ResourceService</a>, navigationService: <a href="../injectables/NavigationService.html" target="_self">NavigationService</a>)</code>
+<code>constructor(resourceService: <a href="../injectables/ResourceService.html" target="_self">ResourceService</a>, navigationService: <a href="../injectables/NavigationService.html" target="_self">NavigationService</a>, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/main/view/view.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/main/view/view.component.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -240,6 +240,18 @@ shows resource information</p>
                                                     </td>
                                                     
                                                 </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -264,6 +276,7 @@ import {MarkdownComponent} from &quot;ngx-markdown&quot;;
 import {NgIf} from &quot;@angular/common&quot;;
 import {ResourceService} from &#x27;../service/resource.service&#x27;;
 import {NavigationService} from &#x27;../service/navigation.service&#x27;;
+import {AuthService} from &#x27;../service/authService&#x27;;
 
 /**
  * when resource selected, shows data preview
@@ -284,9 +297,11 @@ export class ViewComponent {
    * constructor
    * @param resourceService
    * @param navigationService
+   * @param authService
    */
   constructor(protected resourceService: ResourceService,
-              protected navigationService: NavigationService) {
+              protected navigationService: NavigationService,
+              protected authService: AuthService) {
 
   }
 }
@@ -313,6 +328,10 @@ export class ViewComponent {
       &lt;i
         (click)&#x3D;&quot;navigationService.editResourceTags(resourceService.selectedFile()?.repoId,resourceService.selectedFile()?.path)&quot;
         class&#x3D;&quot;ri-pencil-fill&quot;&gt;&lt;/i&gt;
+      @if (authService.username() &#x3D;&#x3D;&#x3D; &quot;admin&quot;) {
+        &lt;i class&#x3D;&quot;ri-close-line&quot;
+           (click)&#x3D;&quot;resourceService.removeFileEditingAdmin(resourceService.selectedFile()?.repoId, resourceService.selectedFile()?.path)&quot;&gt;&lt;/i&gt;
+      }
     &lt;/div&gt;
     &lt;hr&gt;
   }
@@ -347,7 +366,7 @@ export class ViewComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div  *ngIf="this.resourceService.selectedFile()">  @if (resourceService.selectedFile()?.permissionType != "VIEW") {    <div class="tag-container">      <div class="info-box">        <span class="label">Repo:</span> <span class="value">{{ resourceService.selectedFile()?.repoId }}</span>      </div>      <div class="info-box">        <span class="label">Path:</span> <span class="value">{{ resourceService.selectedFile()?.path }}</span>      </div>      <select id="tag-select">        <option selected disabled>Tags</option>        @for (tag of resourceService.allResourceTagIds(); track tag) {          <option disabled>{{ tag }}</option>        }      </select>      <i        (click)="navigationService.editResourceTags(resourceService.selectedFile()?.repoId,resourceService.selectedFile()?.path)"        class="ri-pencil-fill"></i>    </div>    <hr>  }  <markdown [data]="resourceService.fileContent()"></markdown></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div  *ngIf="this.resourceService.selectedFile()">  @if (resourceService.selectedFile()?.permissionType != "VIEW") {    <div class="tag-container">      <div class="info-box">        <span class="label">Repo:</span> <span class="value">{{ resourceService.selectedFile()?.repoId }}</span>      </div>      <div class="info-box">        <span class="label">Path:</span> <span class="value">{{ resourceService.selectedFile()?.path }}</span>      </div>      <select id="tag-select">        <option selected disabled>Tags</option>        @for (tag of resourceService.allResourceTagIds(); track tag) {          <option disabled>{{ tag }}</option>        }      </select>      <i        (click)="navigationService.editResourceTags(resourceService.selectedFile()?.repoId,resourceService.selectedFile()?.path)"        class="ri-pencil-fill"></i>      @if (authService.username() === "admin") {        <i class="ri-close-line"           (click)="resourceService.removeFileEditingAdmin(resourceService.selectedFile()?.repoId, resourceService.selectedFile()?.path)"></i>      }    </div>    <hr>  }  <markdown [data]="resourceService.fileContent()"></markdown></div></div>'
     var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EditorComponent', 'selector': 'app-editor'},{'name': 'GroupAddComponent', 'selector': 'app-group-add'},{'name': 'GroupEditComponent', 'selector': 'app-group-edit'},{'name': 'GroupPermissionAddComponent', 'selector': 'app-group-permission-add'},{'name': 'GroupPermissionUpdateComponent', 'selector': 'app-group-permission-update'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'RepoEditTagsComponent', 'selector': 'app-repo-edit-tags'},{'name': 'ResourceCreateNewComponent', 'selector': 'app-resource-upload'},{'name': 'ResourceEditTagsComponent', 'selector': 'app-resource-edit-tags'},{'name': 'ResourceMoveComponent', 'selector': 'app-resource-move'},{'name': 'ResourceUploadComponent', 'selector': 'app-resource-upload'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TreeChildComponent', 'selector': 'app-tree-child'},{'name': 'UserAddComponent', 'selector': 'app-user-add'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserPermissionAddComponent', 'selector': 'app-user-permission-add'},{'name': 'UserPermissionUpdateComponent', 'selector': 'app-user-permission-update'},{'name': 'ViewComponent', 'selector': 'app-view'}];
     var DIRECTIVES = [{'name': 'ResizableDirective', 'selector': '[appResizable]'}];
     var ACTUAL_COMPONENT = {'name': 'ViewComponent'};
