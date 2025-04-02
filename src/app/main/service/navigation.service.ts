@@ -268,7 +268,7 @@ export class NavigationService {
    * checks if editor window is currently active
    */
   isEditorActive(): boolean {
-    return this.router.isActive('/main/editor', {
+    return this.router.isActive('/editor', {
       paths: 'exact',
       queryParams: 'ignored',
       fragment: 'ignored',
@@ -280,7 +280,7 @@ export class NavigationService {
    * checks if admin window is currently active
    */
   isAdminActive(): boolean {
-    return this.router.isActive('/main/admin', {
+    return this.router.isActive('/admin', {
       paths: 'exact',
       queryParams: 'ignored',
       fragment: 'ignored',
