@@ -127,9 +127,6 @@ export class NavbarComponent implements OnInit{
 
   onLogin(username: string, password: string){
     this.authService.logIn(username, password);
-    setTimeout(() => {
-      this.resourceService.loadFileTree()
-    }, 1000);
   }
 
   @HostListener('document:click', ['$event'])

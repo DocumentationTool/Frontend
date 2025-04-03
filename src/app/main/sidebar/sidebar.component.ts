@@ -182,7 +182,7 @@ export class SidebarComponent {
 
       // Ignoriere Bilder und konvertiere nur den Text
       const options = {
-        convertImage: Mammoth.images.imgElement(() => Promise.resolve({src: ""}))
+        // convertImage: Mammoth.images.imgElement(() => Promise.resolve({src: ""}))
       };
 
       Mammoth.convertToHtml({arrayBuffer}, options)

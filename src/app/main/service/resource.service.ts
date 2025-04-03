@@ -64,7 +64,6 @@ export class ResourceService {
    * handles error
    */
   selectResource(file: any) {
-    console.log("TESTII")
     this.getResourceTags(null, file.path, file.repoId, this.authService.username(), [], [])
     this.apiResource.getResource(null, file.path, file.repoId, null, [], [], true, 1).subscribe(
       data => {

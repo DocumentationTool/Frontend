@@ -1,15 +1,15 @@
 export interface ApiResponseFileTree {
   message: string;
   error: string;
-  content: Record<string, ContentGroup>;
+  content: Record<string, ContentGroup>; //Repos
 }
 
 export interface ContentGroup {
   resources: Resources[];
-  children: Record<string, ContentGroup>;
+  children: Record<string, ContentGroup>; //children
 }
 
-export interface Resources {
+export interface Resources { //resource
   path: string;
   repoId: string;
   createdBy: string;
@@ -21,3 +21,4 @@ export interface Resources {
   permissionType: string;
   data: string;
 }
+
