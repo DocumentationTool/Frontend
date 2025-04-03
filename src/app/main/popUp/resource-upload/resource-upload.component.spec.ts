@@ -4,6 +4,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { of } from 'rxjs';
 import { ResourceService } from '../../service/resource.service';
 import { ApiRepo } from '../../../api/apiRepo';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {ToastrModule} from 'ngx-toastr';
 
 describe('ResourceUploadComponent', () => {
   let component: ResourceUploadComponent;
@@ -11,7 +13,9 @@ describe('ResourceUploadComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ResourceUploadComponent],
+      imports: [ResourceUploadComponent, HttpClientTestingModule, ToastrModule.forRoot()
+  ],
+
       providers: [
         {
           provide: MatDialogRef,

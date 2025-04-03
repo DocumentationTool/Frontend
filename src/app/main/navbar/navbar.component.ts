@@ -20,7 +20,7 @@ import {ApiUser} from '../../api/apiUser';
   standalone: true,
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit {
   constructor(protected navigationService: NavigationService,
               protected resourceService: ResourceService,
               protected authService: AuthService) {
@@ -125,8 +125,11 @@ export class NavbarComponent implements OnInit{
     return this.searchTerm.startsWith(this.prefix);
   }
 
-  onLogin(username: string, password: string){
+  onLogin(username: string, password: string) {
     this.authService.logIn(username, password);
+    setTimeout(() => {
+      this.resourceService.loadFileTree();
+    }, 800)
   }
 
   @HostListener('document:click', ['$event'])

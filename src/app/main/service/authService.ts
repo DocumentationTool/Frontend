@@ -3,6 +3,7 @@ import {Injectable, signal} from '@angular/core';
 import {ApiAuth} from '../../api/apiAuth';
 import {ToastrService} from 'ngx-toastr';
 import {ApiResource} from '../../api/apiResource';
+import {ResourceService} from './resource.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,7 @@ import {ApiResource} from '../../api/apiResource';
 
 export class AuthService {
   constructor(private apiAuth: ApiAuth,
-              private toastr: ToastrService,
-              private apiResource: ApiResource) {
+              private toastr: ToastrService) {
   }
 
   username = signal<string>("");
