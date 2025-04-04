@@ -5,6 +5,7 @@ import {ResourceService} from '../../service/resource.service';
 import {NavigationService} from '../../service/navigation.service';
 import {ApiRepo} from '../../../api/apiRepo';
 import {Resources} from '../../../Model/apiResponseFileTree';
+import {AuthService} from '../../service/authService';
 
 @Component({
   selector: 'app-resource-edit-tags',
@@ -18,6 +19,7 @@ import {Resources} from '../../../Model/apiResponseFileTree';
 export class ResourceEditTagsComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<ResourceEditTagsComponent>,
               public resourceService: ResourceService,
+              private authService: AuthService,
               @Inject(MAT_DIALOG_DATA) public dialogData: { repoId: string, path: string }) {
   }
 
@@ -28,7 +30,7 @@ export class ResourceEditTagsComponent implements OnInit {
 
   ngOnInit() {
     this.resourceService.getTag(this.dialogData.repoId);
-    this.resourceService.getResourceTags(null, this.dialogData.path, this.dialogData.repoId, null, [], [])
+    this.resourceService.getResourceTags(null, this.dialogData.path, this.dialogData.repoId, this.authService.username(), [], [])
   }
 
   onEditTags() {

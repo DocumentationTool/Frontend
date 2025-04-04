@@ -193,7 +193,7 @@ export class ResourceService {
    * handles error
    */
   editResourceTags(repoId: string, path: string, tagsToAdd: string[], tagsToRemove: string[]) {
-    this.apiResource.updateResource(repoId, path, null, tagsToAdd, tagsToRemove, null, null, null, false).subscribe(
+    this.apiResource.updateResource(repoId, path, this.authService.username(), tagsToAdd, tagsToRemove, null, null, null, false).subscribe(
       _ => {
         this.loadFileTree();
         this.toastr.success("Tags updated")

@@ -69,7 +69,7 @@ export class ResourceMoveComponent implements OnInit {
   }
 
   getAllResource(repoId: string) {
-    this.apiResource.getResource(null, null, repoId, null, [], [], false, 10000).subscribe(
+    this.apiResource.getResource(null, null, repoId, this.authService.username(), [], [], false, 10000).subscribe(
       data => {
         if (data && data.content) {
           this.allPaths = Object.values(data.content).flat()
