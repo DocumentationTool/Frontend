@@ -7,6 +7,7 @@ import {KeyValuePipe, NgClass, NgForOf} from '@angular/common';
 import {AuthService} from '../service/authService';
 import {UserService} from '../service/userService';
 import {ApiUser} from '../../api/apiUser';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -23,7 +24,8 @@ import {ApiUser} from '../../api/apiUser';
 export class NavbarComponent implements OnInit {
   constructor(protected navigationService: NavigationService,
               protected resourceService: ResourceService,
-              protected authService: AuthService) {
+              protected authService: AuthService,
+              private router: Router) {
   }
 
   prefix: string = "$"
@@ -129,6 +131,7 @@ export class NavbarComponent implements OnInit {
     this.authService.logIn(username, password);
     setTimeout(() => {
       this.resourceService.loadFileTree();
+      this.router.navigate([''])
     }, 800)
   }
 
