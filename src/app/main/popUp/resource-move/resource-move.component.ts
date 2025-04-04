@@ -26,7 +26,6 @@ export class ResourceMoveComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public dialogData: { repoId: string, path: string }) {
   }
 
-
   allRepos: string[] = [];
   allPaths: string[] = [];
   repoTo: string = "";
@@ -34,7 +33,6 @@ export class ResourceMoveComponent implements OnInit {
   repoFrom: string = "";
   pathFrom: string = "";
   customPath: string = "";
-
 
   ngOnInit() {
     this.apiRepo.getRepos().subscribe(
@@ -75,11 +73,13 @@ export class ResourceMoveComponent implements OnInit {
       data => {
         if (data && data.content) {
           this.allPaths = Object.values(data.content).flat()
-            .map((resource: Resources) => resource.path);
+            .map((resource: Resources) => resource.path.replace(/\.md$/, ''));
         } else {
           this.allPaths = [];
         }
-      });
+      }
+    );
   }
+
 
 }
